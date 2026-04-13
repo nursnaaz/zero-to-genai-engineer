@@ -15,6 +15,22 @@ The core insight: every method converts text → numbers, then uses **cosine sim
 
 ---
 
+## Screenshots
+
+### React App
+![React App](./ReactApp.png)
+*Movie recommendations for "The Dark Knight" using TF-IDF cosine similarity*
+
+### FastAPI — Request (Swagger UI)
+![FastAPI Request](./FastAPI.png)
+*Interactive API docs at `http://localhost:8000/docs` — try any movie and method*
+
+### FastAPI — Response
+![FastAPI Response](./RecommedAPI.png)
+*JSON response from `/recommend` — title, rating, genre, overview, and match score*
+
+---
+
 ## Folder Structure
 
 ```
