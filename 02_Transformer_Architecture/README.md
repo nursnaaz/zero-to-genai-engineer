@@ -102,12 +102,28 @@ That gap — **how to use a pre-trained LLM efficiently** — is what the next s
 
 ---
 
-## Assets
+## Interactive Tutorials
 
-| File | What It Is |
-|---|---|
-| [self_attention_animation.gif](assets/self_attention_animation.gif) | Animated visualisation of self-attention across tokens |
-| [SelfAttentionFull.mp4](assets/SelfAttentionFull.mp4) | Full self-attention walkthrough video |
+Before or after running the notebook, go through these interactive tutorials. Each one walks you through the core concepts with step-by-step calculations — built specifically for this course.
+
+| Tutorial | What It Covers | Level | Time |
+|---|---|---|---|
+| [Self-Attention Mechanism](https://nursnaaz.github.io/tutorial/self-attention) | How Query, Key, and Value work — step-by-step using "I bought apple to eat" | Beginner | 30 min |
+| [Positional Encoding](https://nursnaaz.github.io/tutorial/positional-encoding) | Why self-attention is blind to word order, and how sinusoidal encoding solves it — with full calculations from the original paper | Beginner | 35 min |
+| [Multi-Head Attention](https://nursnaaz.github.io/tutorial/multi-head-attention) | How 3 attention heads run in parallel — semantic, syntactic, and purpose-driven relationships computed step-by-step | Intermediate | 60 min |
+
+These tutorials are interactive — you can run the calculations yourself in the browser. Use them to verify your understanding before writing the A1 article.
+
+---
+
+## Videos
+
+These videos were created with care to help you build a visual intuition for self-attention before reading any code. **Watch them before opening the notebook.**
+
+| File | What It Covers | How to Use |
+|---|---|---|
+| [SelfAttentionFull.mp4](assets/SelfAttentionFull.mp4) | Complete self-attention walkthrough — how tokens attend to each other, what Q/K/V mean visually | Watch first, before the notebook |
+| [self_attention_animation.gif](assets/self_attention_animation.gif) | Animated attention weights across a sentence — see which words attend to which | Use as a quick reference while reading the theory |
 
 ---
 
