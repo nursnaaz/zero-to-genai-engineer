@@ -124,6 +124,7 @@ These videos were created with care to help you build a visual intuition for sel
 |---|---|---|
 | [SelfAttentionFull.mp4](assets/SelfAttentionFull.mp4) | Complete self-attention walkthrough — how tokens attend to each other, what Q/K/V mean visually | Watch first, before the notebook |
 | [self_attention_animation.gif](assets/self_attention_animation.gif) | Animated attention weights across a sentence — see which words attend to which | Use as a quick reference while reading the theory |
+| [Transformer Architecture.xlsx](assets/Transformer%20Architecture.xlsx) | Step-by-step architecture breakdown in a spreadsheet — dimensions, attention calculations, and data flow at each layer | Open alongside the notebook to trace exact shapes |
 
 ---
 
