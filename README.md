@@ -30,10 +30,6 @@ Data Scientist at **AWS Generative AI Innovation Center** · Dubai, UAE
 
 > *"I built this course because I wanted students to learn GenAI the way professionals actually use it — not just theory, but real systems that get you hired."*
 
-[![Connect on LinkedIn](https://img.shields.io/badge/Let's_Connect-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/nursnaaz)
-&nbsp;
-[![Follow on GitHub](https://img.shields.io/badge/Follow_on_GitHub-181717?style=flat-square&logo=github)](https://github.com/nursnaaz)
-
 ---
 
 ## 🗺️ The Curriculum
@@ -42,7 +38,7 @@ Every session answers one question: *"What was missing from the last one?"*
 That chain is what makes this a complete system — not a collection of tutorials.
 
 > **Two tracks, one goal.**
-> The **public sessions** in this repo (S00 onwards) are a free, open foundation track — released every weekend. The **21-module cohort program** below is a live, instructor-led course with direct access to Mohamed, assignments, and peer learning. The sessions here map to the foundations of that program. [Message on LinkedIn](https://linkedin.com/in/nursnaaz) to join the next cohort.
+> The **public sessions** in this repo (S00 onwards) are a free, open foundation track — released every weekend. The **21-module program** below is the full curriculum this repo is building towards.
 
 ### Available Now — 3 Sessions
 
@@ -54,13 +50,13 @@ That chain is what makes this a complete system — not a collection of tutorial
 
 New sessions drop every **Saturday / Sunday**. Watch the repo to get notified.
 
-### Full Cohort Curriculum — 21 Modules
+### Full Curriculum — 21 Modules
 
-The complete zero-to-production GenAI engineer track. Delivered as a live cohort program.
+The complete zero-to-production GenAI engineer track.
 
 | Module | Topic | Track | Status |
 |---|---|---|---|
-| M00 | Text → Numbers → Transformers → GPT | Foundation | 🔜 |
+| M00 | How Search Engines Work · Text → Numbers → Transformers → GPT | Foundation | 🔜 |
 | M01 | Modern LLM Fundamentals (Tokenization, Embeddings, API) | Foundation | 🔜 |
 | M02 | Local LLMs with Ollama | Foundation | 🔜 |
 | M03 | Prompt Engineering | Core | 🔜 |
@@ -143,13 +139,6 @@ After the notebooks, read the **[Cheat Sheet](./prereq/cheatsheet.md)** — keep
 | Fine-tuning | Unsloth · Together AI |
 
 ---
-
-## 📬 Want to Join the Next Batch?
-
-This is a **live cohort-based program** — not a self-paced course.
-You get direct access to Mohamed, live sessions, and peer learning.
-
-[![Connect on LinkedIn](https://img.shields.io/badge/Message_on_LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/nursnaaz)
 
 ---
 
