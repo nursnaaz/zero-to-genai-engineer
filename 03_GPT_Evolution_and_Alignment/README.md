@@ -186,4 +186,111 @@ If you want to fine-tune an open-source model (LLaMA, Mistral) with preference d
 
 ---
 
+## 📝 This Week's Assignments
+
+Complete these before the next session. They are designed to take 6–8 hours total — block out time across the week.
+
+---
+
+### 🧪 Assignment 1 — Run NB2 First (30 min)
+
+Open `notebooks/NB2_GPT_TensorFlow_Minimal_Synthetic.ipynb` and run every cell top to bottom.
+
+- [ ] Run all cells and confirm the model trains without errors
+- [ ] Watch the loss decrease over 50 epochs — does it stabilise?
+- [ ] Run the generation cell and read the output — does it look like the training domain (Space / Ocean / Medieval)?
+- [ ] **Play around:** Change `temperature` between `0.3`, `0.8`, and `1.4` in the generate cell. Write down in a comment what you notice about the output at each setting.
+- [ ] **Play around:** Change the prompt to a different sentence from the training data and generate again.
+
+> This notebook is your map. Run it quickly — NB1 is where the real work is.
+
+---
+
+### 🔬 Assignment 2 — Run NB1 Deep Dive (2–3 hrs)
+
+Open `notebooks/NB1_GPT_PyTorch_Detailed_Shakespeare.ipynb`. This is the main notebook for this session.
+
+**Step 1 — Run with default settings (word tokenizer)**
+- [ ] Run all cells top to bottom with `TOKENIZER_TYPE = 'word'` (the default)
+- [ ] Let training complete — watch the loss curve and perplexity drop
+- [ ] Read the generated text at each sample checkpoint during training — does it improve?
+
+**Step 2 — Switch tokenizers and compare**
+- [ ] Change `TOKENIZER_TYPE = 'char'` and re-run from the tokenizer cell. Generate 200 tokens from `"ROMEO:\n"`. Paste the output in a comment.
+- [ ] Change `TOKENIZER_TYPE = 'word'` and do the same. Paste the output.
+- [ ] Change `TOKENIZER_TYPE = 'bpe'` and do the same.
+- [ ] **Question to answer:** Which tokenizer produces the most readable Shakespeare-style output, and why do you think that is?
+
+**Step 3 — Generate GPT output with different prompts**
+
+Try each of these prompts and observe how the model continues them:
+
+```python
+# Try each one — change the prompt= line in the generate cell
+"ROMEO:\nWhat light through yonder"
+"JULIET:\nO Romeo Romeo wherefore"
+"GLOUCESTER:\nNow is the winter of"
+"BRUTUS:\nFriends Romans countrymen"
+"PETRUCHIO:\nWhat say you to a"
+"MENENIUS:\nI shall tell you a"
+```
+
+- [ ] For each prompt, generate with `temperature=0.5`, `0.8`, and `1.2`
+- [ ] Note which temperature gives the most coherent continuation
+- [ ] Note which prompt gives the best result — why do you think longer prompts work better?
+
+**Step 4 — Attention heatmap**
+- [ ] Run the `visualize_attention` cell — look at the lower-triangular pattern
+- [ ] Change `layer=` (0 to 3) and `head=` (0 to 3 or 7 depending on tokenizer) — do different heads attend to different patterns?
+- [ ] **Question:** What does the lower-triangular shape prove about how GPT reads text?
+
+---
+
+### 📄 Assignment 3 — Paper Summaries: In-Session Papers (must read)
+
+These five papers were covered in the session. Open each summary notebook and read it fully — they are written for beginners and take 15–20 min each.
+
+| # | Open this notebook | Read time | What to think about |
+|---|---|---|---|
+| 1 | `paper_summaries/01_GPT1_Language_Understanding.ipynb` | 15 min | Why did pre-training + fine-tuning beat training from scratch? |
+| 2 | `paper_summaries/02_GPT2_Unsupervised_Multitask_Learners.ipynb` | 15 min | What changed between GPT-1 and GPT-2? What stayed the same? |
+| 3 | `paper_summaries/03_GPT3_Few_Shot_Learners.ipynb` | 20 min | At what point does a model stop needing fine-tuning? |
+| 4 | `paper_summaries/04_BERT_Bidirectional_Transformers.ipynb` | 15 min | BERT was better than GPT at the time — why does GPT dominate today? |
+| 5 | `paper_summaries/06_InstructGPT_RLHF.ipynb` | 20 min | Why did a 1.3B aligned model beat a 175B unaligned one? |
+
+After reading, answer these three questions in your own words (write them in a notebook comment or a text file):
+1. What is the difference between pre-training and fine-tuning?
+2. What does RLHF add that raw GPT-3 was missing?
+3. In your own words, what makes GPT a "generative" model?
+
+---
+
+### 📚 Assignment 4 — Self-Learning Papers (go at your own pace)
+
+These papers were **not covered in the session** — they are here for students who want to go deeper. Each has a full summary notebook written for beginners. Work through them over the coming weeks at your own pace.
+
+> You are not expected to read all of these this week. Pick the ones that interest you most and bookmark the rest.
+
+| # | Summary Notebook | Topic | Why it matters |
+|---|---|---|---|
+| 1 | `paper_summaries/05_BART_Denoising_Seq2Seq.ipynb` | BART — encoder+decoder model | Best model for summarisation; shows a third architecture beyond BERT/GPT |
+| 2 | `paper_summaries/07_Helpful_Harmless_Assistant_RLHF.ipynb` | Anthropic HH-RLHF | The research behind Claude — helpfulness vs harmlessness tension |
+| 3 | `paper_summaries/08_Constitutional_AI_Harmlessness.ipynb` | Constitutional AI | How Anthropic replaced human labellers with a written constitution |
+| 4 | `paper_summaries/09_RLAIF_Scaling_RLHF.ipynb` | RLAIF (Google) | AI feedback ≈ human feedback — what this means for scale |
+| 5 | `paper_summaries/10_DPO_Direct_Preference_Optimization.ipynb` | DPO | How to align a model without PPO — what most open-source models use today |
+| 6 | `paper_summaries/11_SELF_REFINE_Iterative_Refinement.ipynb` | SELF-REFINE | How an LLM improves its own outputs — the pattern behind AI agents |
+
+**Recommended starting point:** Read DPO (Paper 5) — it's the most practically useful if you plan to fine-tune any model.
+
+---
+
+### 💬 Submission
+
+Post in the WhatsApp group with:
+1. A screenshot of your NB1 training loss curve
+2. One generated GPT output you found interesting (any prompt, any tokenizer)
+3. One sentence answering: *"What surprised you most about how GPT is trained?"*
+
+---
+
 *Part of the GenAI-2026 curriculum — zero-to-genai-engineer track*
