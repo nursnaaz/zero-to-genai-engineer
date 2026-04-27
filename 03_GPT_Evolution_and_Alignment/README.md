@@ -1,6 +1,8 @@
 # 03 — GPT Evolution and Alignment
 ### 🏁 M00 Foundation — Part 3 of 3 · Completes M00
 
+> **[▶ View the Paper Slides (interactive)](https://nursnaaz.github.io/zero-to-genai-engineer/03_GPT_Evolution_and_Alignment/GPT_Papers_Presentation.html)** — 14 slides covering all 11 papers, open in browser, arrow keys to navigate
+
 > **M00 is now complete.** This is the final piece of the Foundation module:
 >
 > | Session | Covers |
