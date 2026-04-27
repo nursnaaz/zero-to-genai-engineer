@@ -49,7 +49,7 @@ That chain is what makes this a complete system — not a collection of tutorial
 | [S00](./00_How_Search_Engine_Works/) | Part 1a | How Search Engines Work | TF-IDF search engine from scratch | 2026-04-06 |
 | [S01](./01_Text_to_Numbers/) | Part 1b | Text to Numbers | Movie recommender with 5 embedding methods | 2026-04-13 |
 | [S02](./02_Transformer_Architecture/) | Part 2 | Transformer Architecture | Encoder-Decoder Transformer from scratch — train English → Italian translation | 2026-04-19 |
-| [S03](./03_GPT_Evolution_and_Alignment/) | Part 3 ✅ M00 Complete | GPT Evolution & Alignment | Build GPT from scratch (PyTorch + TF) · 11 paper summaries (GPT-1/2/3, BERT, BART, InstructGPT, Constitutional AI, DPO and more) | 2026-04-27 |
+| [S03](./03_GPT_Evolution_and_Alignment/) | Part 3 ✅ M00 Complete | GPT Evolution & Alignment | Build GPT from scratch (PyTorch + TF) · 11 paper summaries (GPT-1/2/3, BERT, BART, InstructGPT, Constitutional AI, DPO and more) · [▶ Paper Slides](https://nursnaaz.github.io/zero-to-genai-engineer/03_GPT_Evolution_and_Alignment/GPT_Papers_Presentation.html) | 2026-04-27 |
 
 New sessions drop every **Saturday / Sunday**. Watch the repo to get notified.
 
