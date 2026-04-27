@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPT Evolution &amp; Alignment — Visual Slides</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f172a;font-family:'Segoe UI',system-ui,sans-serif;overflow:hidden;width:100vw;height:100vh}
+.deck{width:100%;height:100%;position:relative}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  padding:1.6rem 3rem 4.2rem;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.slide.active{opacity:1;pointer-events:all}
+.topbar{width:100%;display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem;flex-shrink:0}
+.tag{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.18rem .6rem;border-radius:20px;white-space:nowrap}
+.tf{background:rgba(167,139,250,.15);color:#a78bfa;border:1px solid #a78bfa}
+.tg{background:rgba(56,189,248,.15);color:#38bdf8;border:1px solid #38bdf8}
+.te{background:rgba(52,211,153,.15);color:#34d399;border:1px solid #34d399}
+.ta{background:rgba(251,146,60,.15);color:#fb923c;border:1px solid #fb923c}
+.tt{background:rgba(255,255,255,.06);color:#94a3b8;border:1px solid #334155}
+h2{font-size:1.55rem;font-weight:700;color:#f1f5f9;flex:1}
+.yr{font-size:.78rem;color:#475569;background:rgba(255,255,255,.04);border:1px solid #1e293b;
+  padding:.18rem .6rem;border-radius:20px;margin-left:auto}
+.vis{flex:1;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:0}
+.vis svg{max-height:100%;max-width:100%}
+.stats{display:flex;gap:1.1rem;margin-top:.7rem;flex-shrink:0}
+.st{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:.65rem;padding:.45rem 1.1rem;text-align:center}
+.sn{font-size:1.25rem;font-weight:700}
+.sl{font-size:.6rem;color:#64748b;margin-top:.1rem;letter-spacing:.04em;text-transform:uppercase}
+.nav{position:fixed;bottom:1.1rem;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:.85rem;z-index:999}
+.nav button{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:#94a3b8;padding:.32rem .95rem;border-radius:20px;cursor:pointer;font-size:.78rem;transition:all .2s}
+.nav button:hover{background:rgba(255,255,255,.14);color:#f1f5f9}
+.ctr{color:#334155;font-size:.78rem;min-width:4rem;text-align:center}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 0: TITLE -->
+<div class="slide active" id="s0">
+  <div class="topbar">
+    <span class="tag tt">GenAI-2026 · S03</span>
+    <h2>GPT Evolution &amp; Alignment</h2>
+    <span class="yr">2017 → 2023</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 370" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah0" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#475569"/>
+        </marker>
+      </defs>
+      <!-- Main timeline -->
+      <line x1="60" y1="195" x2="810" y2="195" stroke="#1e3a5f" stroke-width="3" marker-end="url(#ah0)"/>
+
+      <!-- 2017 -->
+      <circle cx="100" cy="195" r="20" fill="#a78bfa" fill-opacity=".18" stroke="#a78bfa" stroke-width="2"/>
+      <text x="100" y="200" fill="#a78bfa" text-anchor="middle" font-size="11" font-weight="700">2017</text>
+      <line x1="100" y1="175" x2="100" y2="145" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="28" y="112" width="144" height="32" rx="7" fill="#1e293b" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="100" y="132" fill="#a78bfa" text-anchor="middle" font-size="11" font-weight="700">Attention Is All You Need</text>
+
+      <!-- 2018 -->
+      <circle cx="250" cy="195" r="20" fill="#38bdf8" fill-opacity=".18" stroke="#38bdf8" stroke-width="2"/>
+      <text x="250" y="200" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="700">2018</text>
+      <line x1="230" y1="215" x2="205" y2="248" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="160" y="248" width="80" height="30" rx="7" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="200" y="268" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">GPT-1</text>
+      <line x1="270" y1="215" x2="298" y2="248" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="258" y="248" width="80" height="30" rx="7" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+      <text x="298" y="268" fill="#34d399" text-anchor="middle" font-size="12" font-weight="700">BERT</text>
+
+      <!-- 2019 -->
+      <circle cx="420" cy="195" r="20" fill="#38bdf8" fill-opacity=".18" stroke="#38bdf8" stroke-width="2"/>
+      <text x="420" y="200" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="700">2019</text>
+      <line x1="400" y1="175" x2="375" y2="145" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="330" y="112" width="80" height="30" rx="7" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="370" y="132" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">GPT-2</text>
+      <line x1="440" y1="175" x2="468" y2="145" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="428" y="112" width="80" height="30" rx="7" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+      <text x="468" y="132" fill="#34d399" text-anchor="middle" font-size="12" font-weight="700">BART</text>
+
+      <!-- 2020 -->
+      <circle cx="565" cy="195" r="20" fill="#38bdf8" fill-opacity=".18" stroke="#38bdf8" stroke-width="2"/>
+      <text x="565" y="200" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="700">2020</text>
+      <line x1="565" y1="215" x2="565" y2="248" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="507" y="248" width="116" height="30" rx="7" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="565" y="268" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">GPT-3 · 175B</text>
+
+      <!-- 2022 -->
+      <circle cx="690" cy="195" r="20" fill="#fb923c" fill-opacity=".18" stroke="#fb923c" stroke-width="2"/>
+      <text x="690" y="200" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">2022</text>
+      <line x1="690" y1="175" x2="690" y2="60" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="618" y="60" width="88" height="26" rx="6" fill="#1e293b" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="662" y="78" fill="#fb923c" text-anchor="middle" font-size="10" font-weight="700">InstructGPT</text>
+      <rect x="715" y="60" width="74" height="26" rx="6" fill="#1e293b" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="752" y="78" fill="#fb923c" text-anchor="middle" font-size="10" font-weight="700">HH-RLHF</text>
+      <rect x="666" y="30" width="90" height="26" rx="6" fill="#1e293b" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="711" y="48" fill="#fb923c" text-anchor="middle" font-size="10" font-weight="700">Constitutional AI</text>
+
+      <!-- 2023 -->
+      <circle cx="790" cy="195" r="20" fill="#fb923c" fill-opacity=".18" stroke="#fb923c" stroke-width="2"/>
+      <text x="790" y="200" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">2023</text>
+      <line x1="790" y1="215" x2="790" y2="248" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="730" y="248" width="56" height="26" rx="6" fill="#1e293b" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="758" y="266" fill="#fb923c" text-anchor="middle" font-size="10" font-weight="700">RLAIF</text>
+      <rect x="794" y="248" width="52" height="26" rx="6" fill="#1e293b" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="820" y="266" fill="#fb923c" text-anchor="middle" font-size="10" font-weight="700">DPO</text>
+
+      <!-- Bottom label -->
+      <text x="430" y="330" fill="#334155" text-anchor="middle" font-size="12">
+        Foundation  ──────────────────  Scale  ──────────────────  Alignment  ──  What You Use Today
+      </text>
+      <!-- SELF-REFINE small note -->
+      <text x="790" y="310" fill="#475569" text-anchor="middle" font-size="9">+ SELF-REFINE</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#a78bfa">1</div><div class="sl">Foundation</div></div>
+    <div class="st"><div class="sn" style="color:#38bdf8">5</div><div class="sl">GPT + Encoder</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">6</div><div class="sl">Alignment</div></div>
+    <div class="st"><div class="sn" style="color:#f1f5f9">6</div><div class="sl">Years</div></div>
+    <div class="st"><div class="sn" style="color:#94a3b8">11</div><div class="sl">Papers Total</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 1: TRANSFORMER -->
+<div class="slide" id="s1">
+  <div class="topbar">
+    <span class="tag tf">Foundation</span>
+    <h2>Attention Is All You Need</h2>
+    <span class="yr">Vaswani et al. · Google · 2017</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 400" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#a78bfa"/>
+        </marker>
+        <marker id="ah1b" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#64748b"/>
+        </marker>
+      </defs>
+
+      <!-- ── ENCODER ── -->
+      <rect x="60" y="50" width="280" height="300" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+      <text x="200" y="35" fill="#a78bfa" text-anchor="middle" font-size="15" font-weight="700">ENCODER</text>
+      <!-- 3 layer groups -->
+      <rect x="80" y="70" width="240" height="52" rx="7" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="1.2"/>
+      <text x="200" y="91" fill="#a78bfa" text-anchor="middle" font-size="11" font-weight="600">Multi-Head Self-Attention</text>
+      <text x="200" y="110" fill="#64748b" text-anchor="middle" font-size="10">reads all tokens simultaneously</text>
+      <rect x="80" y="135" width="240" height="52" rx="7" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="1.2"/>
+      <text x="200" y="156" fill="#a78bfa" text-anchor="middle" font-size="11" font-weight="600">Add &amp; Norm</text>
+      <text x="200" y="175" fill="#64748b" text-anchor="middle" font-size="10">residual connection + layer norm</text>
+      <rect x="80" y="200" width="240" height="52" rx="7" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="1.2"/>
+      <text x="200" y="221" fill="#a78bfa" text-anchor="middle" font-size="11" font-weight="600">Feed-Forward Network</text>
+      <text x="200" y="240" fill="#64748b" text-anchor="middle" font-size="10">position-wise transformation</text>
+      <text x="200" y="310" fill="#64748b" text-anchor="middle" font-size="11">× 6 stacked layers</text>
+
+      <!-- Input tokens -->
+      <rect x="90" y="330" width="60" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="120" y="347" fill="#94a3b8" text-anchor="middle" font-size="10">The</text>
+      <rect x="160" y="330" width="60" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="190" y="347" fill="#94a3b8" text-anchor="middle" font-size="10">cat</text>
+      <rect x="230" y="330" width="60" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="260" y="347" fill="#94a3b8" text-anchor="middle" font-size="10">sat</text>
+      <text x="200" y="376" fill="#475569" text-anchor="middle" font-size="11">Input Tokens</text>
+
+      <!-- ── MIDDLE: CROSS-ATTENTION BRIDGE ── -->
+      <line x1="340" y1="200" x2="520" y2="200" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#ah1b)"/>
+      <rect x="350" y="182" width="158" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="429" y="196" fill="#94a3b8" text-anchor="middle" font-size="10" font-weight="700">Cross-Attention</text>
+      <text x="429" y="211" fill="#475569" text-anchor="middle" font-size="9">Decoder attends to Encoder</text>
+
+      <!-- ── DECODER ── -->
+      <rect x="520" y="50" width="280" height="300" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+      <text x="660" y="35" fill="#38bdf8" text-anchor="middle" font-size="15" font-weight="700">DECODER</text>
+      <rect x="540" y="70" width="240" height="52" rx="7" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="660" y="91" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="600">Masked Self-Attention</text>
+      <text x="660" y="110" fill="#64748b" text-anchor="middle" font-size="10">can only see past tokens</text>
+      <rect x="540" y="135" width="240" height="52" rx="7" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="660" y="156" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="600">Cross-Attention + Norm</text>
+      <text x="660" y="175" fill="#64748b" text-anchor="middle" font-size="10">attends to encoder output</text>
+      <rect x="540" y="200" width="240" height="52" rx="7" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="660" y="221" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="600">Feed-Forward Network</text>
+      <text x="660" y="240" fill="#64748b" text-anchor="middle" font-size="10">+ Softmax → token prediction</text>
+      <text x="660" y="310" fill="#64748b" text-anchor="middle" font-size="11">× 6 stacked layers</text>
+
+      <!-- Output tokens -->
+      <rect x="560" y="330" width="60" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="590" y="347" fill="#94a3b8" text-anchor="middle" font-size="10">Il</text>
+      <rect x="630" y="330" width="60" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="660" y="347" fill="#94a3b8" text-anchor="middle" font-size="10">gatto</text>
+      <rect x="700" y="330" width="70" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="735" y="347" fill="#94a3b8" text-anchor="middle" font-size="10">sedeva</text>
+      <text x="660" y="376" fill="#475569" text-anchor="middle" font-size="11">Output Tokens (Italian)</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#a78bfa">512</div><div class="sl">d_model dim</div></div>
+    <div class="st"><div class="sn" style="color:#a78bfa">8</div><div class="sl">Attention heads</div></div>
+    <div class="st"><div class="sn" style="color:#a78bfa">6</div><div class="sl">Encoder + 6 Decoder layers</div></div>
+    <div class="st"><div class="sn" style="color:#a78bfa">No RNN</div><div class="sl">Fully parallel processing</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 2: GPT-1 -->
+<div class="slide" id="s2">
+  <div class="topbar">
+    <span class="tag tg">GPT Series</span>
+    <h2>GPT-1 — Generative Pre-Training</h2>
+    <span class="yr">Radford et al. · OpenAI · 2018</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah2" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#38bdf8"/>
+        </marker>
+        <marker id="ah2g" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#34d399"/>
+        </marker>
+      </defs>
+
+      <!-- PHASE 1 BOX -->
+      <rect x="30" y="50" width="340" height="280" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+      <rect x="30" y="50" width="340" height="44" rx="14" fill="#38bdf8" fill-opacity=".18"/>
+      <text x="200" y="78" fill="#38bdf8" text-anchor="middle" font-size="14" font-weight="700">PHASE 1 — PRE-TRAINING</text>
+
+      <!-- Corpus visual: wavy lines = unlabeled text -->
+      <text x="200" y="125" fill="#64748b" text-anchor="middle" font-size="11">Unlabeled Text Corpus</text>
+      <line x1="60" y1="140" x2="340" y2="140" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="60" y1="155" x2="310" y2="155" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="60" y1="170" x2="325" y2="170" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="60" y1="185" x2="290" y2="185" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="200" y="205" fill="#475569" text-anchor="middle" font-size="10">800M words (BooksCorpus)</text>
+
+      <!-- Arrow down -->
+      <line x1="200" y1="215" x2="200" y2="240" stroke="#38bdf8" stroke-width="2" marker-end="url(#ah2)"/>
+      <text x="225" y="232" fill="#64748b" font-size="9">next-token prediction</text>
+
+      <!-- GPT model box -->
+      <rect x="90" y="242" width="220" height="50" rx="9" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8"/>
+      <text x="200" y="264" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">12-Layer Transformer</text>
+      <text x="200" y="282" fill="#64748b" text-anchor="middle" font-size="10">Decoder-only · 117M params</text>
+
+      <!-- TRANSFER ARROW (big middle) -->
+      <line x1="370" y1="195" x2="490" y2="195" stroke="#f1f5f9" stroke-width="3" stroke-dasharray="8,5" marker-end="url(#ah2)"/>
+      <rect x="375" y="174" width="110" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="430" y="191" fill="#f1f5f9" text-anchor="middle" font-size="11" font-weight="700">Transfer</text>
+      <text x="430" y="208" fill="#64748b" text-anchor="middle" font-size="9">Copy weights</text>
+
+      <!-- PHASE 2 BOX -->
+      <rect x="490" y="50" width="340" height="280" rx="14" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+      <rect x="490" y="50" width="340" height="44" rx="14" fill="#34d399" fill-opacity=".15"/>
+      <text x="660" y="78" fill="#34d399" text-anchor="middle" font-size="14" font-weight="700">PHASE 2 — FINE-TUNING</text>
+
+      <!-- Labeled dataset -->
+      <text x="660" y="118" fill="#64748b" text-anchor="middle" font-size="11">Labeled Task Data</text>
+      <rect x="520" y="128" width="120" height="30" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="580" y="148" fill="#94a3b8" text-anchor="middle" font-size="10">Sentence → Label</text>
+      <rect x="650" y="128" width="120" height="30" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="710" y="148" fill="#94a3b8" text-anchor="middle" font-size="10">Q &amp; A → Answer</text>
+      <rect x="520" y="168" width="120" height="30" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="580" y="188" fill="#94a3b8" text-anchor="middle" font-size="10">Text → Entailment</text>
+      <rect x="650" y="168" width="120" height="30" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="710" y="188" fill="#94a3b8" text-anchor="middle" font-size="10">Span → Similarity</text>
+
+      <!-- Arrow down -->
+      <line x1="660" y1="208" x2="660" y2="238" stroke="#34d399" stroke-width="2" marker-end="url(#ah2g)"/>
+      <text x="685" y="228" fill="#64748b" font-size="9">supervised training</text>
+
+      <!-- Task classifier box -->
+      <rect x="550" y="242" width="220" height="50" rx="9" fill="#0f172a" stroke="#34d399" stroke-width="1.8"/>
+      <text x="660" y="264" fill="#34d399" text-anchor="middle" font-size="12" font-weight="700">Task-Specific Classifier</text>
+      <text x="660" y="282" fill="#64748b" text-anchor="middle" font-size="10">Add small output layer on top</text>
+
+      <!-- SOTA badge -->
+      <rect x="555" y="350" width="210" height="28" rx="8" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1.3"/>
+      <text x="660" y="369" fill="#34d399" text-anchor="middle" font-size="11" font-weight="700">SOTA on 9 of 12 NLP tasks</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#38bdf8">117M</div><div class="sl">Parameters</div></div>
+    <div class="st"><div class="sn" style="color:#38bdf8">800M</div><div class="sl">Training Words</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">9/12</div><div class="sl">Tasks — new SOTA</div></div>
+    <div class="st"><div class="sn" style="color:#f1f5f9">Decoder</div><div class="sl">Only Architecture</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 3: BERT -->
+<div class="slide" id="s3">
+  <div class="topbar">
+    <span class="tag te">Encoder Model</span>
+    <h2>BERT — Bidirectional Transformers</h2>
+    <span class="yr">Devlin et al. · Google · 2018</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah3r" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#34d399"/>
+        </marker>
+        <marker id="ah3l" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto" markerUnits="strokeWidth">
+          <path d="M8,0 L0,3.5 L8,7 Z" fill="#fb923c"/>
+        </marker>
+      </defs>
+
+      <!-- Title label -->
+      <text x="430" y="35" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">GPT reads LEFT → RIGHT only · BERT reads BOTH directions</text>
+
+      <!-- Token row -->
+      <g>
+        <!-- Token boxes -->
+        <rect x="50"  y="155" width="85" height="50" rx="9" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text x="92"  y="185" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">The</text>
+        <rect x="155" y="155" width="85" height="50" rx="9" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text x="197" y="185" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">cat</text>
+        <!-- MASK token highlighted -->
+        <rect x="260" y="148" width="105" height="64" rx="9" fill="#1e293b" stroke="#34d399" stroke-width="2.5"/>
+        <text x="312" y="179" fill="#34d399" text-anchor="middle" font-size="14" font-weight="700">[MASK]</text>
+        <text x="312" y="200" fill="#475569" text-anchor="middle" font-size="10">was: "sat"</text>
+        <rect x="385" y="155" width="85" height="50" rx="9" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text x="427" y="185" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">on</text>
+        <rect x="490" y="155" width="85" height="50" rx="9" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text x="532" y="185" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">the</text>
+        <rect x="595" y="155" width="85" height="50" rx="9" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text x="637" y="185" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">mat</text>
+        <rect x="700" y="155" width="110" height="50" rx="9" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text x="755" y="185" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">[SEP]</text>
+      </g>
+
+      <!-- Left-to-right attention (green, above) -->
+      <text x="400" y="95" fill="#34d399" text-anchor="middle" font-size="12" font-weight="700">← reads context from RIGHT →</text>
+      <path d="M755,148 C755,90 312,90 312,148" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ah3r)"/>
+
+      <!-- Right-to-left attention (orange, below) -->
+      <text x="400" y="295" fill="#fb923c" text-anchor="middle" font-size="12" font-weight="700">← reads context from LEFT →</text>
+      <path d="M92,205 C92,265 312,265 312,212" fill="none" stroke="#fb923c" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ah3r)"/>
+
+      <!-- Prediction output -->
+      <line x1="312" y1="212" x2="312" y2="315" stroke="#34d399" stroke-width="2.5" stroke-dasharray="6,3" marker-end="url(#ah3r)"/>
+      <rect x="230" y="315" width="164" height="42" rx="10" fill="rgba(52,211,153,.15)" stroke="#34d399" stroke-width="2"/>
+      <text x="312" y="334" fill="#34d399" text-anchor="middle" font-size="12" font-weight="700">Predicts: "sat"</text>
+      <text x="312" y="350" fill="#475569" text-anchor="middle" font-size="10">Masked Language Modelling (MLM)</text>
+
+      <!-- GPT comparison label -->
+      <rect x="30" y="60" width="170" height="32" rx="7" fill="rgba(56,189,248,.08)" stroke="#38bdf8" stroke-width="1.2"/>
+      <text x="115" y="81" fill="#38bdf8" text-anchor="middle" font-size="11">GPT: → one direction only</text>
+      <rect x="660" y="60" width="170" height="32" rx="7" fill="rgba(52,211,153,.08)" stroke="#34d399" stroke-width="1.2"/>
+      <text x="745" y="81" fill="#34d399" text-anchor="middle" font-size="11">BERT: ↔ both directions</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#34d399">340M</div><div class="sl">Parameters (BERT-Large)</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">MLM</div><div class="sl">Masked Language Model</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">NSP</div><div class="sl">Next Sentence Prediction</div></div>
+    <div class="st"><div class="sn" style="color:#94a3b8">NLU</div><div class="sl">Best for classification tasks</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 4: GPT-2 -->
+<div class="slide" id="s4">
+  <div class="topbar">
+    <span class="tag tg">GPT Series</span>
+    <h2>GPT-2 — Language Models are Multitask Learners</h2>
+    <span class="yr">Radford et al. · OpenAI · 2019</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah4" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#38bdf8"/>
+        </marker>
+      </defs>
+
+      <!-- Scale bars (growing left to right) -->
+      <text x="430" y="30" fill="#64748b" text-anchor="middle" font-size="13">Same architecture as GPT-1 — just SCALE everything up</text>
+
+      <!-- GPT-1 bar -->
+      <rect x="60" y="260" width="120" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+      <rect x="70" y="270" width="100" height="60" rx="5" fill="#38bdf8" fill-opacity=".18"/>
+      <text x="120" y="358" fill="#64748b" text-anchor="middle" font-size="11">GPT-1</text>
+      <text x="120" y="375" fill="#475569" text-anchor="middle" font-size="10">117M</text>
+
+      <!-- GPT-2 Small bar -->
+      <rect x="225" y="220" width="140" height="120" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <rect x="235" y="230" width="120" height="100" rx="5" fill="#38bdf8" fill-opacity=".25"/>
+      <text x="295" y="358" fill="#38bdf8" text-anchor="middle" font-size="11">GPT-2 Small</text>
+      <text x="295" y="375" fill="#64748b" text-anchor="middle" font-size="10">117M</text>
+
+      <!-- GPT-2 Medium bar -->
+      <rect x="405" y="165" width="140" height="175" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.8"/>
+      <rect x="415" y="175" width="120" height="155" rx="5" fill="#38bdf8" fill-opacity=".3"/>
+      <text x="475" y="358" fill="#38bdf8" text-anchor="middle" font-size="11">GPT-2 Medium</text>
+      <text x="475" y="375" fill="#64748b" text-anchor="middle" font-size="10">345M</text>
+
+      <!-- GPT-2 XL bar -->
+      <rect x="580" y="80" width="170" height="260" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2.2"/>
+      <rect x="590" y="90" width="150" height="240" rx="5" fill="#38bdf8" fill-opacity=".35"/>
+      <text x="665" y="358" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">GPT-2 XL</text>
+      <text x="665" y="375" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="700">1.5B params</text>
+
+      <!-- Arrow showing growth -->
+      <line x1="60" y1="50" x2="800" y2="50" stroke="#334155" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#ah4)"/>
+      <text x="430" y="45" fill="#475569" text-anchor="middle" font-size="10">Scale →</text>
+
+      <!-- Zero-shot badge -->
+      <rect x="82" y="56" width="296" height="52" rx="10" fill="rgba(251,146,60,.12)" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="230" y="78" fill="#fb923c" text-anchor="middle" font-size="13" font-weight="700">Zero-Shot Transfer</text>
+      <text x="230" y="99" fill="#64748b" text-anchor="middle" font-size="10">No fine-tuning — prompting only</text>
+
+      <!-- WebText label -->
+      <rect x="430" y="56" width="370" height="52" rx="10" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="615" y="78" fill="#38bdf8" text-anchor="middle" font-size="13" font-weight="700">WebText — 8B tokens</text>
+      <text x="615" y="99" fill="#64748b" text-anchor="middle" font-size="10">40GB of Reddit outbound links, quality filtered</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#38bdf8">1.5B</div><div class="sl">Max parameters</div></div>
+    <div class="st"><div class="sn" style="color:#38bdf8">8B</div><div class="sl">Training tokens</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">Zero-Shot</div><div class="sl">No task-specific training</div></div>
+    <div class="st"><div class="sn" style="color:#94a3b8">10×</div><div class="sl">Bigger than GPT-1</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 5: BART -->
+<div class="slide" id="s5">
+  <div class="topbar">
+    <span class="tag te">Encoder Model</span>
+    <h2>BART — Denoising Seq2Seq</h2>
+    <span class="yr">Lewis et al. · Facebook AI · 2019</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah5" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#34d399"/>
+        </marker>
+      </defs>
+
+      <!-- Step 1: Original text -->
+      <text x="130" y="42" fill="#64748b" text-anchor="middle" font-size="12" font-weight="600">① Original Text</text>
+      <rect x="30" y="52" width="200" height="170" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+      <rect x="42" y="68" width="176" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="130" y="86" fill="#94a3b8" text-anchor="middle" font-size="11">The cat sat on the mat</text>
+      <rect x="42" y="102" width="176" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="130" y="120" fill="#94a3b8" text-anchor="middle" font-size="11">She went to the store</text>
+      <rect x="42" y="136" width="176" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="130" y="154" fill="#94a3b8" text-anchor="middle" font-size="11">Rain falls on the plain</text>
+      <rect x="42" y="170" width="176" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="130" y="188" fill="#94a3b8" text-anchor="middle" font-size="11">Birds fly south in winter</text>
+
+      <!-- Arrow + Corruption label -->
+      <line x1="230" y1="137" x2="278" y2="137" stroke="#34d399" stroke-width="2" marker-end="url(#ah5)"/>
+      <text x="254" y="128" fill="#64748b" text-anchor="middle" font-size="9">corrupt</text>
+
+      <!-- Step 2: Corrupted text -->
+      <text x="380" y="42" fill="#fb923c" text-anchor="middle" font-size="12" font-weight="600">② Corrupted Input</text>
+      <rect x="280" y="52" width="200" height="170" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <rect x="292" y="68" width="176" height="26" rx="5" fill="#0f172a" stroke="#fb923c" stroke-width="1"/>
+      <text x="380" y="86" fill="#fb923c" text-anchor="middle" font-size="11">The [MASK] sat on the mat</text>
+      <rect x="292" y="102" width="176" height="26" rx="5" fill="#0f172a" stroke="#fb923c" stroke-width="1"/>
+      <text x="380" y="120" fill="#64748b" text-anchor="middle" font-size="11" font-style="italic">← deleted sentence →</text>
+      <rect x="292" y="136" width="176" height="26" rx="5" fill="#0f172a" stroke="#fb923c" stroke-width="1"/>
+      <text x="380" y="154" fill="#fb923c" text-anchor="middle" font-size="11">plain the on falls Rain</text>
+      <rect x="292" y="170" width="176" height="26" rx="5" fill="#0f172a" stroke="#fb923c" stroke-width="1"/>
+      <text x="380" y="188" fill="#fb923c" text-anchor="middle" font-size="11">Birds [MASK] south winter</text>
+      <text x="380" y="218" fill="#475569" text-anchor="middle" font-size="9">masking · deletion · rotation</text>
+
+      <!-- Arrow to BERT encoder -->
+      <line x1="480" y1="137" x2="528" y2="137" stroke="#34d399" stroke-width="2" marker-end="url(#ah5)"/>
+      <text x="504" y="128" fill="#64748b" text-anchor="middle" font-size="9">encode</text>
+
+      <!-- Step 3: Encoder (BERT-like) -->
+      <text x="614" y="42" fill="#34d399" text-anchor="middle" font-size="12" font-weight="600">③ BERT Encoder + GPT Decoder</text>
+      <rect x="530" y="52" width="130" height="170" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+      <text x="595" y="80" fill="#34d399" text-anchor="middle" font-size="11" font-weight="700">BERT</text>
+      <text x="595" y="98" fill="#64748b" text-anchor="middle" font-size="10">Encoder</text>
+      <rect x="548" y="105" width="94" height="26" rx="5" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1"/>
+      <text x="595" y="123" fill="#34d399" text-anchor="middle" font-size="9">Bidirectional</text>
+      <rect x="548" y="136" width="94" height="26" rx="5" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1"/>
+      <text x="595" y="154" fill="#34d399" text-anchor="middle" font-size="9">Self-Attention</text>
+      <rect x="548" y="167" width="94" height="26" rx="5" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1"/>
+      <text x="595" y="185" fill="#34d399" text-anchor="middle" font-size="9">Context Vector</text>
+
+      <!-- Arrow encoder to decoder -->
+      <line x1="660" y1="137" x2="700" y2="137" stroke="#34d399" stroke-width="2" marker-end="url(#ah5)"/>
+
+      <!-- Decoder (GPT-like) -->
+      <rect x="700" y="52" width="130" height="170" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+      <text x="765" y="80" fill="#38bdf8" text-anchor="middle" font-size="11" font-weight="700">GPT</text>
+      <text x="765" y="98" fill="#64748b" text-anchor="middle" font-size="10">Decoder</text>
+      <rect x="716" y="105" width="98" height="26" rx="5" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1"/>
+      <text x="765" y="123" fill="#38bdf8" text-anchor="middle" font-size="9">Autoregressive</text>
+      <rect x="716" y="136" width="98" height="26" rx="5" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1"/>
+      <text x="765" y="154" fill="#38bdf8" text-anchor="middle" font-size="9">Cross-Attention</text>
+      <rect x="716" y="167" width="98" height="26" rx="5" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="1"/>
+      <text x="765" y="185" fill="#38bdf8" text-anchor="middle" font-size="9">Generates text</text>
+
+      <!-- Output -->
+      <line x1="765" y1="222" x2="765" y2="262" stroke="#34d399" stroke-width="2" marker-end="url(#ah5)"/>
+      <rect x="665" y="262" width="200" height="50" rx="9" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1.8"/>
+      <text x="765" y="284" fill="#34d399" text-anchor="middle" font-size="12" font-weight="700">Reconstructed Original</text>
+      <text x="765" y="302" fill="#64748b" text-anchor="middle" font-size="10">Best for Summarisation · ROUGE-1 = 44.16</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#34d399">BERT</div><div class="sl">Encoder (bidirectional)</div></div>
+    <div class="st"><div class="sn" style="color:#38bdf8">GPT</div><div class="sl">Decoder (autoregressive)</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">44.16</div><div class="sl">ROUGE-1 on CNN/DM</div></div>
+    <div class="st"><div class="sn" style="color:#94a3b8">Denoise</div><div class="sl">Learn by reconstruction</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 6: GPT-3 -->
+<div class="slide" id="s6">
+  <div class="topbar">
+    <span class="tag tg">GPT Series</span>
+    <h2>GPT-3 — Few-Shot Learners at Scale</h2>
+    <span class="yr">Brown et al. · OpenAI · 2020</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah6" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#38bdf8"/>
+        </marker>
+      </defs>
+
+      <!-- Big 175B central -->
+      <text x="300" y="95" fill="#38bdf8" text-anchor="middle" font-size="78" font-weight="900" opacity=".22">175B</text>
+      <text x="300" y="95" fill="#38bdf8" text-anchor="middle" font-size="78" font-weight="900" opacity=".8">175B</text>
+      <text x="300" y="125" fill="#64748b" text-anchor="middle" font-size="13">Parameters</text>
+      <text x="300" y="148" fill="#475569" text-anchor="middle" font-size="11">300B training tokens · 96 layers · 96 heads</text>
+
+      <!-- Few-shot diagram on right -->
+      <text x="630" y="42" fill="#38bdf8" text-anchor="middle" font-size="13" font-weight="700">Few-Shot In-Context Learning</text>
+      <text x="630" y="60" fill="#64748b" text-anchor="middle" font-size="10">No gradient update — examples live in the prompt</text>
+
+      <!-- Context examples -->
+      <rect x="480" y="68" width="300" height="36" rx="7" fill="#1e293b" stroke="#334155" stroke-width="1.2"/>
+      <text x="490" y="83" fill="#475569" font-size="10">Example 1:</text>
+      <text x="490" y="98" fill="#94a3b8" font-size="10">Q: capital of France? → A: Paris</text>
+
+      <rect x="480" y="112" width="300" height="36" rx="7" fill="#1e293b" stroke="#334155" stroke-width="1.2"/>
+      <text x="490" y="127" fill="#475569" font-size="10">Example 2:</text>
+      <text x="490" y="142" fill="#94a3b8" font-size="10">Q: capital of Germany? → A: Berlin</text>
+
+      <rect x="480" y="156" width="300" height="36" rx="7" fill="#1e293b" stroke="#334155" stroke-width="1.2"/>
+      <text x="490" y="171" fill="#475569" font-size="10">Example 3:</text>
+      <text x="490" y="186" fill="#94a3b8" font-size="10">Q: capital of Japan? → A: Tokyo</text>
+
+      <!-- Query arrow and answer -->
+      <rect x="480" y="200" width="300" height="36" rx="7" fill="rgba(56,189,248,.1)" stroke="#38bdf8" stroke-width="1.8"/>
+      <text x="490" y="215" fill="#38bdf8" font-size="10" font-weight="700">Query:</text>
+      <text x="490" y="230" fill="#f1f5f9" font-size="10">Q: capital of Italy? → A: ?</text>
+
+      <line x1="630" y1="236" x2="630" y2="268" stroke="#38bdf8" stroke-width="2" marker-end="url(#ah6)"/>
+      <rect x="480" y="268" width="300" height="36" rx="7" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1.8"/>
+      <text x="630" y="292" fill="#34d399" text-anchor="middle" font-size="13" font-weight="700">→ Rome</text>
+
+      <!-- Scale comparison bar -->
+      <text x="175" y="195" fill="#64748b" text-anchor="middle" font-size="11" font-weight="600">Scale Comparison</text>
+      <rect x="30" y="205" width="30" height="10" rx="2" fill="#38bdf8" fill-opacity=".4"/>
+      <text x="70" y="215" fill="#475569" font-size="10">GPT-1: 0.1B</text>
+      <rect x="30" y="225" width="90" height="10" rx="2" fill="#38bdf8" fill-opacity=".55"/>
+      <text x="130" y="235" fill="#475569" font-size="10">GPT-2: 1.5B</text>
+      <rect x="30" y="245" width="290" height="14" rx="2" fill="#38bdf8"/>
+      <text x="328" y="258" fill="#38bdf8" font-size="11" font-weight="700">GPT-3: 175B</text>
+
+      <!-- Zero/One/Few shot labels -->
+      <rect x="30" y="290" width="110" height="42" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.2"/>
+      <text x="85" y="310" fill="#94a3b8" text-anchor="middle" font-size="12" font-weight="700">Zero-Shot</text>
+      <text x="85" y="326" fill="#475569" text-anchor="middle" font-size="9">0 examples</text>
+      <rect x="150" y="290" width="110" height="42" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="205" y="310" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">One-Shot</text>
+      <text x="205" y="326" fill="#475569" text-anchor="middle" font-size="9">1 example</text>
+      <rect x="270" y="290" width="110" height="42" rx="8" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="325" y="310" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">Few-Shot</text>
+      <text x="325" y="326" fill="#38bdf8" text-anchor="middle" font-size="9">k examples</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#38bdf8">175B</div><div class="sl">Parameters</div></div>
+    <div class="st"><div class="sn" style="color:#38bdf8">300B</div><div class="sl">Training Tokens</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">96</div><div class="sl">Attention Heads</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">No</div><div class="sl">Fine-tuning needed</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 7: InstructGPT -->
+<div class="slide" id="s7">
+  <div class="topbar">
+    <span class="tag ta">Alignment</span>
+    <h2>InstructGPT — Learning to Follow Instructions</h2>
+    <span class="yr">Ouyang et al. · OpenAI · 2022</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah7" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#fb923c"/>
+        </marker>
+      </defs>
+
+      <!-- Step 1: SFT -->
+      <rect x="30" y="60" width="230" height="240" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+      <rect x="30" y="60" width="230" height="42" rx="12" fill="#fb923c" fill-opacity=".2"/>
+      <text x="145" y="87" fill="#fb923c" text-anchor="middle" font-size="14" font-weight="700">① Supervised Fine-Tune</text>
+      <!-- Human icon -->
+      <circle cx="90" cy="145" r="22" fill="rgba(251,146,60,.15)" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="90" y="151" fill="#fb923c" text-anchor="middle" font-size="20">👤</text>
+      <text x="90" y="175" fill="#64748b" text-anchor="middle" font-size="10">Labeller</text>
+      <!-- Arrow to model -->
+      <line x1="114" y1="145" x2="155" y2="145" stroke="#fb923c" stroke-width="1.5" marker-end="url(#ah7)"/>
+      <!-- Small model box -->
+      <rect x="158" y="122" width="80" height="46" rx="7" fill="#0f172a" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="198" y="143" fill="#fb923c" text-anchor="middle" font-size="10" font-weight="700">SFT</text>
+      <text x="198" y="158" fill="#64748b" text-anchor="middle" font-size="9">Model</text>
+      <!-- Description -->
+      <text x="145" y="210" fill="#64748b" text-anchor="middle" font-size="10">Human writes ideal responses</text>
+      <text x="145" y="226" fill="#64748b" text-anchor="middle" font-size="10">to prompts → model learns</text>
+      <text x="145" y="248" fill="#475569" text-anchor="middle" font-size="9">~13K prompt-response pairs</text>
+      <text x="145" y="266" fill="#475569" text-anchor="middle" font-size="9">Start: GPT-3 (175B)</text>
+
+      <!-- Arrow 1 to 2 -->
+      <line x1="260" y1="180" x2="305" y2="180" stroke="#fb923c" stroke-width="2.5" marker-end="url(#ah7)"/>
+
+      <!-- Step 2: RM -->
+      <rect x="305" y="60" width="245" height="240" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+      <rect x="305" y="60" width="245" height="42" rx="12" fill="#fb923c" fill-opacity=".2"/>
+      <text x="427" y="87" fill="#fb923c" text-anchor="middle" font-size="14" font-weight="700">② Train Reward Model</text>
+
+      <!-- Multiple outputs and ranking -->
+      <rect x="318" y="112" width="95" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="365" y="130" fill="#94a3b8" text-anchor="middle" font-size="10">Output A</text>
+      <rect x="318" y="145" width="95" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="365" y="163" fill="#94a3b8" text-anchor="middle" font-size="10">Output B</text>
+      <rect x="318" y="178" width="95" height="26" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="365" y="196" fill="#94a3b8" text-anchor="middle" font-size="10">Output C</text>
+
+      <!-- Human ranking arrow -->
+      <line x1="413" y1="162" x2="445" y2="162" stroke="#fb923c" stroke-width="1.5" marker-end="url(#ah7)"/>
+      <text x="429" y="153" fill="#64748b" text-anchor="middle" font-size="8">rank</text>
+
+      <!-- Reward model box -->
+      <rect x="448" y="125" width="88" height="74" rx="7" fill="#0f172a" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="492" y="152" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">Reward</text>
+      <text x="492" y="168" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">Model</text>
+      <text x="492" y="186" fill="#475569" text-anchor="middle" font-size="9">score → 0..1</text>
+
+      <text x="427" y="240" fill="#64748b" text-anchor="middle" font-size="10">Human labels 33K comparisons</text>
+      <text x="427" y="258" fill="#64748b" text-anchor="middle" font-size="10">RM learns to predict preferences</text>
+      <text x="427" y="276" fill="#475569" text-anchor="middle" font-size="9">A &gt; B &gt; C ranking</text>
+
+      <!-- Arrow 2 to 3 -->
+      <line x1="550" y1="180" x2="590" y2="180" stroke="#fb923c" stroke-width="2.5" marker-end="url(#ah7)"/>
+
+      <!-- Step 3: PPO -->
+      <rect x="590" y="60" width="240" height="240" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+      <rect x="590" y="60" width="240" height="42" rx="12" fill="#fb923c" fill-opacity=".2"/>
+      <text x="710" y="87" fill="#fb923c" text-anchor="middle" font-size="14" font-weight="700">③ PPO Reinforcement</text>
+
+      <!-- PPO loop visual -->
+      <rect x="620" y="112" width="180" height="44" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="710" y="130" fill="#94a3b8" text-anchor="middle" font-size="11">SFT Model generates</text>
+      <text x="710" y="147" fill="#94a3b8" text-anchor="middle" font-size="11">response to new prompt</text>
+
+      <line x1="710" y1="156" x2="710" y2="178" stroke="#fb923c" stroke-width="1.5" marker-end="url(#ah7)"/>
+
+      <rect x="620" y="178" width="180" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="710" y="202" fill="#94a3b8" text-anchor="middle" font-size="11">Reward Model scores it</text>
+
+      <line x1="710" y1="214" x2="710" y2="236" stroke="#fb923c" stroke-width="1.5" marker-end="url(#ah7)"/>
+
+      <rect x="620" y="236" width="180" height="36" rx="8" fill="rgba(251,146,60,.12)" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="710" y="260" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">Policy gradient update</text>
+
+      <!-- ChatGPT badge -->
+      <rect x="605" y="310" width="210" height="34" rx="9" fill="rgba(244,114,182,.12)" stroke="#f472b6" stroke-width="1.5"/>
+      <text x="710" y="332" fill="#f472b6" text-anchor="middle" font-size="12" font-weight="700">→ Became ChatGPT</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#fb923c">3 Steps</div><div class="sl">SFT → RM → PPO</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">85%</div><div class="sl">Preferred over raw GPT-3</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">1.3B</div><div class="sl">Beats 175B unaligned GPT-3</div></div>
+    <div class="st"><div class="sn" style="color:#f472b6">ChatGPT</div><div class="sl">Direct descendant</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 8: HH-RLHF -->
+<div class="slide" id="s8">
+  <div class="topbar">
+    <span class="tag ta">Alignment</span>
+    <h2>HH-RLHF — Helpful and Harmless Assistant</h2>
+    <span class="yr">Bai et al. · Anthropic · 2022</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah8" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#fb923c"/>
+        </marker>
+      </defs>
+
+      <!-- Balance scale visual -->
+      <!-- Pole -->
+      <line x1="430" y1="80" x2="430" y2="280" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+      <!-- Pivot circle -->
+      <circle cx="430" cy="160" r="10" fill="#334155" stroke="#64748b" stroke-width="2"/>
+      <!-- Beam (balanced) -->
+      <line x1="160" y1="160" x2="700" y2="160" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Left pan: Helpful -->
+      <line x1="215" y1="160" x2="215" y2="215" stroke="#64748b" stroke-width="2"/>
+      <rect x="115" y="215" width="200" height="90" rx="12" fill="#1e293b" stroke="#34d399" stroke-width="2.5"/>
+      <text x="215" y="248" fill="#34d399" text-anchor="middle" font-size="22" font-weight="900">HELPFUL</text>
+      <text x="215" y="272" fill="#64748b" text-anchor="middle" font-size="11">Answers user's question</text>
+      <text x="215" y="290" fill="#64748b" text-anchor="middle" font-size="11">Provides useful information</text>
+
+      <!-- Right pan: Harmless -->
+      <line x1="645" y1="160" x2="645" y2="215" stroke="#64748b" stroke-width="2"/>
+      <rect x="545" y="215" width="200" height="90" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="2.5"/>
+      <text x="645" y="248" fill="#fb923c" text-anchor="middle" font-size="22" font-weight="900">HARMLESS</text>
+      <text x="645" y="272" fill="#64748b" text-anchor="middle" font-size="11">Refuses harmful requests</text>
+      <text x="645" y="290" fill="#64748b" text-anchor="middle" font-size="11">Avoids dangerous content</text>
+
+      <!-- Base of scale -->
+      <rect x="380" y="278" width="100" height="18" rx="4" fill="#334155"/>
+      <rect x="360" y="292" width="140" height="10" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+
+      <!-- Tension arrow between two concepts -->
+      <path d="M315,250 C350,235 380,235 415,250" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <path d="M545,250 C510,235 480,235 445,250" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="430" y="232" fill="#475569" text-anchor="middle" font-size="11" font-style="italic">tension</text>
+
+      <!-- 170K label -->
+      <text x="430" y="345" fill="#94a3b8" text-anchor="middle" font-size="14" font-weight="700">170,000 human preference pairs</text>
+      <text x="430" y="368" fill="#475569" text-anchor="middle" font-size="11">Annotators chose: which response is more helpful AND less harmful?</text>
+
+      <!-- Title callout -->
+      <text x="430" y="52" fill="#64748b" text-anchor="middle" font-size="13">Being helpful ≠ being safe — Anthropic studied the tradeoff directly</text>
+
+      <!-- Claude badge -->
+      <rect x="348" y="100" width="164" height="34" rx="8" fill="rgba(251,146,60,.12)" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="430" y="122" fill="#fb923c" text-anchor="middle" font-size="12" font-weight="700">→ Became Claude</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#fb923c">170K</div><div class="sl">Preference pairs</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">Helpful</div><div class="sl">vs</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">Harmless</div><div class="sl">Competing objectives</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">Claude</div><div class="sl">Anthropic's assistant</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 9: CAI -->
+<div class="slide" id="s9">
+  <div class="topbar">
+    <span class="tag ta">Alignment</span>
+    <h2>Constitutional AI — Harmlessness via AI Feedback</h2>
+    <span class="yr">Bai et al. · Anthropic · 2022</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah9" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#fb923c"/>
+        </marker>
+      </defs>
+
+      <!-- 16 principles card (left) -->
+      <rect x="25" y="50" width="200" height="280" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="1.8"/>
+      <rect x="25" y="50" width="200" height="38" rx="12" fill="#fb923c" fill-opacity=".18"/>
+      <text x="125" y="74" fill="#fb923c" text-anchor="middle" font-size="12" font-weight="700">The Constitution</text>
+      <text x="125" y="108" fill="#475569" text-anchor="middle" font-size="9.5">✦  Do not assist with illegal acts</text>
+      <text x="125" y="128" fill="#475569" text-anchor="middle" font-size="9.5">✦  Avoid deceptive content</text>
+      <text x="125" y="148" fill="#475569" text-anchor="middle" font-size="9.5">✦  Respect human dignity</text>
+      <text x="125" y="168" fill="#475569" text-anchor="middle" font-size="9.5">✦  No harmful information</text>
+      <text x="125" y="188" fill="#475569" text-anchor="middle" font-size="9.5">✦  Protect personal privacy</text>
+      <text x="125" y="208" fill="#475569" text-anchor="middle" font-size="9.5">✦  Avoid manipulation</text>
+      <text x="125" y="228" fill="#64748b" text-anchor="middle" font-size="9" font-style="italic">+ 10 more principles...</text>
+      <text x="125" y="270" fill="#fb923c" text-anchor="middle" font-size="24" font-weight="900">16</text>
+      <text x="125" y="295" fill="#64748b" text-anchor="middle" font-size="11">Written Rules</text>
+      <text x="125" y="313" fill="#475569" text-anchor="middle" font-size="10">No human labellers needed</text>
+
+      <!-- Circular loop (right side) -->
+      <!-- Circle background -->
+      <circle cx="590" cy="195" r="158" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+      <!-- Step 1: Generate -->
+      <rect x="490" y="45" width="200" height="60" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+      <text x="590" y="71" fill="#fb923c" text-anchor="middle" font-size="14" font-weight="700">① Generate</text>
+      <text x="590" y="92" fill="#64748b" text-anchor="middle" font-size="10">AI writes initial response</text>
+
+      <!-- Arrow 1→2 (clockwise, right side) -->
+      <path d="M720,110 C780,155 780,235 720,280" fill="none" stroke="#fb923c" stroke-width="2" marker-end="url(#ah9)"/>
+
+      <!-- Step 2: Critique -->
+      <rect x="490" y="295" width="200" height="60" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+      <text x="590" y="321" fill="#fb923c" text-anchor="middle" font-size="14" font-weight="700">② Critique</text>
+      <text x="590" y="342" fill="#64748b" text-anchor="middle" font-size="10">AI checks against 16 rules</text>
+
+      <!-- Arrow 2→3 (clockwise, left side) -->
+      <path d="M490,315 C430,275 400,220 440,175" fill="none" stroke="#fb923c" stroke-width="2" marker-end="url(#ah9)"/>
+
+      <!-- Step 3: Revise -->
+      <rect x="360" y="155" width="170" height="80" rx="10" fill="rgba(251,146,60,.12)" stroke="#fb923c" stroke-width="2.5"/>
+      <text x="445" y="185" fill="#fb923c" text-anchor="middle" font-size="14" font-weight="700">③ Revise</text>
+      <text x="445" y="205" fill="#64748b" text-anchor="middle" font-size="10">AI rewrites to comply</text>
+      <text x="445" y="222" fill="#64748b" text-anchor="middle" font-size="10">with the constitution</text>
+
+      <!-- Arrow 3→1 (back to top) -->
+      <path d="M480,157 C505,120 530,92 492,80" fill="none" stroke="#fb923c" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#ah9)"/>
+
+      <!-- RLAIF badge -->
+      <rect x="490" y="155" width="200" height="80" rx="10" fill="rgba(251,146,60,.1)" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="590" y="188" fill="#fb923c" text-anchor="middle" font-size="13" font-weight="700">RLAIF</text>
+      <text x="590" y="208" fill="#64748b" text-anchor="middle" font-size="10">AI labels replace</text>
+      <text x="590" y="224" fill="#64748b" text-anchor="middle" font-size="10">human feedback</text>
+
+      <!-- Arrow from constitution to loop -->
+      <line x1="225" y1="190" x2="356" y2="190" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ah9)"/>
+      <text x="290" y="182" fill="#475569" text-anchor="middle" font-size="9">guides</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#fb923c">16</div><div class="sl">Written principles</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">0</div><div class="sl">Human labellers for safety</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">RLAIF</div><div class="sl">AI feedback replaces humans</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">Loop</div><div class="sl">Generate → Critique → Revise</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 10: RLAIF -->
+<div class="slide" id="s10">
+  <div class="topbar">
+    <span class="tag ta">Alignment</span>
+    <h2>RLAIF — Scaling RLHF with AI Feedback</h2>
+    <span class="yr">Lee et al. · Google · 2023</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah10" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#fb923c"/>
+        </marker>
+        <marker id="ah10b" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#94a3b8"/>
+        </marker>
+      </defs>
+
+      <!-- Question at top -->
+      <text x="430" y="38" fill="#94a3b8" text-anchor="middle" font-size="14" font-weight="600">Can AI replace humans as the labeller in RLHF?</text>
+
+      <!-- Left column: Human RLHF -->
+      <rect x="50" y="56" width="310" height="260" rx="12" fill="#1e293b" stroke="#64748b" stroke-width="1.8"/>
+      <rect x="50" y="56" width="310" height="40" rx="12" fill="rgba(255,255,255,.05)"/>
+      <text x="205" y="81" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="700">Human RLHF</text>
+
+      <!-- Human icon -->
+      <circle cx="145" cy="150" r="28" fill="rgba(148,163,184,.1)" stroke="#64748b" stroke-width="1.5"/>
+      <text x="145" y="158" fill="#94a3b8" text-anchor="middle" font-size="28">👤</text>
+      <text x="145" y="188" fill="#64748b" text-anchor="middle" font-size="11">Human Annotator</text>
+
+      <line x1="173" y1="150" x2="215" y2="150" stroke="#64748b" stroke-width="1.5" marker-end="url(#ah10b)"/>
+
+      <rect x="218" y="125" width="120" height="50" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="278" y="148" fill="#94a3b8" text-anchor="middle" font-size="11">Prefers A over B</text>
+      <text x="278" y="164" fill="#475569" text-anchor="middle" font-size="9">Preference Label</text>
+
+      <text x="205" y="220" fill="#475569" text-anchor="middle" font-size="10">Slow · Expensive · Inconsistent</text>
+      <text x="205" y="240" fill="#475569" text-anchor="middle" font-size="10">Hard to scale beyond 100K labels</text>
+      <text x="205" y="280" fill="#64748b" text-anchor="middle" font-size="11">$$$  per label</text>
+
+      <!-- Right column: AI RLHF -->
+      <rect x="500" y="56" width="310" height="260" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+      <rect x="500" y="56" width="310" height="40" rx="12" fill="rgba(251,146,60,.15)"/>
+      <text x="655" y="81" fill="#fb923c" text-anchor="middle" font-size="13" font-weight="700">RLAIF (AI Labels)</text>
+
+      <!-- AI icon -->
+      <circle cx="594" cy="150" r="28" fill="rgba(251,146,60,.12)" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="594" y="158" fill="#fb923c" text-anchor="middle" font-size="28">🤖</text>
+      <text x="594" y="188" fill="#64748b" text-anchor="middle" font-size="11">AI Model (Claude/PaLM)</text>
+
+      <line x1="622" y1="150" x2="665" y2="150" stroke="#fb923c" stroke-width="1.5" marker-end="url(#ah10)"/>
+
+      <rect x="668" y="125" width="120" height="50" rx="8" fill="#0f172a" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="728" y="148" fill="#fb923c" text-anchor="middle" font-size="11">Prefers A over B</text>
+      <text x="728" y="164" fill="#475569" text-anchor="middle" font-size="9">AI Preference Label</text>
+
+      <text x="655" y="220" fill="#34d399" text-anchor="middle" font-size="10">Fast · Cheap · Consistent</text>
+      <text x="655" y="240" fill="#34d399" text-anchor="middle" font-size="10">Scales to millions of labels</text>
+      <text x="655" y="280" fill="#34d399" text-anchor="middle" font-size="11">Near-zero cost per label</text>
+
+      <!-- Big result badge at bottom -->
+      <rect x="250" y="335" width="360" height="42" rx="10" fill="rgba(251,146,60,.12)" stroke="#fb923c" stroke-width="2"/>
+      <text x="430" y="353" fill="#fb923c" text-anchor="middle" font-size="13" font-weight="700">AI labels ≈ Human labels</text>
+      <text x="430" y="371" fill="#64748b" text-anchor="middle" font-size="10">71–73% win rate at massive scale — validates the entire RLAIF approach</text>
+
+      <!-- VS divider -->
+      <line x1="430" y1="70" x2="430" y2="310" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <rect x="405" y="175" width="50" height="30" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="430" y="195" fill="#475569" text-anchor="middle" font-size="11" font-weight="700">VS</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#fb923c">71–73%</div><div class="sl">Win rate vs human labels</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">∞</div><div class="sl">Scalable labelling</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">$0</div><div class="sl">Marginal cost per label</div></div>
+    <div class="st"><div class="sn" style="color:#94a3b8">Validates</div><div class="sl">Constitutional AI approach</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 11: DPO -->
+<div class="slide" id="s11">
+  <div class="topbar">
+    <span class="tag ta">Alignment</span>
+    <h2>DPO — Direct Preference Optimisation</h2>
+    <span class="yr">Rafailov et al. · Stanford · 2023</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah11r" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#64748b"/>
+        </marker>
+        <marker id="ah11g" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#34d399"/>
+        </marker>
+      </defs>
+
+      <text x="430" y="32" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">RLHF requires 3 training phases — DPO does it in 1</text>
+
+      <!-- Left: RLHF path (complex, grey-ish) -->
+      <rect x="30" y="48" width="350" height="300" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.8"/>
+      <text x="205" y="72" fill="#64748b" text-anchor="middle" font-size="14" font-weight="700">RLHF  (3 phases)</text>
+
+      <!-- Phase boxes with connecting arrows -->
+      <rect x="55" y="88" width="300" height="44" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="205" y="107" fill="#94a3b8" text-anchor="middle" font-size="12" font-weight="600">① SFT — Fine-tune base LM</text>
+      <text x="205" y="123" fill="#475569" text-anchor="middle" font-size="9">Supervised on demonstrations</text>
+
+      <line x1="205" y1="132" x2="205" y2="152" stroke="#475569" stroke-width="1.5" marker-end="url(#ah11r)"/>
+
+      <rect x="55" y="152" width="300" height="44" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="205" y="171" fill="#94a3b8" text-anchor="middle" font-size="12" font-weight="600">② Train Reward Model</text>
+      <text x="205" y="187" fill="#475569" text-anchor="middle" font-size="9">Separate model learns human prefs</text>
+
+      <line x1="205" y1="196" x2="205" y2="216" stroke="#475569" stroke-width="1.5" marker-end="url(#ah11r)"/>
+
+      <rect x="55" y="216" width="300" height="44" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+      <text x="205" y="235" fill="#94a3b8" text-anchor="middle" font-size="12" font-weight="600">③ PPO Optimisation</text>
+      <text x="205" y="251" fill="#475569" text-anchor="middle" font-size="9">Tricky RL loop, KL divergence control</text>
+
+      <line x1="205" y1="260" x2="205" y2="280" stroke="#475569" stroke-width="1.5" marker-end="url(#ah11r)"/>
+
+      <rect x="85" y="280" width="240" height="44" rx="8" fill="rgba(100,116,139,.1)" stroke="#475569" stroke-width="1.5"/>
+      <text x="205" y="306" fill="#64748b" text-anchor="middle" font-size="13" font-weight="700">Aligned Model</text>
+      <text x="205" y="322" fill="#475569" text-anchor="middle" font-size="9">Complex, unstable, slow</text>
+
+      <!-- Right: DPO path (simple, green) -->
+      <rect x="480" y="48" width="350" height="300" rx="12" fill="#1e293b" stroke="#34d399" stroke-width="2.5"/>
+      <text x="655" y="72" fill="#34d399" text-anchor="middle" font-size="14" font-weight="700">DPO  (1 phase)</text>
+
+      <!-- Preference data input -->
+      <rect x="505" y="88" width="300" height="44" rx="8" fill="rgba(52,211,153,.1)" stroke="#34d399" stroke-width="1.3"/>
+      <text x="655" y="107" fill="#34d399" text-anchor="middle" font-size="12" font-weight="600">Preference Data (y_w &gt; y_l)</text>
+      <text x="655" y="123" fill="#64748b" text-anchor="middle" font-size="9">Preferred response vs rejected response</text>
+
+      <!-- Big arrow down -->
+      <line x1="655" y1="132" x2="655" y2="216" stroke="#34d399" stroke-width="3" marker-end="url(#ah11g)"/>
+      <text x="690" y="185" fill="#34d399" font-size="10" font-weight="600">closed-form</text>
+      <text x="690" y="200" fill="#34d399" font-size="10" font-weight="600">solution</text>
+
+      <rect x="505" y="216" width="300" height="108" rx="10" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="2"/>
+      <text x="655" y="244" fill="#34d399" text-anchor="middle" font-size="14" font-weight="700">Direct Policy Update</text>
+      <text x="655" y="265" fill="#64748b" text-anchor="middle" font-size="10">No reward model needed</text>
+      <text x="655" y="282" fill="#64748b" text-anchor="middle" font-size="10">No PPO needed</text>
+      <text x="655" y="300" fill="#34d399" text-anchor="middle" font-size="10" font-weight="700">Stable · Simple · Same results</text>
+
+      <!-- Output -->
+      <rect x="565" y="338" width="180" height="34" rx="8" fill="rgba(52,211,153,.15)" stroke="#34d399" stroke-width="2"/>
+      <text x="655" y="360" fill="#34d399" text-anchor="middle" font-size="13" font-weight="700">Aligned Model ✓</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#34d399">1</div><div class="sl">Training phase (vs 3 in RLHF)</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">No RM</div><div class="sl">No reward model needed</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">No PPO</div><div class="sl">No RL required</div></div>
+    <div class="st"><div class="sn" style="color:#94a3b8">LLaMA/Mistral</div><div class="sl">Most open-source models use DPO</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 12: SELF-REFINE -->
+<div class="slide" id="s12">
+  <div class="topbar">
+    <span class="tag ta">Alignment</span>
+    <h2>SELF-REFINE — Iterative Refinement</h2>
+    <span class="yr">Madaan et al. · CMU / AI2 · 2023</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ah12" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#fb923c"/>
+        </marker>
+      </defs>
+
+      <text x="430" y="32" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="600">Same model plays 3 roles — no extra training required</text>
+
+      <!-- Circular loop diagram -->
+      <!-- Box 1: Generate -->
+      <rect x="320" y="50" width="220" height="70" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="2.5"/>
+      <text x="430" y="80" fill="#fb923c" text-anchor="middle" font-size="16" font-weight="700">① GENERATE</text>
+      <text x="430" y="104" fill="#64748b" text-anchor="middle" font-size="11">Model writes initial output</text>
+
+      <!-- Arrow 1 → 2 (right side going down) -->
+      <path d="M540,95 C660,95 720,180 660,260" fill="none" stroke="#fb923c" stroke-width="2.5" marker-end="url(#ah12)"/>
+      <text x="680" y="185" fill="#64748b" font-size="10">passes output</text>
+
+      <!-- Box 2: Critique -->
+      <rect x="480" y="265" width="220" height="70" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="2.5"/>
+      <text x="590" y="295" fill="#fb923c" text-anchor="middle" font-size="16" font-weight="700">② CRITIQUE</text>
+      <text x="590" y="319" fill="#64748b" text-anchor="middle" font-size="11">Same model finds flaws</text>
+
+      <!-- Arrow 2 → 3 (bottom going left) -->
+      <path d="M480,305 C390,305 300,280 220,280" fill="none" stroke="#fb923c" stroke-width="2.5" marker-end="url(#ah12)"/>
+      <text x="350" y="298" fill="#64748b" font-size="10">passes feedback</text>
+
+      <!-- Box 3: Refine -->
+      <rect x="30" y="245" width="220" height="70" rx="12" fill="rgba(251,146,60,.12)" stroke="#fb923c" stroke-width="2.5"/>
+      <text x="140" y="275" fill="#fb923c" text-anchor="middle" font-size="16" font-weight="700">③ REFINE</text>
+      <text x="140" y="299" fill="#64748b" text-anchor="middle" font-size="11">Same model rewrites</text>
+
+      <!-- Arrow 3 → 1 (left side going up) -->
+      <path d="M140,245 C140,130 250,72 320,72" fill="none" stroke="#fb923c" stroke-width="2.5" marker-end="url(#ah12)"/>
+      <text x="145" y="175" fill="#64748b" font-size="10">better output</text>
+
+      <!-- Center label -->
+      <text x="375" y="200" fill="#475569" text-anchor="middle" font-size="12" font-weight="700">One Model</text>
+      <text x="375" y="220" fill="#334155" text-anchor="middle" font-size="11">All three roles</text>
+
+      <!-- Quality improvement visual (right side) -->
+      <text x="760" y="68" fill="#64748b" text-anchor="middle" font-size="11" font-weight="600">Output Quality</text>
+      <!-- Bars showing improvement -->
+      <rect x="710" y="80" width="100" height="20" rx="4" fill="#334155"/>
+      <rect x="710" y="80" width="40" height="20" rx="4" fill="#fb923c" fill-opacity=".5"/>
+      <text x="820" y="95" fill="#475569" font-size="10">Pass 1</text>
+
+      <rect x="710" y="112" width="100" height="20" rx="4" fill="#334155"/>
+      <rect x="710" y="112" width="64" height="20" rx="4" fill="#fb923c" fill-opacity=".65"/>
+      <text x="820" y="127" fill="#475569" font-size="10">Pass 2</text>
+
+      <rect x="710" y="144" width="100" height="20" rx="4" fill="#334155"/>
+      <rect x="710" y="144" width="82" height="20" rx="4" fill="#fb923c" fill-opacity=".8"/>
+      <text x="820" y="159" fill="#475569" font-size="10">Pass 3</text>
+
+      <rect x="710" y="176" width="100" height="20" rx="4" fill="#334155"/>
+      <rect x="710" y="176" width="100" height="20" rx="4" fill="#34d399" fill-opacity=".85"/>
+      <text x="820" y="191" fill="#34d399" font-size="10" font-weight="700">Pass 4 ✓</text>
+
+      <!-- Result badge -->
+      <rect x="680" y="215" width="160" height="50" rx="9" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="760" y="238" fill="#34d399" text-anchor="middle" font-size="16" font-weight="900">+20%</text>
+      <text x="760" y="258" fill="#64748b" text-anchor="middle" font-size="10">avg improvement</text>
+
+      <!-- No training label -->
+      <rect x="680" y="275" width="160" height="38" rx="8" fill="rgba(251,146,60,.1)" stroke="#fb923c" stroke-width="1.3"/>
+      <text x="760" y="291" fill="#fb923c" text-anchor="middle" font-size="10" font-weight="700">No extra training</text>
+      <text x="760" y="306" fill="#64748b" text-anchor="middle" font-size="9">Works at inference time</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#fb923c">3 Roles</div><div class="sl">One model plays all</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">+20%</div><div class="sl">Average improvement</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">0</div><div class="sl">Additional training needed</div></div>
+    <div class="st"><div class="sn" style="color:#94a3b8">Agents</div><div class="sl">Pattern behind AI agents</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ SLIDE 13: SUMMARY -->
+<div class="slide" id="s13">
+  <div class="topbar">
+    <span class="tag tt">Summary</span>
+    <h2>The Story in One Diagram</h2>
+    <span class="yr">2017 → Today</span>
+  </div>
+  <div class="vis">
+    <svg viewBox="0 0 860 380" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <defs>
+        <marker id="ahs" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#475569"/>
+        </marker>
+        <marker id="ahsb" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#38bdf8"/>
+        </marker>
+        <marker id="ahso" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+          <path d="M0,0 L8,3.5 L0,7 Z" fill="#fb923c"/>
+        </marker>
+      </defs>
+
+      <!-- Foundation -->
+      <rect x="20" y="20" width="175" height="52" rx="9" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+      <text x="107" y="43" fill="#a78bfa" text-anchor="middle" font-size="12" font-weight="700">Transformer (2017)</text>
+      <text x="107" y="60" fill="#64748b" text-anchor="middle" font-size="10">Self-attention · No RNN</text>
+
+      <!-- Arrow Transformer → GPT-1 -->
+      <line x1="195" y1="55" x2="228" y2="80" stroke="#a78bfa" stroke-width="1.8" marker-end="url(#ahs)"/>
+      <text x="210" y="75" fill="#475569" font-size="8">decoder</text>
+
+      <!-- Arrow Transformer → BERT -->
+      <line x1="195" y1="35" x2="228" y2="20" stroke="#a78bfa" stroke-width="1.8" marker-end="url(#ahs)"/>
+      <text x="207" y="20" fill="#475569" font-size="8">encoder</text>
+
+      <!-- GPT column -->
+      <rect x="230" y="72" width="150" height="46" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.8"/>
+      <text x="305" y="94" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">GPT-1 (2018)</text>
+      <text x="305" y="109" fill="#64748b" text-anchor="middle" font-size="9">117M · pre-train + fine-tune</text>
+
+      <line x1="305" y1="118" x2="305" y2="138" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#ahsb)"/>
+      <text x="330" y="132" fill="#475569" font-size="8">10× scale</text>
+
+      <rect x="230" y="138" width="150" height="46" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.8"/>
+      <text x="305" y="160" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">GPT-2 (2019)</text>
+      <text x="305" y="175" fill="#64748b" text-anchor="middle" font-size="9">1.5B · zero-shot</text>
+
+      <line x1="305" y1="184" x2="305" y2="204" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#ahsb)"/>
+      <text x="330" y="198" fill="#475569" font-size="8">100× scale</text>
+
+      <rect x="230" y="204" width="150" height="46" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2.2"/>
+      <text x="305" y="226" fill="#38bdf8" text-anchor="middle" font-size="12" font-weight="700">GPT-3 (2020)</text>
+      <text x="305" y="241" fill="#64748b" text-anchor="middle" font-size="9">175B · few-shot mastery</text>
+
+      <!-- Encoder column -->
+      <rect x="230" y="10" width="150" height="46" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+      <text x="305" y="32" fill="#34d399" text-anchor="middle" font-size="12" font-weight="700">BERT (2018)</text>
+      <text x="305" y="47" fill="#64748b" text-anchor="middle" font-size="9">340M · bidirectional · NLU</text>
+
+      <line x1="305" y1="56" x2="305" y2="66" stroke="#34d399" stroke-width="1.5" marker-end="url(#ahs)"/>
+
+      <rect x="265" y="66" width="80" height="36" rx="7" fill="#1e293b" stroke="#34d399" stroke-width="1.3"/>
+      <text x="305" y="82" fill="#34d399" text-anchor="middle" font-size="11" font-weight="600">BART</text>
+      <text x="305" y="95" fill="#64748b" text-anchor="middle" font-size="8">(2019)</text>
+
+      <!-- GPT-3 → Alignment arrow -->
+      <path d="M380,225 C430,225 445,255 495,270" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#ahso)"/>
+      <text x="440" y="248" fill="#475569" font-size="9">RLHF</text>
+
+      <!-- Alignment box cluster -->
+      <rect x="496" y="58" width="340" height="280" rx="12" fill="rgba(251,146,60,.05)" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <text x="666" y="48" fill="#fb923c" text-anchor="middle" font-size="12" font-weight="700">ALIGNMENT TRACK</text>
+
+      <rect x="510" y="68" width="148" height="46" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.8"/>
+      <text x="584" y="90" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">InstructGPT (2022)</text>
+      <text x="584" y="105" fill="#64748b" text-anchor="middle" font-size="9">SFT → RM → PPO</text>
+
+      <rect x="670" y="68" width="148" height="46" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.8"/>
+      <text x="744" y="90" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">HH-RLHF (2022)</text>
+      <text x="744" y="105" fill="#64748b" text-anchor="middle" font-size="9">Helpful + Harmless</text>
+
+      <rect x="590" y="130" width="152" height="46" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.8"/>
+      <text x="666" y="152" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">Constitutional AI (2022)</text>
+      <text x="666" y="167" fill="#64748b" text-anchor="middle" font-size="9">AI self-critique · 16 rules</text>
+
+      <rect x="510" y="192" width="148" height="46" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="584" y="214" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">RLAIF (2023)</text>
+      <text x="584" y="229" fill="#64748b" text-anchor="middle" font-size="9">AI labels ≈ human labels</text>
+
+      <rect x="670" y="192" width="148" height="46" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="744" y="214" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">DPO (2023)</text>
+      <text x="744" y="229" fill="#64748b" text-anchor="middle" font-size="9">No reward model needed</text>
+
+      <rect x="590" y="258" width="152" height="46" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="666" y="280" fill="#fb923c" text-anchor="middle" font-size="11" font-weight="700">SELF-REFINE (2023)</text>
+      <text x="666" y="295" fill="#64748b" text-anchor="middle" font-size="9">Generate → Critique → Refine</text>
+
+      <!-- ChatGPT badge -->
+      <rect x="510" y="323" width="148" height="34" rx="8" fill="rgba(244,114,182,.12)" stroke="#f472b6" stroke-width="1.5"/>
+      <text x="584" y="345" fill="#f472b6" text-anchor="middle" font-size="12" font-weight="700">→ ChatGPT</text>
+
+      <!-- Claude badge -->
+      <rect x="670" y="323" width="148" height="34" rx="8" fill="rgba(251,146,60,.15)" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="744" y="345" fill="#fb923c" text-anchor="middle" font-size="12" font-weight="700">→ Claude</text>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="st"><div class="sn" style="color:#a78bfa">1</div><div class="sl">Architecture (Transformer)</div></div>
+    <div class="st"><div class="sn" style="color:#38bdf8">3</div><div class="sl">GPT Generations</div></div>
+    <div class="st"><div class="sn" style="color:#34d399">2</div><div class="sl">Encoder Models</div></div>
+    <div class="st"><div class="sn" style="color:#fb923c">6</div><div class="sl">Alignment Methods</div></div>
+    <div class="st"><div class="sn" style="color:#f1f5f9">ChatGPT + Claude</div><div class="sl">What you use today</div></div>
+  </div>
+</div>
+
+</div><!-- /.deck -->
+
+<nav class="nav">
+  <button onclick="go(-1)">← Prev</button>
+  <span class="ctr" id="ctr">1 / 14</span>
+  <button onclick="go(1)">Next →</button>
+</nav>
+
+<script>
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const ctr = document.getElementById('ctr');
+
+function show(n) {
+  slides[cur].classList.remove('active');
+  cur = ((n % slides.length) + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  ctr.textContent = (cur + 1) + ' / ' + slides.length;
+}
+function go(d) { show(cur + d); }
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); go(-1); }
+});
+</script>
+</body>
+</html>
