@@ -40,14 +40,16 @@ That chain is what makes this a complete system — not a collection of tutorial
 > **Two tracks, one goal.**
 > The **public sessions** in this repo (S00 onwards) are a free, open foundation track — released every weekend. The **21-module program** below is the full curriculum this repo is building towards.
 
-### Available Now — 4 Sessions
+### Available Now — 4 Sessions · M00 Complete ✅
 
-| Session | Topic | What You Build | Released |
-|---|---|---|---|
-| [S00](./00_How_Search_Engine_Works/) | How Search Engines Work | TF-IDF search engine from scratch | 2026-04-06 |
-| [S01](./01_Text_to_Numbers/) | Text to Numbers | Movie recommender with 5 embedding methods | 2026-04-13 |
-| [S02](./02_Transformer_Architecture/) | Transformer Architecture | Encoder-Decoder Transformer from scratch — train English → Italian translation | 2026-04-19 |
-| [S03](./03_GPT_Evolution_and_Alignment/) | GPT Evolution & Alignment | Build GPT from scratch (PyTorch + TF) · 11 paper summaries (GPT-1/2/3, BERT, BART, InstructGPT, Constitutional AI, DPO and more) | 2026-04-27 |
+> **M00 — Foundation** is now complete across S00–S03: Text → Numbers → Transformers → GPT Evolution & Alignment.
+
+| Session | M00 Part | Topic | What You Build | Released |
+|---|---|---|---|---|
+| [S00](./00_How_Search_Engine_Works/) | Part 1a | How Search Engines Work | TF-IDF search engine from scratch | 2026-04-06 |
+| [S01](./01_Text_to_Numbers/) | Part 1b | Text to Numbers | Movie recommender with 5 embedding methods | 2026-04-13 |
+| [S02](./02_Transformer_Architecture/) | Part 2 | Transformer Architecture | Encoder-Decoder Transformer from scratch — train English → Italian translation | 2026-04-19 |
+| [S03](./03_GPT_Evolution_and_Alignment/) | Part 3 ✅ M00 Complete | GPT Evolution & Alignment | Build GPT from scratch (PyTorch + TF) · 11 paper summaries (GPT-1/2/3, BERT, BART, InstructGPT, Constitutional AI, DPO and more) | 2026-04-27 |
 
 New sessions drop every **Saturday / Sunday**. Watch the repo to get notified.
 
@@ -57,7 +59,7 @@ The complete zero-to-production GenAI engineer track.
 
 | Module | Topic | Track | Status |
 |---|---|---|---|
-| M00 | How Search Engines Work · Text → Numbers → Transformers → GPT | Foundation | 🔜 |
+| M00 | How Search Engines Work · Text → Numbers → Transformers → GPT | Foundation | ✅ Complete (S00–S03) |
 | M01 | Modern LLM Fundamentals (Tokenization, Embeddings, API) | Foundation | 🔜 |
 | M02 | Local LLMs with Ollama | Foundation | 🔜 |
 | M03 | Prompt Engineering | Core | 🔜 |

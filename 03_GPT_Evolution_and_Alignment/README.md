@@ -1,6 +1,19 @@
 # 03 — GPT Evolution and Alignment
+### 🏁 M00 Foundation — Part 3 of 3 · Completes M00
 
-> **Where we are:** We built a Transformer from scratch in module 02. Now we follow the full story of how that architecture became GPT-1, GPT-2, GPT-3, and ultimately the aligned assistants (ChatGPT, Claude) we use today — including the research papers that made each step possible.
+> **M00 is now complete.** This is the final piece of the Foundation module:
+>
+> | Session | Covers |
+> |---|---|
+> | S00 + S01 | Text → Numbers (TF-IDF, embeddings, search) |
+> | S02 | Transformer Architecture (self-attention, encoder-decoder) |
+> | **S03 ← you are here** | **GPT Evolution & Alignment (GPT-1/2/3 → ChatGPT → Claude)** |
+>
+> Together, S00–S03 take you from raw text to understanding how modern LLMs are built and aligned.
+
+---
+
+> **Where we are:** We built a Transformer from scratch in S02. Now we follow the full story of how that architecture became GPT-1, GPT-2, GPT-3, and ultimately the aligned assistants (ChatGPT, Claude) we use today — including the research papers that made each step possible.
 
 ---
 
