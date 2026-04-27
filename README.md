@@ -40,13 +40,14 @@ That chain is what makes this a complete system — not a collection of tutorial
 > **Two tracks, one goal.**
 > The **public sessions** in this repo (S00 onwards) are a free, open foundation track — released every weekend. The **21-module program** below is the full curriculum this repo is building towards.
 
-### Available Now — 3 Sessions
+### Available Now — 4 Sessions
 
 | Session | Topic | What You Build | Released |
 |---|---|---|---|
 | [S00](./00_How_Search_Engine_Works/) | How Search Engines Work | TF-IDF search engine from scratch | 2026-04-06 |
 | [S01](./01_Text_to_Numbers/) | Text to Numbers | Movie recommender with 5 embedding methods | 2026-04-13 |
 | [S02](./02_Transformer_Architecture/) | Transformer Architecture | Encoder-Decoder Transformer from scratch — train English → Italian translation | 2026-04-19 |
+| [S03](./03_GPT_Evolution_and_Alignment/) | GPT Evolution & Alignment | Build GPT from scratch (PyTorch + TF) · 11 paper summaries (GPT-1/2/3, BERT, BART, InstructGPT, Constitutional AI, DPO and more) | 2026-04-27 |
 
 New sessions drop every **Saturday / Sunday**. Watch the repo to get notified.
 
@@ -84,6 +85,7 @@ The complete zero-to-production GenAI engineer track.
 
 | Date | Session | What Shipped |
 |---|---|---|
+| 2026-04-27 | S03 | GPT Evolution & Alignment — 2 notebooks (PyTorch deep dive on Shakespeare + TF minimal overview), 11 research paper summaries (GPT-1/2/3, BERT, BART, InstructGPT, HH-RLHF, Constitutional AI, RLAIF, DPO, SELF-REFINE), 11 original papers organised into 3 categories, full README reading guide |
 | 2026-04-19 | S02 | Transformer Architecture — PyTorch notebook, slides, original paper, self-attention video, architecture workbook, interactive tutorials |
 | 2026-04-13 | S01 | Text to Numbers — 5 embedding methods (BoW → FastText), movie recommender (FastAPI + React), cosine similarity notebook |
 | 2026-04-06 | S00 | How Search Engines Work — TF-IDF search engine from scratch, 3 PDF slide decks, 2 notebooks |
