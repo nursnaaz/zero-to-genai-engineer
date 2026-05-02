@@ -44,7 +44,7 @@ Text Prediction (GPT-1) → Scale (GPT-2 → GPT-3) → Alignment (RLHF → CAI 
 │                                         open in any browser, arrow keys to navigate
 │
 ├── notebooks/                         ← hands-on code
-│   ├── NB1_GPT_PyTorch_Detailed_Shakespeare.ipynb   ← deep dive, real Shakespeare
+│   ├── NB1_GPT_PyTorch_Detailed_Holmes.ipynb         ← deep dive, Sherlock Holmes corpus
 │   └── NB2_GPT_TensorFlow_Minimal_Synthetic.ipynb   ← quick overview, synthetic data
 │
 ├── papers/                            ← original research papers
@@ -92,9 +92,9 @@ Start with NB2 to get the big picture, then do NB1 to understand every detail.
 
 | | NB1 — PyTorch Deep Dive | NB2 — TensorFlow Overview |
 |---|---|---|
-| **File** | `NB1_GPT_PyTorch_Detailed_Shakespeare.ipynb` | `NB2_GPT_TensorFlow_Minimal_Synthetic.ipynb` |
+| **File** | `NB1_GPT_PyTorch_Detailed_Holmes.ipynb` | `NB2_GPT_TensorFlow_Minimal_Synthetic.ipynb` |
 | **Depth** | Detailed — every layer hand-coded | Minimal — Keras handles internals |
-| **Dataset** | Real Shakespeare (1.1 M chars) | Synthetic sentences (Space/Ocean/Medieval) |
+| **Dataset** | Sherlock Holmes corpus (~480K chars) | Synthetic sentences (Space/Ocean/Medieval) |
 | **Tokenizer** | Char / Word / BPE — your choice | Character-level only |
 | **Training** | Manual loop: AdamW + cosine LR + grad clip | `model.fit()` — 1 line |
 | **Generation** | Token-by-token with live top-5 display | Single generate call |
@@ -213,7 +213,7 @@ Open `notebooks/NB2_GPT_TensorFlow_Minimal_Synthetic.ipynb` and run every cell t
 
 ### 🔬 Assignment 2 — Run NB1 Deep Dive (2–3 hrs)
 
-Open `notebooks/NB1_GPT_PyTorch_Detailed_Shakespeare.ipynb`. This is the main notebook for this session.
+Open `notebooks/NB1_GPT_PyTorch_Detailed_Holmes.ipynb`. This is the main notebook for this session.
 
 **Step 1 — Run with default settings (word tokenizer)**
 - [ ] Run all cells top to bottom with `TOKENIZER_TYPE = 'word'` (the default)
@@ -224,7 +224,7 @@ Open `notebooks/NB1_GPT_PyTorch_Detailed_Shakespeare.ipynb`. This is the main no
 - [ ] Change `TOKENIZER_TYPE = 'char'` and re-run from the tokenizer cell. Generate 200 tokens from `"ROMEO:\n"`. Paste the output in a comment.
 - [ ] Change `TOKENIZER_TYPE = 'word'` and do the same. Paste the output.
 - [ ] Change `TOKENIZER_TYPE = 'bpe'` and do the same.
-- [ ] **Question to answer:** Which tokenizer produces the most readable Shakespeare-style output, and why do you think that is?
+- [ ] **Question to answer:** Which tokenizer produces the most readable Holmes-style output, and why do you think that is?
 
 **Step 3 — Generate GPT output with different prompts**
 
