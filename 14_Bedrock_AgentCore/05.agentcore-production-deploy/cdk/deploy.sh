@@ -32,10 +32,21 @@ if [ "$STAGE" -ge 10 ] && [ -z "${SUPPORT_RUNTIME_ARN:-}" ]; then
 fi
 
 if [ ! -d .venv ]; then
-  python3 -m venv .venv
+  if [ $OS = "Windows_NT" ]; then
+    python -m venv .venv
+  else
+    python3 -m venv .venv
+  fi
 fi
-# shellcheck disable=SC1091
-source .venv/bin/activate
+
+if [ -f .venv/Scripts/activate ]; then
+  # shellcheck disable=SC1091
+  source .venv/Scripts/activate
+elif [ -f .venv/bin/activate ]; then
+  # shellcheck disable=SC1091
+  source .venv/bin/activate
+fi
+
 pip install -q -r requirements.txt
 
 export JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION=1
