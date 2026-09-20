@@ -341,6 +341,7 @@ class LaukiSupportFargateStack(Stack):
 
         config = {
             "step": "12-fargate",
+            "stage": "12-fargate",
             "authRequired": True,
             "chatEnabled": True,
             "region": region,
