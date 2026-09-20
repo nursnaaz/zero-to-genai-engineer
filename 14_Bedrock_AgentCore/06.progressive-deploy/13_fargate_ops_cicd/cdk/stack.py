@@ -388,7 +388,7 @@ class LaukiSupportFargateStack(Stack):
         # scale_on_request_count() wires up under the hood (an Application
         # Auto Scaling policy on the ECS service, driven by the same ALB
         # metric App Runner uses internally).
-        min_capacity, max_capacity, requests_per_target = 1, 3, 10
+        min_capacity, max_capacity, requests_per_target = 1, 3, 5
         scaling = fargate_service.service.auto_scale_task_count(
             min_capacity=min_capacity, max_capacity=max_capacity
         )
