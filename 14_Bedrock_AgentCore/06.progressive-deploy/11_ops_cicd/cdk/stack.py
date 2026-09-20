@@ -406,7 +406,7 @@ class LaukiSupportStack(Stack):
         # can't turn into a runaway bill; max_concurrency is how many
         # in-flight requests one instance takes before App Runner starts a
         # new one.
-        min_size, max_size, max_concurrency = 1, 3, 10
+        min_size, max_size, max_concurrency = 1, 3, 15
         autoscaling = apprunner.CfnAutoScalingConfiguration(
             self,
             "ApiAutoScaling",
