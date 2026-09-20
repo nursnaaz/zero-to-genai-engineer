@@ -83,7 +83,18 @@ jobs:
 
       - name: cdk diff
         working-directory: ${{ env.WORKDIR }}
-        run: cdk diff LaukiSupportFargateStack ${{ env.CDK_CONTEXT }} | tee diff.txt
+        run: |
+          set -o pipefail
+          attempt=0
+          until cdk diff LaukiSupportFargateStack ${{ env.CDK_CONTEXT }} | tee diff.txt; do
+            attempt=$((attempt+1))
+            if [ "$attempt" -ge 4 ]; then
+              echo "cdk diff failed after $attempt attempts" >&2
+              exit 1
+            fi
+            echo "cdk diff failed (attempt $attempt) -- likely a transient registry rate limit pulling the bundling image; retrying in 20s..."
+            sleep 20
+          done
 
       - name: Comment diff on the PR
         uses: actions/github-script@v7
@@ -129,4 +140,15 @@ jobs:
 
       - name: cdk deploy
         working-directory: ${{ env.WORKDIR }}
-        run: cdk deploy LaukiSupportFargateStack ${{ env.CDK_CONTEXT }} --require-approval never
+        run: |
+          set -o pipefail
+          attempt=0
+          until cdk deploy LaukiSupportFargateStack ${{ env.CDK_CONTEXT }} --require-approval never; do
+            attempt=$((attempt+1))
+            if [ "$attempt" -ge 4 ]; then
+              echo "cdk deploy failed after $attempt attempts" >&2
+              exit 1
+            fi
+            echo "cdk deploy failed (attempt $attempt) -- retrying in 20s..."
+            sleep 20
+          done
