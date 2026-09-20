@@ -30,11 +30,13 @@ on:
     paths:
       - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/cdk/**"
       - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/api/**"
+      - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/web/**"
   push:
     branches: [main]
     paths:
       - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/cdk/**"
       - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/api/**"
+      - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/web/**"
   workflow_dispatch: {}
 
 permissions:
