@@ -1,0 +1,132 @@
+name: S14 Lauki Support (Fargate) - CDK plan & deploy
+
+# Classroom CI/CD demo for
+# 14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd — the
+# Fargate sibling of agentcore-cdk-deploy.yml (which targets the App
+# Runner stack, LaukiSupportStack). This one targets
+# LaukiSupportFargateStack. Separate secrets on purpose: different stacks,
+# different deploy roles.
+#
+# - Open a PR that touches this folder's cdk/ or api/  -> "plan" job runs
+#   `cdk diff` and posts the result as a PR comment. Nothing is deployed.
+# - Merge that PR to main                                -> "deploy" job
+#   runs `cdk deploy` for real.
+#
+# One-time setup before this workflow can run (see
+# 13_fargate_ops_cicd/README.md):
+#   1. Deploy 13_fargate_ops_cicd once yourself (creates
+#      GithubActionsDeployRoleArn — a role scoped to
+#      LaukiSupportFargateStack, separate from the App Runner pipeline's
+#      role).
+#   2. Add repo secret: AWS_FARGATE_DEPLOY_ROLE_ARN (from that output).
+#      SUPPORT_RUNTIME_ARN is already set (shared with the App Runner
+#      pipeline).
+#   3. BUDGET_ALERT_EMAIL / BUDGET_LIMIT_USD variables are already set
+#      (shared with the App Runner pipeline).
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/cdk/**"
+      - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/api/**"
+  push:
+    branches: [main]
+    paths:
+      - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/cdk/**"
+      - "14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/api/**"
+  workflow_dispatch: {}
+
+permissions:
+  id-token: write # required to assume the AWS role via OIDC
+  contents: read
+  pull-requests: write # to comment the diff on the PR
+
+env:
+  AWS_REGION: us-east-1
+  WORKDIR: 14_Bedrock_AgentCore/06.progressive-deploy/13_fargate_ops_cicd/cdk
+  CDK_CONTEXT: >-
+    -c stackName=LaukiSupportFargateStack
+    -c supportRuntimeArn=${{ secrets.SUPPORT_RUNTIME_ARN }}
+    -c budgetAlertEmail=${{ vars.BUDGET_ALERT_EMAIL }}
+    -c budgetLimitUsd=${{ vars.BUDGET_LIMIT_USD }}
+    -c githubOidcProviderArn=${{ secrets.OIDC_PROVIDER_ARN }}
+
+jobs:
+  plan:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Configure AWS credentials (OIDC, no stored keys)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_FARGATE_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Install CDK app dependencies
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements.txt
+          npm install -g aws-cdk
+
+      - name: cdk diff
+        working-directory: ${{ env.WORKDIR }}
+        run: cdk diff LaukiSupportFargateStack ${{ env.CDK_CONTEXT }} | tee diff.txt
+
+      - name: Comment diff on the PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = `${process.env.WORKDIR}/diff.txt`;
+            const diff = fs.readFileSync(path, 'utf8').slice(0, 60000);
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### CDK diff for \`LaukiSupportFargateStack\` (13_fargate_ops_cicd)\n\n\`\`\`diff\n${diff}\n\`\`\`\n\n_Review this before merging — this is exactly what will change in AWS._`,
+            });
+
+  deploy:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Configure AWS credentials (OIDC, no stored keys)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_FARGATE_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Install CDK app dependencies
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements.txt
+          npm install -g aws-cdk
+
+      - name: cdk deploy
+        working-directory: ${{ env.WORKDIR }}
+        run: cdk deploy LaukiSupportFargateStack ${{ env.CDK_CONTEXT }} --require-approval never
