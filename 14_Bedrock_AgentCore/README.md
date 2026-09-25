@@ -10,7 +10,7 @@ Self-contained labs for Amazon Bedrock AgentCore. Each Runtime lab starts from a
 | [`03.crewai-agentcore-bedrock`](./03.crewai-agentcore-bedrock/) | CrewAI | Competitor Brief + Streamlit | Steps 0→3, Demos 1–5 |
 | [`04.framework-power-agents`](./04.framework-power-agents/) | **All three** | Side-by-side power-agent notebook | Open `powerful_agents_comparison.ipynb` |
 | [`05.agentcore-production-deploy`](./05.agentcore-production-deploy/) | Strands + React | Cognito → CloudFront/S3 UI → App Runner API → AgentCore + Guardrail | See lab README |
-| [`06.progressive-deploy`](./06.progressive-deploy/) | Same app as lab 05 | 10 cumulative folders — same stack, taught as checkpoints instead of stage flags | See lab README |
+| [`06.progressive-deploy`](./06.progressive-deploy/) | Same app as lab 05 | 01→10 product path + optional 11 ops/CI + 12/13 Fargate alternative — taught as folders instead of stage flags | See lab README |
 
 ## Shared student rules (01–03)
 

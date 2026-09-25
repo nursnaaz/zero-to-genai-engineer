@@ -27,8 +27,11 @@ everything it references lives in `11_ops_cicd/`.
   real AgentCore response. Not a synth check — an actual HTTP round trip
   against the live app after the change.
 - New resources confirmed live: `ApiAutoScaling` (min=1, max=3,
-  concurrency=25) attached to the App Runner service, `MonthlyCostBudget`
-  ($10/mo, 80% alert → `nursnaaz@gmail.com`), `GithubActionsDeployRole`.
+  concurrency=25 at first deploy — later bumped via CI demos; code now
+  ships `concurrency=15`) attached to the App Runner service,
+  `MonthlyCostBudget` ($10/mo that night, 80% alert → `nursnaaz@gmail.com`;
+  folder default is `$15` if you omit `BUDGET_LIMIT_USD`),
+  `GithubActionsDeployRole`.
 - **One real side effect worth knowing before class**: attaching an auto
   scaling config to an existing App Runner service is a
   *replacement-triggering* property in CloudFormation — it silently
@@ -66,8 +69,8 @@ that's done.
 1. Recap the running app (login `demo` / `DemoUser1!`, send a message).
 2. On a fresh branch, change one visible line in
    `06.progressive-deploy/11_ops_cicd/cdk/stack.py` — e.g. the
-   `max_concurrency=25` in the `ApiAutoScaling` block. Push, open a PR
-   against `main`.
+   `max_concurrency=15` in the `ApiAutoScaling` block (bump it to `20`).
+   Push, open a PR against `main`.
 3. Actions tab: the `plan` job runs, posts a `cdk diff` comment on the PR.
    Read the diff out loud.
 4. Merge the PR. Actions tab: `deploy` job runs `cdk deploy` for real.

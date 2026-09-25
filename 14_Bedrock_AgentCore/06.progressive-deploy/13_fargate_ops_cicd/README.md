@@ -39,7 +39,7 @@ adds operations, not features.
 
 ## CI/CD
 
-[`.github/workflows/agentcore-fargate-cdk-deploy.yml`](../../../../.github/workflows/agentcore-fargate-cdk-deploy.yml)
+[`.github/workflows/agentcore-fargate-cdk-deploy.yml`](../../../.github/workflows/agentcore-fargate-cdk-deploy.yml)
 at the repo root — `cdk diff` on PRs touching this folder, `cdk deploy` on
 merge to `main`. Needs its own repo secret (`AWS_FARGATE_DEPLOY_ROLE_ARN`,
 from this stack's `GithubActionsDeployRoleArn` output) — separate from the

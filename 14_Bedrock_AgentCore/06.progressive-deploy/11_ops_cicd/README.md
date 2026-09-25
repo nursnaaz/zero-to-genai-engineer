@@ -17,13 +17,13 @@ bash deploy.sh
 ## Verify
 
 ```bash
+aws cloudformation describe-stacks --stack-name LaukiSupportStack --region us-east-1 \
+  --query "Stacks[0].Outputs[?OutputKey=='AutoScalingLimits' || OutputKey=='BudgetAlert' || OutputKey=='GithubActionsDeployRoleArn']"
 aws apprunner list-auto-scaling-configurations --region us-east-1 \
   --query "AutoScalingConfigurationSummaryList[].AutoScalingConfigurationName"
-aws budgets describe-budgets --account-id "$(aws sts get-caller-identity --query Account --output text)" \
-  --query "Budgets[].{Name:BudgetName,Limit:BudgetLimit.Amount}"
-aws cloudformation describe-stacks --stack-name LaukiSupportStack --region us-east-1 \
-  --query "Stacks[0].Outputs[?OutputKey=='GithubActionsDeployRoleArn'].OutputValue" --output text
 ```
+
+Expect `AutoScalingLimits` ≈ `min=1 max=3 concurrency=15`. `BudgetAlert` only appears if you set `BUDGET_ALERT_EMAIL`.
 
 The app itself still logs in and chats exactly like step 10 — nothing about
 the user-facing product changed.
@@ -36,11 +36,12 @@ diff -ru ../10_agentcore_chat . | less
 
 ## What changed vs previous
 
-ADD `apprunner.CfnAutoScalingConfiguration` (min=1, max=3, concurrency=25)
+ADD `apprunner.CfnAutoScalingConfiguration` (min=1, max=3, concurrency=15)
 wired onto the existing App Runner service. ADD an optional monthly
 `budgets.CfnBudget` with an 80%-threshold email alert (skipped if
-`BUDGET_ALERT_EMAIL` is unset). ADD a GitHub Actions OIDC provider + IAM
-role (`GithubActionsDeployRoleArn` output) so CI can `cdk deploy` this stack
+`BUDGET_ALERT_EMAIL` is unset; limit defaults to `$15` / mo via
+`BUDGET_LIMIT_USD`). ADD a GitHub Actions OIDC provider + IAM role
+(`GithubActionsDeployRoleArn` output) so CI can `cdk deploy` this stack
 without long-lived AWS keys — see
 [`../../05.agentcore-production-deploy/OPS_DAY_RUNBOOK.md`](../../05.agentcore-production-deploy/OPS_DAY_RUNBOOK.md)
 for the full setup + live demo script, and
