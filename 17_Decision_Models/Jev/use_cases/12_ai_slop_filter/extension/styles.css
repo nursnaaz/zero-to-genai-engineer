@@ -1,0 +1,13 @@
+.jev-folded { display: none !important; }
+.jev-bar {
+  font: 600 12px ui-monospace, monospace;
+  color: #7a8ea0; background: rgba(232,130,12,.08);
+  border: 1px dashed rgba(232,130,12,.5); border-radius: 8px;
+  padding: 8px 12px; margin: 6px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.jev-bar button {
+  font: 600 11px ui-monospace, monospace; cursor: pointer;
+  background: #e8820c; color: #1a1207; border: 0;
+  border-radius: 5px; padding: 4px 10px;
+}

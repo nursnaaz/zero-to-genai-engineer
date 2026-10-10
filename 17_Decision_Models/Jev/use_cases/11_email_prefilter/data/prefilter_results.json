@@ -1,0 +1,193 @@
+[
+  {
+    "id": "E001",
+    "subject": "Re: your invoice #4471",
+    "body": "Hi, attaching the signed PO. Can you confirm delivery for the 14th?",
+    "gold": "reply",
+    "reply": 0.91,
+    "brand": 0.03,
+    "scam": 0.09,
+    "action": "-> Claude drafts a reply"
+  },
+  {
+    "id": "E002",
+    "subject": "Partnership opportunity with Nike",
+    "body": "We'd love to send you product and discuss a paid collaboration for Q1.",
+    "gold": "brand",
+    "reply": 0.67,
+    "brand": 0.98,
+    "scam": 0.5,
+    "action": "brand-deal folder"
+  },
+  {
+    "id": "E003",
+    "subject": "URGENT: Your account will be suspended",
+    "body": "Click here immediately to verify your bank details or lose access.",
+    "gold": "scam",
+    "reply": 0.1,
+    "brand": 0.01,
+    "scam": 0.98,
+    "action": "BLOCK (scam)"
+  },
+  {
+    "id": "E004",
+    "subject": "Weekly digest from Substack",
+    "body": "Here are the posts you missed this week.",
+    "gold": "none",
+    "reply": 0.03,
+    "brand": 0.03,
+    "scam": 0.09,
+    "action": "archive"
+  },
+  {
+    "id": "E005",
+    "subject": "Question about the course",
+    "body": "Does session 14 require an AWS account with billing enabled?",
+    "gold": "reply",
+    "reply": 0.8,
+    "brand": 0.02,
+    "scam": 0.03,
+    "action": "-> Claude drafts a reply"
+  },
+  {
+    "id": "E006",
+    "subject": "You have won $5,000,000",
+    "body": "Send us your details to claim your prize today.",
+    "gold": "scam",
+    "reply": 0.18,
+    "brand": 0.02,
+    "scam": 0.98,
+    "action": "BLOCK (scam)"
+  },
+  {
+    "id": "E007",
+    "subject": "Collab? 50k followers",
+    "body": "Hi! I run a tech channel and would love to feature your course.",
+    "gold": "brand",
+    "reply": 0.7,
+    "brand": 0.57,
+    "scam": 0.22,
+    "action": "-> Claude drafts a reply"
+  },
+  {
+    "id": "E008",
+    "subject": "Your Amazon order has shipped",
+    "body": "Track your package here.",
+    "gold": "none",
+    "reply": 0.03,
+    "brand": 0.01,
+    "scam": 0.36,
+    "action": "archive"
+  },
+  {
+    "id": "E009",
+    "subject": "Interview request - podcast",
+    "body": "We'd like to have you on to talk about teaching AI. Paid appearance.",
+    "gold": "brand",
+    "reply": 0.82,
+    "brand": 0.94,
+    "scam": 0.38,
+    "action": "brand-deal folder"
+  },
+  {
+    "id": "E010",
+    "subject": "Re: Re: Re: meeting",
+    "body": "Works for me, see you Thursday at 10.",
+    "gold": "none",
+    "label_note": "Relabelled from 'reply' to 'none'. This is a closing confirmation, not an open question. Jev scored 0.43 and was right; the original human label was wrong.",
+    "reply": 0.39,
+    "brand": 0.02,
+    "scam": 0.02,
+    "action": "archive"
+  },
+  {
+    "id": "E011",
+    "subject": "Security alert: new sign in",
+    "body": "A new device signed in to your account from Dubai.",
+    "gold": "none",
+    "reply": 0.34,
+    "brand": 0.01,
+    "scam": 0.42,
+    "action": "archive"
+  },
+  {
+    "id": "E012",
+    "subject": "Final notice: domain expiring",
+    "body": "Your domain expires today, renew now via this link.",
+    "gold": "scam",
+    "reply": 0.1,
+    "brand": 0.03,
+    "scam": 0.79,
+    "action": "BLOCK (scam)"
+  },
+  {
+    "id": "E013",
+    "subject": "Student refund request",
+    "body": "I enrolled twice by mistake, could you refund one?",
+    "gold": "reply",
+    "reply": 0.93,
+    "brand": 0.01,
+    "scam": 0.05,
+    "action": "-> Claude drafts a reply"
+  },
+  {
+    "id": "E014",
+    "subject": "Your LinkedIn weekly",
+    "body": "See who viewed your profile.",
+    "gold": "none",
+    "reply": 0.04,
+    "brand": 0.03,
+    "scam": 0.38,
+    "action": "archive"
+  },
+  {
+    "id": "E015",
+    "subject": "Sponsorship - AI tooling company",
+    "body": "We sponsor educators. Budget is 8k per campaign. Interested?",
+    "gold": "brand",
+    "reply": 0.54,
+    "brand": 0.94,
+    "scam": 0.21,
+    "action": "brand-deal folder"
+  },
+  {
+    "id": "E016",
+    "subject": "Can you review my capstone?",
+    "body": "I've pushed my RAG project, would really value your feedback.",
+    "gold": "reply",
+    "reply": 0.89,
+    "brand": 0.02,
+    "scam": 0.03,
+    "action": "-> Claude drafts a reply"
+  },
+  {
+    "id": "E017",
+    "subject": "Verify your identity now",
+    "body": "Unusual activity detected, confirm your password here.",
+    "gold": "scam",
+    "reply": 0.16,
+    "brand": 0.01,
+    "scam": 0.97,
+    "action": "BLOCK (scam)"
+  },
+  {
+    "id": "E018",
+    "subject": "Newsletter: this week in AI",
+    "body": "Top stories.",
+    "gold": "none",
+    "reply": 0.03,
+    "brand": 0.04,
+    "scam": 0.09,
+    "action": "archive"
+  },
+  {
+    "id": "E019",
+    "subject": "Thursday 10am?",
+    "body": "Does Thursday at 10 work for you?",
+    "gold": "reply",
+    "reply": 0.94,
+    "brand": 0.05,
+    "scam": 0.02,
+    "action": "-> Claude drafts a reply"
+  }
+]

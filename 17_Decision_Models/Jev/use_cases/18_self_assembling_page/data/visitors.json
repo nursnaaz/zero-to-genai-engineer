@@ -1,0 +1,50 @@
+[
+  {
+    "id": "V1",
+    "referrer": "google.com",
+    "query": "what is retrieval augmented generation",
+    "returning": false,
+    "logged_in": false,
+    "plan": null
+  },
+  {
+    "id": "V2",
+    "referrer": "direct",
+    "query": null,
+    "returning": true,
+    "logged_in": true,
+    "plan": "free"
+  },
+  {
+    "id": "V3",
+    "referrer": "news.ycombinator.com",
+    "query": null,
+    "returning": false,
+    "logged_in": false,
+    "plan": null
+  },
+  {
+    "id": "V4",
+    "referrer": "google.com",
+    "query": "rag studio pricing",
+    "returning": true,
+    "logged_in": false,
+    "plan": null
+  },
+  {
+    "id": "V5",
+    "referrer": "direct",
+    "query": null,
+    "returning": true,
+    "logged_in": true,
+    "plan": "team"
+  },
+  {
+    "id": "V6",
+    "referrer": "linkedin.com",
+    "query": "ai course dubai",
+    "returning": false,
+    "logged_in": false,
+    "plan": null
+  }
+]

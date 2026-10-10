@@ -1,0 +1,302 @@
+[
+  {
+    "id": "T001",
+    "message": "My invoice shows two charges for September, please refund one.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T002",
+    "message": "The export button throws a 500 error every time I click it.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T003",
+    "message": "How do I invite a teammate to my workspace?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T004",
+    "message": "Can you tell me your office address?",
+    "gold_label": "other"
+  },
+  {
+    "id": "T005",
+    "message": "I was billed after cancelling my plan last month.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T006",
+    "message": "App crashes on startup since the latest update.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T007",
+    "message": "Where can I change my notification settings?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T008",
+    "message": "Just wanted to say the new dashboard looks great.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T009",
+    "message": "Why did my card get charged 49 when the plan says 39?",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T010",
+    "message": "Uploading a CSV larger than 10MB silently fails.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T011",
+    "message": "What is the difference between the Pro and Team plans?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T012",
+    "message": "Please remove me from your mailing list.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T013",
+    "message": "I need a VAT invoice for my accountant.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T014",
+    "message": "Login redirects in a loop on Safari.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T015",
+    "message": "How do I set up single sign-on?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T016",
+    "message": "Do you sponsor conferences? We run a meetup in Dubai.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T017",
+    "message": "Refund request: I bought the annual plan by mistake.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T018",
+    "message": "Charts render blank when the date range is over 90 days.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T019",
+    "message": "Is there a way to bulk import contacts?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T020",
+    "message": "Your competitor emailed me a better offer.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T021",
+    "message": "Double payment taken on 14 September, order A-1182.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T022",
+    "message": "Webhook deliveries stopped after I rotated my API key.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T023",
+    "message": "Can I export my data as JSON instead of CSV?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T024",
+    "message": "Hi, testing whether this inbox is monitored.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T025",
+    "message": "My subscription renewed although I disabled auto-renew.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T026",
+    "message": "Dark mode text is unreadable on the settings page.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T027",
+    "message": "How do I reset my two-factor authentication?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T028",
+    "message": "We are a reseller, who handles partnerships?",
+    "gold_label": "other"
+  },
+  {
+    "id": "T029",
+    "message": "Charged in USD but my account currency is AED.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T030",
+    "message": "Search returns no results even for exact titles.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T031",
+    "message": "Where do I find my API key?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T032",
+    "message": "Great support last week, thank you.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T033",
+    "message": "I cancelled in July and was still billed in August and September.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T034",
+    "message": "The mobile app logs me out every few minutes.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T035",
+    "message": "Can two people share one seat?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T036",
+    "message": "Are you hiring engineers?",
+    "gold_label": "other"
+  },
+  {
+    "id": "T037",
+    "message": "Please send a receipt for transaction 99321.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T038",
+    "message": "Deleting a project also deleted an unrelated project.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T039",
+    "message": "How do I connect Slack notifications?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T040",
+    "message": "What are your office hours over Eid?",
+    "gold_label": "other"
+  },
+  {
+    "id": "T041",
+    "message": "Upgrade charged me a full month instead of pro rata.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T042",
+    "message": "PDF export loses all the images.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T043",
+    "message": "Is there a keyboard shortcut for quick search?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T044",
+    "message": "Can I get a student discount?",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T045",
+    "message": "Clicking save does nothing on Firefox 131.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T046",
+    "message": "How do I transfer ownership of a workspace?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T047",
+    "message": "Your status page says degraded, is my data safe?",
+    "gold_label": "other"
+  },
+  {
+    "id": "T048",
+    "message": "I paid twice because the first attempt showed an error.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T049",
+    "message": "Timezone is wrong on all scheduled reports.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T050",
+    "message": "Where is the audit log?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T051",
+    "message": "Please stop calling my phone.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T052",
+    "message": "Annual plan price went up without notice.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T053",
+    "message": "API returns 401 with a key I generated 5 minutes ago.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T054",
+    "message": "How many seats are included in Team?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T055",
+    "message": "Do you have a podcast?",
+    "gold_label": "other"
+  },
+  {
+    "id": "T056",
+    "message": "Need a refund for the duplicate workspace I created.",
+    "gold_label": "billing"
+  },
+  {
+    "id": "T057",
+    "message": "Drag and drop reordering snaps back to the old order.",
+    "gold_label": "bug"
+  },
+  {
+    "id": "T058",
+    "message": "How do I enable weekly digest emails?",
+    "gold_label": "how-to"
+  },
+  {
+    "id": "T059",
+    "message": "Just checking you received my earlier email.",
+    "gold_label": "other"
+  },
+  {
+    "id": "T060",
+    "message": "Invoice 4471 has the wrong company name on it.",
+    "gold_label": "billing"
+  }
+]

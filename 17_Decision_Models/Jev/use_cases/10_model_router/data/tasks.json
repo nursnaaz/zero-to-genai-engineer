@@ -1,0 +1,82 @@
+[
+  {
+    "id": "T01",
+    "prompt": "what's the file path for the rag notebook",
+    "gold_tier": "trivial"
+  },
+  {
+    "id": "T02",
+    "prompt": "rename this variable to snake case",
+    "gold_tier": "trivial"
+  },
+  {
+    "id": "T03",
+    "prompt": "what port does uvicorn default to",
+    "gold_tier": "trivial"
+  },
+  {
+    "id": "T04",
+    "prompt": "list the files in the 10_RAG folder",
+    "gold_tier": "trivial"
+  },
+  {
+    "id": "T05",
+    "prompt": "add a docstring to this function",
+    "gold_tier": "trivial"
+  },
+  {
+    "id": "T06",
+    "prompt": "convert this dict to a dataclass",
+    "gold_tier": "simple"
+  },
+  {
+    "id": "T07",
+    "prompt": "write a regex that matches UAE phone numbers",
+    "gold_tier": "simple"
+  },
+  {
+    "id": "T08",
+    "prompt": "fix this off by one error in the loop",
+    "gold_tier": "simple"
+  },
+  {
+    "id": "T09",
+    "prompt": "add retry with exponential backoff to this request",
+    "gold_tier": "simple"
+  },
+  {
+    "id": "T10",
+    "prompt": "write pytest cases for this parser",
+    "gold_tier": "simple"
+  },
+  {
+    "id": "T11",
+    "prompt": "refactor this 300 line module into three files",
+    "gold_tier": "hard"
+  },
+  {
+    "id": "T12",
+    "prompt": "our RAG answers are confidently wrong, work out why",
+    "gold_tier": "hard"
+  },
+  {
+    "id": "T13",
+    "prompt": "design the schema for a multi tenant audit log",
+    "gold_tier": "hard"
+  },
+  {
+    "id": "T14",
+    "prompt": "the CDK deploy fails only in CI, not locally, debug it",
+    "gold_tier": "hard"
+  },
+  {
+    "id": "T15",
+    "prompt": "plan the migration from Pinecone to pgvector with zero downtime",
+    "gold_tier": "hard"
+  },
+  {
+    "id": "T16",
+    "prompt": "why is our p99 latency 4 seconds under load",
+    "gold_tier": "hard"
+  }
+]

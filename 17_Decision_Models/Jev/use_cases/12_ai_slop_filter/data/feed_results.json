@@ -1,0 +1,100 @@
+[
+  {
+    "id": "P001",
+    "text": "Unpopular opinion: most engineers don't need Kubernetes. We ran 2M req/day on 3 VMs for four years. The complexity tax is real.",
+    "gold": "human",
+    "slop_prob": 0.15,
+    "folded": false
+  },
+  {
+    "id": "P002",
+    "text": "\ud83d\ude80 Unlock the POWER of AI! Here are 10 game-changing tips that will TRANSFORM your workflow forever. 1/ Embrace the journey...",
+    "gold": "slop",
+    "slop_prob": 0.95,
+    "folded": true
+  },
+  {
+    "id": "P003",
+    "text": "Spent the weekend debugging a race condition that only appeared on Tuesdays. Turned out to be a cron job nobody documented in 2019.",
+    "gold": "human",
+    "slop_prob": 0.11,
+    "folded": false
+  },
+  {
+    "id": "P004",
+    "text": "In today's fast-paced digital landscape, leveraging synergies is no longer optional. Here's why every leader must pivot now. \ud83e\uddf5",
+    "gold": "slop",
+    "slop_prob": 0.94,
+    "folded": true
+  },
+  {
+    "id": "P005",
+    "text": "We cut our p99 from 4s to 380ms. The fix was removing an index, not adding one. Full writeup with flamegraphs in the comments.",
+    "gold": "human",
+    "slop_prob": 0.14,
+    "folded": false
+  },
+  {
+    "id": "P006",
+    "text": "AI will replace 90% of jobs by 2027. Here are 7 skills you MUST learn. Save this post. Follow for more. \ud83d\udd25\ud83d\udd25",
+    "gold": "slop",
+    "slop_prob": 0.96,
+    "folded": true
+  },
+  {
+    "id": "P007",
+    "text": "Reminder that `git bisect` exists and will find your regression in log2(n) commits while you make coffee.",
+    "gold": "human",
+    "slop_prob": 0.43,
+    "folded": false
+  },
+  {
+    "id": "P008",
+    "text": "The future of work is here, and it's powered by artificial intelligence. Let that sink in. What are your thoughts? \ud83d\udc47",
+    "gold": "slop",
+    "slop_prob": 0.94,
+    "folded": true
+  },
+  {
+    "id": "P009",
+    "text": "Our RAG system was confidently wrong 12% of the time. Adding a groundedness check dropped it to 2%. Code is open source.",
+    "gold": "human",
+    "slop_prob": 0.17,
+    "folded": false
+  },
+  {
+    "id": "P010",
+    "text": "Day 47 of posting about AI. Today I learned that prompt engineering is a skill. Mind = blown. \ud83e\udd2f Who else is on this journey?",
+    "gold": "slop",
+    "slop_prob": 0.8,
+    "folded": true
+  },
+  {
+    "id": "P011",
+    "text": "PSA: if your Postgres connection pool is exhausting under load, check whether your ORM opens a transaction per read.",
+    "gold": "human",
+    "slop_prob": 0.3,
+    "folded": false
+  },
+  {
+    "id": "P012",
+    "text": "Here's the ULTIMATE guide to becoming a 10x developer. Thread. 1/ Wake up at 5am. 2/ Read documentation. 3/ Never stop learning.",
+    "gold": "slop",
+    "slop_prob": 0.93,
+    "folded": true
+  },
+  {
+    "id": "P013",
+    "text": "Shipped a thing. It's small. It works. Nobody will notice it and that's the point.",
+    "gold": "human",
+    "slop_prob": 0.34,
+    "folded": false
+  },
+  {
+    "id": "P014",
+    "text": "ChatGPT just changed everything AGAIN. If you're not using these 5 prompts you're already behind. Bookmark this. \ud83d\udccc",
+    "gold": "slop",
+    "slop_prob": 0.94,
+    "folded": true
+  }
+]

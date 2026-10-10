@@ -1,0 +1,62 @@
+[
+  {
+    "url": "/rag-basics",
+    "title": "RAG basics: retrieval augmented generation explained",
+    "summary": "What RAG is, why hallucination happens, and the load-chunk-embed-store-retrieve-generate pipeline."
+  },
+  {
+    "url": "/chunking",
+    "title": "Chunking strategies that actually work",
+    "summary": "Fixed size versus recursive versus semantic chunking, and why overlap matters for boundary sentences."
+  },
+  {
+    "url": "/embeddings",
+    "title": "Choosing an embedding model",
+    "summary": "Dense vectors, dimensionality, and how cosine similarity ranks meaning rather than keywords."
+  },
+  {
+    "url": "/hybrid-search",
+    "title": "Hybrid search: BM25 plus vectors",
+    "summary": "Why dense retrieval misses exact codes, and how reciprocal rank fusion merges two ranked lists."
+  },
+  {
+    "url": "/reranking",
+    "title": "Cross-encoder reranking",
+    "summary": "Two stage retrieval: cheap recall first, expensive precision second, and the latency trade."
+  },
+  {
+    "url": "/rag-evaluation",
+    "title": "Evaluating a RAG system with RAGAS",
+    "summary": "Faithfulness, answer relevance and context precision, plus building a golden set."
+  },
+  {
+    "url": "/prompt-injection",
+    "title": "Prompt injection inside your knowledge base",
+    "summary": "Indirect injection through retrieved documents and why input filtering is not enough."
+  },
+  {
+    "url": "/agents-vs-chains",
+    "title": "Agents versus chains: when you need a graph",
+    "summary": "Branching, retries and cycles, and the point at which control flow becomes the product."
+  },
+  {
+    "url": "/human-in-the-loop",
+    "title": "Human in the loop that survives a restart",
+    "summary": "Durable interrupts, checkpointers and why thread identity matters for approvals."
+  },
+  {
+    "url": "/fine-tuning",
+    "title": "LoRA and QLoRA in plain language",
+    "summary": "Freezing the base model, training low rank adapters, and why quantization teaches nothing."
+  },
+  {
+    "url": "/model-routing",
+    "title": "Routing requests to the cheapest capable model",
+    "summary": "Classifying difficulty up front so frontier models only see the hard requests."
+  },
+  {
+    "url": "/cost-control",
+    "title": "Controlling your LLM bill",
+    "summary": "Token arithmetic, context trimming, caching and the cost of stuffing ten chunks into a prompt."
+  }
+]

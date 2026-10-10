@@ -1,0 +1,100 @@
+[
+  {
+    "task": "Write me a cover letter for a data engineer role at a Dubai bank",
+    "picked": "cover-letter",
+    "expected": "cover-letter",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Pull together a pack for tomorrow's leadership meeting",
+    "picked": "meeting-pack",
+    "expected": "meeting-pack",
+    "confidence": 0.98,
+    "correct": true
+  },
+  {
+    "task": "We had an outage last night, write the root cause analysis",
+    "picked": "rca-pack",
+    "expected": "rca-pack",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Prep me for a systems design interview next week",
+    "picked": "interview-prep",
+    "expected": "interview-prep",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Build the quarterly business review deck for the client",
+    "picked": "qbr-pack",
+    "expected": "qbr-pack",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Generate an invoice for 12 hours of consulting at 400 AED",
+    "picked": "invoice",
+    "expected": "invoice",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Turn these scribbles from the standup into proper notes",
+    "picked": "meeting-pack",
+    "expected": "meeting-notes",
+    "confidence": 0.51,
+    "correct": false
+  },
+  {
+    "task": "Draft the onboarding checklist for our new joiner",
+    "picked": "onboarding",
+    "expected": "onboarding",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Write a tiny python function to parse this date format",
+    "picked": "tiny-code",
+    "expected": "tiny-code",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Plan next week's operations for the restaurant",
+    "picked": "weekly-ops-plan",
+    "expected": "weekly-ops-plan",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Which menu items are running low on stock this week",
+    "picked": "stock-risk-brief",
+    "expected": "stock-risk-brief",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Build the promo calendar for Ramadan",
+    "picked": "promo-calendar-brief",
+    "expected": "promo-calendar-brief",
+    "confidence": 0.99,
+    "correct": true
+  },
+  {
+    "task": "What is the capital of France",
+    "picked": "none",
+    "expected": "none",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "task": "Delete all my files",
+    "picked": "none",
+    "expected": "none",
+    "confidence": 1.0,
+    "correct": true
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "filename": "claude_code_terminal.png",
+    "caption": "A terminal window showing Claude Code running an agentic loop with tool calls"
+  },
+  {
+    "filename": "rag_architecture.png",
+    "caption": "A whiteboard diagram of a RAG pipeline: load, chunk, embed, store, retrieve, generate"
+  },
+  {
+    "filename": "dubai_skyline_dusk.jpg",
+    "caption": "The Dubai skyline at dusk with the Burj Khalifa lit orange"
+  },
+  {
+    "filename": "team_offsite_2026.jpg",
+    "caption": "Eight people around a table at a team offsite, laptops open, sticky notes on the wall"
+  },
+  {
+    "filename": "attention_heatmap.png",
+    "caption": "A heatmap of transformer attention weights across a sentence, bright on the diagonal"
+  },
+  {
+    "filename": "cat_on_keyboard.jpg",
+    "caption": "A ginger cat sitting on a mechanical keyboard"
+  },
+  {
+    "filename": "lora_matrices.png",
+    "caption": "A diagram of LoRA: a frozen weight matrix W0 plus the product of two thin matrices B and A"
+  },
+  {
+    "filename": "conference_stage.jpg",
+    "caption": "A speaker on stage in front of a large screen at a technology conference"
+  },
+  {
+    "filename": "aws_console_cdk.png",
+    "caption": "An AWS console screenshot showing a CloudFormation stack deployed by CDK"
+  },
+  {
+    "filename": "whiteboard_churn.jpg",
+    "caption": "A whiteboard covered in customer churn funnel maths and arrows"
+  },
+  {
+    "filename": "coffee_and_laptop.jpg",
+    "caption": "A flat white next to a laptop showing a code editor in a cafe"
+  },
+  {
+    "filename": "confusion_matrix.png",
+    "caption": "A four by four confusion matrix with most weight on the diagonal"
+  },
+  {
+    "filename": "kubernetes_dashboard.png",
+    "caption": "A Kubernetes dashboard showing pods, some in a crash loop"
+  },
+  {
+    "filename": "family_beach.jpg",
+    "caption": "Two children building a sandcastle on a beach at sunset"
+  },
+  {
+    "filename": "jev_latency_chart.png",
+    "caption": "A bar chart comparing model latency, one bar far shorter than the others"
+  }
+]

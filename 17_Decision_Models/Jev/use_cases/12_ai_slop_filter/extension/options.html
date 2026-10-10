@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8">
+<title>Jev Slop Folder</title>
+<style>body{font:14px system-ui;padding:24px;max-width:460px}
+input{width:100%;padding:8px;font:13px ui-monospace,monospace;margin:8px 0}
+button{padding:8px 14px;font:600 13px system-ui;cursor:pointer}</style>
+<h3>Jev Slop Folder</h3>
+<p>Paste your Jev API key. It is stored in Chrome sync storage and only sent to api.typesafe.ai.</p>
+<input id="k" type="password" placeholder="apikey_...">
+<button id="s">Save</button> <span id="m"></span>
+<script>
+chrome.storage.sync.get("jevKey", d => { if (d.jevKey) k.value = d.jevKey; });
+s.onclick = () => chrome.storage.sync.set({ jevKey: k.value.trim() },
+  () => { m.textContent = "saved"; setTimeout(() => m.textContent = "", 1500); });
+</script>

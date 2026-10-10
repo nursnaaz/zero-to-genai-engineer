@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Jev Slop Folder",
+  "version": "1.0.0",
+  "description": "Folds away AI slop posts in a feed using one Jev call per post.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.typesafe.ai/*"],
+  "content_scripts": [{
+    "matches": ["https://x.com/*", "https://twitter.com/*", "https://www.linkedin.com/feed/*"],
+    "js": ["content.js"],
+    "css": ["styles.css"],
+    "run_at": "document_idle"
+  }],
+  "options_page": "options.html"
+}

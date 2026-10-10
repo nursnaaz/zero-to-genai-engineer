@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8">
+<style>body{font:13px system-ui;width:280px;padding:14px}
+button{width:100%;padding:8px;margin-top:8px;font:600 13px system-ui;cursor:pointer}</style>
+<b>Jev Ad Swipe File</b>
+<p id="n">0 ads saved</p>
+<button id="csv">Export CSV</button>
+<button id="clr">Clear</button>
+<script>
+const COLS = ["saved_at","format","cta","funnel_stage","confidence","copy"];
+chrome.storage.local.get("ads", d => n.textContent = `${(d.ads||[]).length} ads saved`);
+csv.onclick = () => chrome.storage.local.get("ads", d => {
+  const rows = d.ads || [];
+  const esc = v => `"${String(v).replace(/"/g,'""')}"`;
+  const body = [COLS.join(","), ...rows.map(r => COLS.map(c => esc(r[c])).join(","))].join("\n");
+  chrome.downloads.download({
+    url: URL.createObjectURL(new Blob([body], {type:"text/csv"})),
+    filename: "ad_swipe_file.csv" });
+});
+clr.onclick = () => chrome.storage.local.set({ads: []}, () => n.textContent = "0 ads saved");
+</script>

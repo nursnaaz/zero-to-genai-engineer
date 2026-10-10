@@ -1,0 +1,2537 @@
+{
+  "UC02 customer triage": {
+    "jev": {
+      "summary": {
+        "n": 60,
+        "accuracy": 0.9166666666666666,
+        "p50_ms": 350.242062471807,
+        "p95_ms": 479.76854199077934,
+        "in_tokens": 23583,
+        "out_tokens": 2772,
+        "cost_usd": null,
+        "n_conf80": 53,
+        "acc_conf80": 0.9811320754716981,
+        "errors": 0,
+        "wall_s": 22.5
+      },
+      "records": [
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 721.718915970996,
+          "in": 395,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 371.11475004348904,
+          "in": 399,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 397.88729208521545,
+          "in": 393,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 366.75616598222405,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 366.2129580043256,
+          "in": 393,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 361.3149169832468,
+          "in": 392,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 357.52591700293124,
+          "in": 391,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 343.66387489717454,
+          "in": 393,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 328.68291600607336,
+          "in": 400,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 337.9863330628723,
+          "in": 398,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "billing",
+          "conf": 0.85,
+          "ms": 410.5205839732662,
+          "in": 394,
+          "out": 46,
+          "correct": false
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.99,
+          "ms": 348.8885839469731,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 370.4395409440622,
+          "in": 392,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 366.4506250061095,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 364.83850004151464,
+          "in": 392,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 329.3457080144435,
+          "in": 395,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 420.8393330918625,
+          "in": 395,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 320.29279100243,
+          "in": 397,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 329.868333064951,
+          "in": 392,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.41,
+          "ms": 331.64320897776634,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 337.97954104375094,
+          "in": 400,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.96,
+          "ms": 326.57745794858783,
+          "in": 395,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.73,
+          "ms": 347.55441697780043,
+          "in": 394,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 329.49358399491757,
+          "in": 392,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "bug",
+          "conf": 0.45,
+          "ms": 349.0011249668896,
+          "in": 393,
+          "out": 46,
+          "correct": false
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 362.3775409068912,
+          "in": 395,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 350.3188749309629,
+          "in": 392,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.99,
+          "ms": 355.3630419773981,
+          "in": 393,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.99,
+          "ms": 703.8147919811308,
+          "in": 394,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 326.59141591284424,
+          "in": 392,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 447.63220800086856,
+          "in": 391,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 353.6697500385344,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 340.3626660583541,
+          "in": 396,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 479.76854199077934,
+          "in": 393,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "other",
+          "conf": 0.57,
+          "ms": 344.79825000744313,
+          "in": 390,
+          "out": 46,
+          "correct": false
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 350.1652500126511,
+          "in": 388,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 329.9997500143945,
+          "in": 396,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 388.7732080183923,
+          "in": 392,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 404.7817080281675,
+          "in": 390,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 338.04641594178975,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 341.6519579477608,
+          "in": 394,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 379.55804099328816,
+          "in": 390,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 349.4261249434203,
+          "in": 392,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.71,
+          "ms": 325.8205420570448,
+          "in": 390,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 367.3770419554785,
+          "in": 396,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 329.1931659914553,
+          "in": 392,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "bug",
+          "conf": 0.55,
+          "ms": 387.89604196790606,
+          "in": 394,
+          "out": 46,
+          "correct": false
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.99,
+          "ms": 650.7879169657826,
+          "in": 394,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 369.2992499563843,
+          "in": 392,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.92,
+          "ms": 371.19166704360396,
+          "in": 389,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.95,
+          "ms": 341.84104204177856,
+          "in": 389,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 354.95770792476833,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 347.1082500182092,
+          "in": 399,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "other",
+          "conf": 0.32,
+          "ms": 330.2225829102099,
+          "in": 391,
+          "out": 46,
+          "correct": false
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 333.337333984673,
+          "in": 389,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 344.2877499619499,
+          "in": 393,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 375.108459033072,
+          "in": 396,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 1.0,
+          "ms": 342.9432079428807,
+          "in": 391,
+          "out": 47,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 371.53787503484637,
+          "in": 391,
+          "out": 46,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.97,
+          "ms": 333.48079095594585,
+          "in": 397,
+          "out": 46,
+          "correct": true
+        }
+      ]
+    },
+    "strands": {
+      "summary": {
+        "n": 60,
+        "accuracy": 0.9333333333333333,
+        "p50_ms": 270.49883297877386,
+        "p95_ms": 282.7809170121327,
+        "in_tokens": 7978,
+        "out_tokens": 60,
+        "cost_usd": null,
+        "n_conf80": 36,
+        "acc_conf80": 1.0,
+        "errors": 0,
+        "wall_s": 18.5
+      },
+      "records": [
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.9272,
+          "ms": 2383.028040989302,
+          "in": 135,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9395,
+          "ms": 313.2076670881361,
+          "in": 139,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.9292,
+          "ms": 273.109000059776,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.5026,
+          "ms": 280.2396670449525,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.9205,
+          "ms": 271.2070000125095,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9487,
+          "ms": 273.6478339647874,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.877,
+          "ms": 270.2202498912811,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.8059,
+          "ms": 271.97337499819696,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.8972,
+          "ms": 295.79254193231463,
+          "in": 140,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9162,
+          "ms": 279.7289160080254,
+          "in": 136,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "billing",
+          "conf": 0.7873,
+          "ms": 280.1204170100391,
+          "in": 134,
+          "out": 1,
+          "correct": false
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.4821,
+          "ms": 271.3367909891531,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.861,
+          "ms": 274.1740000201389,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9498,
+          "ms": 273.403084021993,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.9316,
+          "ms": 276.49566589388996,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.8404,
+          "ms": 274.9835840659216,
+          "in": 135,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.9308,
+          "ms": 272.373832995072,
+          "in": 135,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9266,
+          "ms": 282.7809170121327,
+          "in": 137,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.8411,
+          "ms": 271.8790830112994,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.5508,
+          "ms": 271.8622920801863,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.4537,
+          "ms": 278.4585830522701,
+          "in": 140,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.844,
+          "ms": 270.2831659698859,
+          "in": 134,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.7844,
+          "ms": 269.66083294246346,
+          "in": 134,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.4133,
+          "ms": 271.1920419242233,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.6585,
+          "ms": 270.8204590016976,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9228,
+          "ms": 269.9427909683436,
+          "in": 134,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.9389,
+          "ms": 269.19358305167407,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.8043,
+          "ms": 270.1016250066459,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.8951,
+          "ms": 269.82562500052154,
+          "in": 135,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.8708,
+          "ms": 275.81699995789677,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.7271,
+          "ms": 267.38200010731816,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.7648,
+          "ms": 267.5120000494644,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.7986,
+          "ms": 273.70829100254923,
+          "in": 136,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9262,
+          "ms": 271.30837505683303,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.5463,
+          "ms": 279.05008394736797,
+          "in": 130,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.9056,
+          "ms": 224.32224999647588,
+          "in": 128,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.5363,
+          "ms": 268.24524998664856,
+          "in": 136,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.8977,
+          "ms": 269.8499590624124,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.9386,
+          "ms": 269.0756249940023,
+          "in": 130,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.5636,
+          "ms": 270.71449998766184,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.872,
+          "ms": 269.4572090404108,
+          "in": 134,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9114,
+          "ms": 270.0529170688242,
+          "in": 130,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.8057,
+          "ms": 268.35845806635916,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "other",
+          "conf": 0.3005,
+          "ms": 267.3632079968229,
+          "in": 130,
+          "out": 1,
+          "correct": false
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9419,
+          "ms": 269.2826249403879,
+          "in": 135,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.9336,
+          "ms": 269.32820794172585,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "bug",
+          "conf": 0.5439,
+          "ms": 269.7233340004459,
+          "in": 134,
+          "out": 1,
+          "correct": false
+        },
+        {
+          "gold": "billing",
+          "pred": "bug",
+          "conf": 0.7022,
+          "ms": 269.2548339255154,
+          "in": 134,
+          "out": 1,
+          "correct": false
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.9095,
+          "ms": 267.75774999987334,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.3959,
+          "ms": 277.30583294760436,
+          "in": 129,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.3444,
+          "ms": 269.71700007561594,
+          "in": 129,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.9297,
+          "ms": 269.29708290845156,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.8474,
+          "ms": 276.58191695809364,
+          "in": 139,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.1712,
+          "ms": 268.6632499098778,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.5303,
+          "ms": 268.86100007686764,
+          "in": 129,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.7021,
+          "ms": 267.64020801056176,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.8514,
+          "ms": 269.33454209938645,
+          "in": 135,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.9404,
+          "ms": 268.9594159601256,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.6228,
+          "ms": 266.78025000728667,
+          "in": 131,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.532,
+          "ms": 280.88858304545283,
+          "in": 137,
+          "out": 1,
+          "correct": true
+        }
+      ]
+    },
+    "luna": {
+      "summary": {
+        "n": 60,
+        "accuracy": 0.9833333333333333,
+        "p50_ms": 211.14993700757623,
+        "p95_ms": 264.73325002007186,
+        "in_tokens": 10774,
+        "out_tokens": 0,
+        "cost_usd": 0.0010774,
+        "n_conf80": 47,
+        "acc_conf80": 1.0,
+        "errors": 0,
+        "wall_s": 14.2
+      },
+      "records": [
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 335.4854580247775,
+          "in": 182,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 221.01500001735985,
+          "in": 184,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.97,
+          "ms": 1352.4388750083745,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.6,
+          "ms": 198.179166065529,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 203.96579103544354,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 427.4886669591069,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.93,
+          "ms": 214.31012509856373,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 210.86070802994072,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.97,
+          "ms": 194.41937503870577,
+          "in": 185,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.99,
+          "ms": 217.90512499865144,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "billing",
+          "conf": 0.31,
+          "ms": 210.7208330417052,
+          "in": 181,
+          "out": 0,
+          "correct": false
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.88,
+          "ms": 212.82016695477068,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.97,
+          "ms": 213.13199994619936,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.99,
+          "ms": 208.19341705646366,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.99,
+          "ms": 215.02487489487976,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.99,
+          "ms": 195.3297919826582,
+          "in": 182,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 221.65712504647672,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 220.2169579686597,
+          "in": 183,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.96,
+          "ms": 198.28291691374034,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.95,
+          "ms": 210.13829193543643,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 195.82933303900063,
+          "in": 184,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.92,
+          "ms": 225.3764170454815,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.97,
+          "ms": 215.17416602000594,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.87,
+          "ms": 203.92662496306002,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 212.26433396805078,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 192.62708397582173,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.99,
+          "ms": 201.47108403034508,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.93,
+          "ms": 208.5137499962002,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 229.72170799039304,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.75,
+          "ms": 203.9396249456331,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.93,
+          "ms": 200.06095909047872,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 1.0,
+          "ms": 211.43916598521173,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 224.69470801297575,
+          "in": 183,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 206.68104197829962,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.47,
+          "ms": 217.13637502398342,
+          "in": 177,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.99,
+          "ms": 202.35762500669807,
+          "in": 175,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.92,
+          "ms": 203.44320801086724,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.99,
+          "ms": 221.36116703040898,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.96,
+          "ms": 214.58808309398592,
+          "in": 177,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.55,
+          "ms": 204.37962503638119,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 217.45054109487683,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.99,
+          "ms": 194.48395795188844,
+          "in": 177,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.76,
+          "ms": 210.00062499661,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.37,
+          "ms": 243.80883399862796,
+          "in": 177,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 1.0,
+          "ms": 212.21637504640967,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.99,
+          "ms": 205.45020804274827,
+          "in": 179,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.55,
+          "ms": 197.1299999859184,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 221.33608302101493,
+          "in": 181,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.97,
+          "ms": 254.60912508424371,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.51,
+          "ms": 195.4195840517059,
+          "in": 176,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.89,
+          "ms": 197.14008294977248,
+          "in": 176,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 246.7492079595104,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.72,
+          "ms": 264.73325002007186,
+          "in": 184,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.45,
+          "ms": 227.72600001189858,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.72,
+          "ms": 210.28274996206164,
+          "in": 176,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 1.0,
+          "ms": 214.30183306802064,
+          "in": 180,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "bug",
+          "pred": "bug",
+          "conf": 0.99,
+          "ms": 192.0587089844048,
+          "in": 182,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "how-to",
+          "pred": "how-to",
+          "conf": 0.99,
+          "ms": 206.5195000031963,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "other",
+          "pred": "other",
+          "conf": 0.57,
+          "ms": 206.78783406037837,
+          "in": 178,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "billing",
+          "pred": "billing",
+          "conf": 0.99,
+          "ms": 221.99958399869502,
+          "in": 182,
+          "out": 0,
+          "correct": true
+        }
+      ]
+    }
+  },
+  "UC09 skill picker": {
+    "jev": {
+      "summary": {
+        "n": 14,
+        "accuracy": 0.9285714285714286,
+        "p50_ms": 348.8660624716431,
+        "p95_ms": 383.86545795947313,
+        "in_tokens": 12177,
+        "out_tokens": 1871,
+        "cost_usd": null,
+        "n_conf80": 13,
+        "acc_conf80": 1.0,
+        "errors": 0,
+        "wall_s": 5.0
+      },
+      "records": [
+        {
+          "gold": "cover-letter",
+          "pred": "cover-letter",
+          "conf": 1.0,
+          "ms": 363.44200000166893,
+          "in": 874,
+          "out": 133,
+          "correct": true
+        },
+        {
+          "gold": "meeting-pack",
+          "pred": "meeting-pack",
+          "conf": 0.99,
+          "ms": 365.602207952179,
+          "in": 869,
+          "out": 133,
+          "correct": true
+        },
+        {
+          "gold": "rca-pack",
+          "pred": "rca-pack",
+          "conf": 1.0,
+          "ms": 327.8827089816332,
+          "in": 872,
+          "out": 134,
+          "correct": true
+        },
+        {
+          "gold": "interview-prep",
+          "pred": "interview-prep",
+          "conf": 1.0,
+          "ms": 381.6070419270545,
+          "in": 869,
+          "out": 135,
+          "correct": true
+        },
+        {
+          "gold": "qbr-pack",
+          "pred": "qbr-pack",
+          "conf": 1.0,
+          "ms": 349.1109579335898,
+          "in": 869,
+          "out": 134,
+          "correct": true
+        },
+        {
+          "gold": "invoice",
+          "pred": "invoice",
+          "conf": 1.0,
+          "ms": 335.1289590355009,
+          "in": 876,
+          "out": 132,
+          "correct": true
+        },
+        {
+          "gold": "meeting-notes",
+          "pred": "meeting-pack",
+          "conf": 0.59,
+          "ms": 346.1512919748202,
+          "in": 871,
+          "out": 133,
+          "correct": false
+        },
+        {
+          "gold": "onboarding",
+          "pred": "onboarding",
+          "conf": 1.0,
+          "ms": 327.7994169620797,
+          "in": 873,
+          "out": 135,
+          "correct": true
+        },
+        {
+          "gold": "tiny-code",
+          "pred": "tiny-code",
+          "conf": 1.0,
+          "ms": 348.62116700969636,
+          "in": 870,
+          "out": 133,
+          "correct": true
+        },
+        {
+          "gold": "weekly-ops-plan",
+          "pred": "weekly-ops-plan",
+          "conf": 1.0,
+          "ms": 386.9230840355158,
+          "in": 868,
+          "out": 135,
+          "correct": true
+        },
+        {
+          "gold": "stock-risk-brief",
+          "pred": "stock-risk-brief",
+          "conf": 1.0,
+          "ms": 339.6931659663096,
+          "in": 870,
+          "out": 135,
+          "correct": true
+        },
+        {
+          "gold": "promo-calendar-brief",
+          "pred": "promo-calendar-brief",
+          "conf": 1.0,
+          "ms": 383.86545795947313,
+          "in": 866,
+          "out": 135,
+          "correct": true
+        },
+        {
+          "gold": "none",
+          "pred": "none",
+          "conf": 1.0,
+          "ms": 362.82941699028015,
+          "in": 866,
+          "out": 132,
+          "correct": true
+        },
+        {
+          "gold": "none",
+          "pred": "none",
+          "conf": 1.0,
+          "ms": 347.1928749931976,
+          "in": 864,
+          "out": 132,
+          "correct": true
+        }
+      ]
+    },
+    "strands": {
+      "summary": {
+        "n": 14,
+        "accuracy": 0.9285714285714286,
+        "p50_ms": 866.4893959648907,
+        "p95_ms": 900.8699998958036,
+        "in_tokens": 7725,
+        "out_tokens": 14,
+        "cost_usd": null,
+        "n_conf80": 12,
+        "acc_conf80": 0.9166666666666666,
+        "errors": 0,
+        "wall_s": 14.0
+      },
+      "records": [
+        {
+          "gold": "cover-letter",
+          "pred": "cover-letter",
+          "conf": 0.9882,
+          "ms": 2813.402291969396,
+          "in": 556,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "meeting-pack",
+          "pred": "meeting-pack",
+          "conf": 0.4832,
+          "ms": 863.7937089661136,
+          "in": 551,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "rca-pack",
+          "pred": "rca-pack",
+          "conf": 0.9981,
+          "ms": 832.0756249595433,
+          "in": 554,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "interview-prep",
+          "pred": "interview-prep",
+          "conf": 0.978,
+          "ms": 830.1479159854352,
+          "in": 552,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "qbr-pack",
+          "pred": "qbr-pack",
+          "conf": 0.9946,
+          "ms": 831.0822079656646,
+          "in": 551,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "invoice",
+          "pred": "invoice",
+          "conf": 0.9807,
+          "ms": 873.8809579517692,
+          "in": 559,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "meeting-notes",
+          "pred": "meeting-pack",
+          "conf": 0.8,
+          "ms": 860.0094169378281,
+          "in": 554,
+          "out": 1,
+          "correct": false
+        },
+        {
+          "gold": "onboarding",
+          "pred": "onboarding",
+          "conf": 0.9887,
+          "ms": 878.9156660204753,
+          "in": 552,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "tiny-code",
+          "pred": "tiny-code",
+          "conf": 0.9926,
+          "ms": 897.3605829523876,
+          "in": 552,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "weekly-ops-plan",
+          "pred": "weekly-ops-plan",
+          "conf": 0.9981,
+          "ms": 880.7680840836838,
+          "in": 550,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "stock-risk-brief",
+          "pred": "stock-risk-brief",
+          "conf": 0.9784,
+          "ms": 842.3741670558229,
+          "in": 552,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "promo-calendar-brief",
+          "pred": "promo-calendar-brief",
+          "conf": 0.6861,
+          "ms": 857.3529999703169,
+          "in": 548,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "none",
+          "pred": "none",
+          "conf": 0.9137,
+          "ms": 869.1850829636678,
+          "in": 548,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "none",
+          "pred": "none",
+          "conf": 0.9654,
+          "ms": 900.8699998958036,
+          "in": 546,
+          "out": 1,
+          "correct": true
+        }
+      ]
+    },
+    "luna": {
+      "summary": {
+        "n": 14,
+        "accuracy": 0.8571428571428571,
+        "p50_ms": 214.27108306670561,
+        "p95_ms": 302.35241597983986,
+        "in_tokens": 8067,
+        "out_tokens": 0,
+        "cost_usd": 0.0008067,
+        "n_conf80": 12,
+        "acc_conf80": 1.0,
+        "errors": 0,
+        "wall_s": 3.2
+      },
+      "records": [
+        {
+          "gold": "cover-letter",
+          "pred": "cover-letter",
+          "conf": 1.0,
+          "ms": 221.5926250210032,
+          "in": 581,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "meeting-pack",
+          "pred": "weekly-ops-plan",
+          "conf": 0.31,
+          "ms": 327.44658400770277,
+          "in": 576,
+          "out": 0,
+          "correct": false
+        },
+        {
+          "gold": "rca-pack",
+          "pred": "rca-pack",
+          "conf": 0.92,
+          "ms": 226.18670796509832,
+          "in": 579,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "interview-prep",
+          "pred": "interview-prep",
+          "conf": 0.86,
+          "ms": 214.27170804236084,
+          "in": 576,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "qbr-pack",
+          "pred": "qbr-pack",
+          "conf": 0.91,
+          "ms": 221.52737504802644,
+          "in": 576,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "invoice",
+          "pred": "invoice",
+          "conf": 0.94,
+          "ms": 214.2704580910504,
+          "in": 580,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "meeting-notes",
+          "pred": "meeting-pack",
+          "conf": 0.44,
+          "ms": 259.1333750169724,
+          "in": 578,
+          "out": 0,
+          "correct": false
+        },
+        {
+          "gold": "onboarding",
+          "pred": "onboarding",
+          "conf": 0.96,
+          "ms": 196.4014999102801,
+          "in": 576,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "tiny-code",
+          "pred": "tiny-code",
+          "conf": 0.98,
+          "ms": 196.550540975295,
+          "in": 577,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "weekly-ops-plan",
+          "pred": "weekly-ops-plan",
+          "conf": 0.99,
+          "ms": 199.3474999908358,
+          "in": 574,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "stock-risk-brief",
+          "pred": "stock-risk-brief",
+          "conf": 0.92,
+          "ms": 302.35241597983986,
+          "in": 577,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "promo-calendar-brief",
+          "pred": "promo-calendar-brief",
+          "conf": 0.97,
+          "ms": 202.7813330059871,
+          "in": 573,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "none",
+          "pred": "none",
+          "conf": 0.96,
+          "ms": 195.66433306317776,
+          "in": 573,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "none",
+          "pred": "none",
+          "conf": 0.94,
+          "ms": 202.63641595374793,
+          "in": 571,
+          "out": 0,
+          "correct": true
+        }
+      ]
+    }
+  },
+  "UC12 AI slop filter": {
+    "jev": {
+      "summary": {
+        "n": 14,
+        "accuracy": 1.0,
+        "p50_ms": 365.18112500198185,
+        "p95_ms": 412.8673329250887,
+        "in_tokens": 5047,
+        "out_tokens": 280,
+        "cost_usd": null,
+        "n_conf80": 8,
+        "acc_conf80": 1.0,
+        "errors": 0,
+        "wall_s": 5.3
+      },
+      "records": [
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.78,
+          "ms": 378.5942909307778,
+          "in": 363,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8999999999999999,
+          "ms": 359.78945810347795,
+          "in": 363,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.84,
+          "ms": 368.88212501071393,
+          "in": 361,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8600000000000001,
+          "ms": 412.8673329250887,
+          "in": 359,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.8200000000000001,
+          "ms": 411.5519169718027,
+          "in": 369,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8999999999999999,
+          "ms": 350.2691250760108,
+          "in": 367,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.56,
+          "ms": 466.62791608832777,
+          "in": 353,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8600000000000001,
+          "ms": 410.5066249612719,
+          "in": 357,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.74,
+          "ms": 344.5136660011485,
+          "in": 362,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.28,
+          "ms": 397.54537504632026,
+          "in": 362,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.7,
+          "ms": 354.8894169507548,
+          "in": 353,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8,
+          "ms": 345.03795905038714,
+          "in": 371,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.62,
+          "ms": 344.87695794086903,
+          "in": 351,
+          "out": 20,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8600000000000001,
+          "ms": 361.4801249932498,
+          "in": 356,
+          "out": 20,
+          "correct": true
+        }
+      ]
+    },
+    "strands": {
+      "summary": {
+        "n": 14,
+        "accuracy": 0.8571428571428571,
+        "p50_ms": 287.18695807037875,
+        "p95_ms": 371.2604170432314,
+        "in_tokens": 1892,
+        "out_tokens": 14,
+        "cost_usd": null,
+        "n_conf80": 3,
+        "acc_conf80": 1.0,
+        "errors": 0,
+        "wall_s": 5.9
+      },
+      "records": [
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.8556,
+          "ms": 2209.7542081028223,
+          "in": 137,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.7856000000000001,
+          "ms": 371.2604170432314,
+          "in": 137,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.7952,
+          "ms": 289.81295810081065,
+          "in": 136,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.5246,
+          "ms": 284.56095803994685,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.79,
+          "ms": 304.30474993772805,
+          "in": 142,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8432,
+          "ms": 298.9883749978617,
+          "in": 143,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "slop",
+          "conf": 0.07160000000000011,
+          "ms": 225.3815830918029,
+          "in": 128,
+          "out": 1,
+          "correct": false
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.7718,
+          "ms": 276.5556669328362,
+          "in": 132,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.849,
+          "ms": 284.3610420823097,
+          "in": 135,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "human",
+          "conf": 0.5856,
+          "ms": 291.58491699490696,
+          "in": 137,
+          "out": 1,
+          "correct": false
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.07520000000000004,
+          "ms": 230.56962504051626,
+          "in": 128,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.5178,
+          "ms": 296.8439169926569,
+          "in": 145,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.47719999999999996,
+          "ms": 237.12391697335988,
+          "in": 126,
+          "out": 1,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.6082000000000001,
+          "ms": 277.1564160939306,
+          "in": 133,
+          "out": 1,
+          "correct": true
+        }
+      ]
+    },
+    "luna": {
+      "summary": {
+        "n": 14,
+        "accuracy": 1.0,
+        "p50_ms": 208.83602049434558,
+        "p95_ms": 231.52625001966953,
+        "in_tokens": 3254,
+        "out_tokens": 0,
+        "cost_usd": 0.00032540000000000005,
+        "n_conf80": 8,
+        "acc_conf80": 1.0,
+        "errors": 0,
+        "wall_s": 4.1
+      },
+      "records": [
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.76,
+          "ms": 204.87962500192225,
+          "in": 233,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.96,
+          "ms": 1298.5327920177951,
+          "in": 236,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.78,
+          "ms": 223.46466698218137,
+          "in": 229,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8999999999999999,
+          "ms": 209.2361249960959,
+          "in": 232,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.7,
+          "ms": 204.08404199406505,
+          "in": 236,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.96,
+          "ms": 207.6416249619797,
+          "in": 245,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.8,
+          "ms": 208.43591599259526,
+          "in": 225,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8999999999999999,
+          "ms": 200.75683295726776,
+          "in": 233,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.6799999999999999,
+          "ms": 217.66604203730822,
+          "in": 231,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8200000000000001,
+          "ms": 225.99833295680583,
+          "in": 238,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.74,
+          "ms": 205.06820909213275,
+          "in": 225,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.8999999999999999,
+          "ms": 205.5322079686448,
+          "in": 240,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "human",
+          "pred": "human",
+          "conf": 0.64,
+          "ms": 226.49154195096344,
+          "in": 221,
+          "out": 0,
+          "correct": true
+        },
+        {
+          "gold": "slop",
+          "pred": "slop",
+          "conf": 0.9199999999999999,
+          "ms": 231.52625001966953,
+          "in": 230,
+          "out": 0,
+          "correct": true
+        }
+      ]
+    }
+  }
+}

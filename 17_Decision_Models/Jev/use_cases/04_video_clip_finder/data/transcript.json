@@ -1,0 +1,132 @@
+[
+  {
+    "start": 0,
+    "end": 6,
+    "text": "Welcome back to the show, today we are talking about shipping AI products."
+  },
+  {
+    "start": 6,
+    "end": 12,
+    "text": "I want to start with something you said last year that stuck with me."
+  },
+  {
+    "start": 12,
+    "end": 18,
+    "text": "You said most AI startups die of demo success, not technical failure."
+  },
+  {
+    "start": 19,
+    "end": 25,
+    "text": "Right, and I still believe that. A demo proves nothing about reliability."
+  },
+  {
+    "start": 26,
+    "end": 32,
+    "text": "The demo runs once, in your hands, on the input you chose."
+  },
+  {
+    "start": 32,
+    "end": 38,
+    "text": "Production runs ten thousand times, on inputs nobody imagined."
+  },
+  {
+    "start": 39,
+    "end": 45,
+    "text": "So what is the first thing you tell a team that has a working demo?"
+  },
+  {
+    "start": 45,
+    "end": 51,
+    "text": "Build the evaluation set before you build anything else."
+  },
+  {
+    "start": 50,
+    "end": 56,
+    "text": "If you cannot tell whether a change made it better, you are not engineering, you are gambling."
+  },
+  {
+    "start": 58,
+    "end": 64,
+    "text": "That is a strong line. Do teams actually push back on that?"
+  },
+  {
+    "start": 64,
+    "end": 70,
+    "text": "Constantly. Everyone wants to ship the feature, nobody wants to build the ruler."
+  },
+  {
+    "start": 71,
+    "end": 77,
+    "text": "But the ruler is what lets you ship the feature twice."
+  },
+  {
+    "start": 77,
+    "end": 83,
+    "text": "Let us talk about cost, because that is where a lot of projects quietly die."
+  },
+  {
+    "start": 84,
+    "end": 90,
+    "text": "The mistake is treating every request as if it needs the biggest model."
+  },
+  {
+    "start": 90,
+    "end": 96,
+    "text": "Ninety percent of what an agent does is classification and routing."
+  },
+  {
+    "start": 96,
+    "end": 102,
+    "text": "You do not need a frontier model to decide whether an email needs a reply."
+  },
+  {
+    "start": 103,
+    "end": 109,
+    "text": "We cut our bill by a factor of twelve just by routing properly."
+  },
+  {
+    "start": 110,
+    "end": 116,
+    "text": "Twelve times. Say that again for the people skimming."
+  },
+  {
+    "start": 115,
+    "end": 121,
+    "text": "Twelve times cheaper, and it got faster, because small models answer quicker."
+  },
+  {
+    "start": 123,
+    "end": 129,
+    "text": "What about quality? Everyone assumes cheaper means worse."
+  },
+  {
+    "start": 129,
+    "end": 135,
+    "text": "On narrow decisions, a specialised small model often beats a big one."
+  },
+  {
+    "start": 136,
+    "end": 142,
+    "text": "The big model is reasoning from scratch every time. The small one just decides."
+  },
+  {
+    "start": 144,
+    "end": 150,
+    "text": "Okay, last question. What would you tell someone starting today?"
+  },
+  {
+    "start": 150,
+    "end": 156,
+    "text": "Pick one painful workflow in a real business and make it boring."
+  },
+  {
+    "start": 157,
+    "end": 163,
+    "text": "Boring is the goal. Boring means it works every time and nobody talks about it."
+  },
+  {
+    "start": 165,
+    "end": 171,
+    "text": "That is a great place to end. Thanks for coming on."
+  }
+]

@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RLCD · The Training Behind Jev · Session 17</title>
+<style>
+:root{
+  --orange:#e8820c;--dark:#0a1420;--slate:#18242f;--warm:#faf6f0;
+  --muted:#7a8ea0;--muted2:#666;--red:#e05252;--green:#3dba6c;--blue:#5a9abf;--violet:#7c6bf0;
+  --ink:#1a1a2e;--mono:ui-monospace,"SF Mono",Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+body{font-family:var(--sans);background:#fff;color:var(--ink);line-height:1.5}
+nav.dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px;z-index:100}
+nav.dots a{width:9px;height:9px;border-radius:50%;background:rgba(122,142,160,.35);display:block;transition:.25s;position:relative}
+nav.dots a:hover,nav.dots a.active{background:var(--orange);transform:scale(1.35)}
+nav.dots a::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);white-space:nowrap;font:700 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--orange);background:rgba(10,20,32,.92);padding:4px 8px;border-radius:4px;opacity:0;pointer-events:none;transition:.2s}
+nav.dots a:hover::after{opacity:1}
+.counter{position:fixed;right:22px;bottom:18px;font:700 11px var(--mono);color:var(--muted);z-index:100}
+.s{min-height:100vh;width:100%;display:flex;align-items:center;justify-content:center;padding:80px 7vw;position:relative;scroll-snap-align:start;background:#fff;color:var(--ink)}
+.s-dark{background:var(--dark);color:#eef2f6}
+.s-slate{background:var(--slate);color:#eef2f6}
+.s-warm{background:var(--warm);color:var(--ink)}
+.tag{position:absolute;top:36px;left:7vw;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange)}
+.inner{max-width:1040px;width:100%}
+h1{font-size:clamp(34px,5.2vw,58px);font-weight:800;line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(24px,3.3vw,38px);font-weight:800;line-height:1.18;letter-spacing:-.015em}
+h3.k{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.sub{margin-top:14px;font-size:17px;color:var(--muted);max-width:700px;line-height:1.55}
+.s-warm .sub{color:var(--muted2)}
+.bar{width:56px;height:4px;background:var(--orange);margin:18px 0 0;border:0}
+.grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin-top:26px;align-items:center}
+.grid2.even{grid-template-columns:1fr 1fr}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+@media(max-width:900px){.grid2,.grid2.even,.grid3{grid-template-columns:1fr}nav.dots,.counter{display:none}}
+.panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px}
+.s-warm .panel{background:#fff;border:1px solid #e8e8ee;box-shadow:0 8px 28px rgba(0,0,0,.05)}
+.btn{font:700 12px var(--mono);padding:10px 16px;border-radius:6px;border:0;background:var(--orange);color:#1a1207;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:#eef2f6}
+.s-warm .btn.ghost{border-color:#ccc;color:var(--ink)}
+.btn.sel{outline:2px solid var(--orange);outline-offset:2px}
+.status{font:600 12px var(--mono);color:var(--muted);margin-left:6px}
+.status.ok{color:var(--green)}.status.bad{color:var(--red)}
+.ctrl{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:14px}
+.call{background:rgba(232,130,12,.1);border-left:3px solid var(--orange);padding:14px 16px;border-radius:4px;font-size:14.5px;line-height:1.55;font-weight:600;margin-top:16px}
+.call.warn{background:rgba(224,82,82,.1);border-left-color:var(--red)}
+.call.good{background:rgba(61,186,108,.1);border-left-color:var(--green)}
+.def{font-size:16px;line-height:1.6;font-weight:600}
+.def b,.hl{color:var(--orange)}
+.mono{font-family:var(--mono)}
+input[type=range]{width:100%;accent-color:var(--orange)}
+.lbl{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* --- s19/s20: measured head to head --------------------------------- */
+.bench{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media(max-width:900px){.bench{grid-template-columns:1fr}}
+.bq{border-radius:14px;padding:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+.bq.jev{border-color:rgba(232,130,12,.55);background:rgba(232,130,12,.08)}
+.bq .who{font:800 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.bq .big{font:800 34px var(--mono);letter-spacing:-.02em;margin:6px 0 2px}
+.bq .ci{font:600 11px var(--mono);color:var(--muted)}
+.bq .row{display:flex;justify-content:space-between;font:600 12.5px var(--mono);
+         padding:5px 0;border-top:1px solid rgba(255,255,255,.08);margin-top:8px}
+.bq .row span:last-child{color:#eef2f6}
+.s-warm .bq .row span:last-child{color:var(--ink)}
+.accbar{height:8px;border-radius:99px;background:rgba(122,142,160,.25);overflow:hidden;margin-top:8px}
+.accbar i{display:block;height:100%;background:var(--orange);width:0;transition:width .6s}
+.bq.luna .accbar i{background:var(--green)}
+.bq.strands .accbar i{background:var(--blue)}
+.ucpick{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.mct{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px}
+.mct th,.mct td{padding:9px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
+.s-warm .mct th,.s-warm .mct td{border-bottom-color:#e8e8ee}
+.mct th{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mct td.good{color:var(--green);font-weight:700}
+.mct td.bad{color:var(--red);font-weight:700}
+.gatewrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media(max-width:900px){.gatewrap{grid-template-columns:1fr}}
+.gcol{border-radius:12px;padding:14px 16px;border:1px solid rgba(255,255,255,.12)}
+.gcol.hi{background:rgba(61,186,108,.1);border-color:rgba(61,186,108,.4)}
+.gcol.lo{background:rgba(224,82,82,.09);border-color:rgba(224,82,82,.4)}
+.gcol h4{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.gcol.hi h4{color:var(--green)}.gcol.lo h4{color:var(--red)}
+.gcol .gr{display:flex;justify-content:space-between;font:600 13px var(--mono);padding:4px 0}
+svg text{font-family:var(--sans)}
+.hero{text-align:center;max-width:860px;margin:0 auto}
+.hero .sub,.hero .bar{margin-left:auto;margin-right:auto}
+
+/* title pills */
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.pill{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.18);color:#cfd8e0}
+.pill b{color:var(--orange)}
+
+/* dots wall */
+.wall{display:grid;grid-template-columns:repeat(10,1fr);gap:8px}
+.wd{aspect-ratio:1;border-radius:50%;background:rgba(122,142,160,.25);display:flex;align-items:center;justify-content:center;font:800 9px var(--mono);color:#fff;transition:.35s}
+.wd.g{background:var(--green)}.wd.r{background:var(--red);box-shadow:0 0 0 4px rgba(224,82,82,.3)}
+
+/* system 1/2 */
+.sys{border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,.12)}
+.sys .big{font-size:40px;line-height:1}
+.sys h4{font-size:17px;margin:10px 0 6px}
+.sys p{font-size:13.5px;color:var(--muted);line-height:1.5}
+.sys.one{border-color:var(--orange);background:rgba(232,130,12,.08)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+.fact{padding:12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);text-align:center}
+.fact .n{font:800 18px var(--mono);color:var(--orange)}.fact .t{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.35}
+
+/* shapes */
+.shape{background:#fff;border:1px solid #e8e8ee;border-radius:12px;padding:16px;box-shadow:0 8px 28px rgba(0,0,0,.05)}
+.shape .ty{font:800 12px var(--mono);color:var(--orange);letter-spacing:.06em}
+.shape .q{font-size:14px;font-weight:700;margin:8px 0 12px;min-height:40px}
+.pb{display:grid;grid-template-columns:72px 1fr 40px;gap:8px;align-items:center;font-size:12px;margin:5px 0}
+.pb .tr{height:12px;border-radius:99px;background:#eef0f4;overflow:hidden}
+.pb .tr span{display:block;height:100%;border-radius:99px;background:var(--blue);width:0;transition:width .7s}
+.pb.top .tr span{background:var(--orange)}
+.pb .v{font:700 11px var(--mono);text-align:right;color:#555}
+.s-dark .pb .tr,.s-slate .pb .tr{background:rgba(255,255,255,.1)}
+.s-dark .pb .v,.s-slate .pb .v{color:#cfd8e0}
+
+/* code */
+pre.code{background:#07101a;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px;font:12.5px/1.55 var(--mono);color:#cfe3f5;overflow:auto;white-space:pre}
+pre.code .c{color:#6b7f92}pre.code .str{color:#9fe0a8}pre.code .k{color:#ffc47a}
+
+/* training ring */
+.ring{display:grid;grid-template-columns:1fr 60px 1fr;grid-template-rows:auto 50px auto;gap:0;align-items:center}
+.rcard{border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);min-height:112px;transition:.35s}
+.rcard.on{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,130,12,.25);background:rgba(232,130,12,.08)}
+.rcard .st{font:800 11px var(--mono);color:var(--orange);letter-spacing:.08em}
+.rcard .tt{font-weight:800;font-size:15px;margin:4px 0}
+.rcard .vv{font:600 13px var(--mono);color:#cfd8e0;min-height:38px;line-height:1.45}
+.ra{text-align:center;font-size:26px;font-weight:800;color:var(--muted);transition:.3s}
+.ra.on{color:var(--orange)}
+.pen{height:14px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:8px}
+.pen span{display:block;height:100%;width:0;transition:width .6s;border-radius:99px}
+
+/* bars chart */
+.vbars{display:flex;align-items:flex-end;gap:10px;height:200px;padding:0 4px;border-bottom:1px solid rgba(255,255,255,.2)}
+.vb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.vb span{width:100%;border-radius:6px 6px 0 0;background:rgba(90,154,191,.6);transition:height .5s,background .3s}
+.vb.best span{background:var(--green)}
+.vb .n{font:700 11px var(--mono);margin-bottom:4px;color:#cfd8e0}
+.vbl{display:flex;gap:10px;padding:6px 4px 0}
+.vbl div{flex:1;text-align:center;font:700 11px var(--mono);color:var(--muted)}
+
+/* AR vs parallel */
+.race{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lane{border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);min-height:250px}
+.lane h4{font:800 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.toks{display:flex;flex-wrap:wrap;gap:6px;min-height:80px;align-content:flex-start}
+.tok{font:700 12px var(--mono);padding:6px 9px;border-radius:6px;background:rgba(90,154,191,.25);opacity:0;transform:translateY(6px);transition:.25s}
+.tok.show{opacity:1;transform:none}
+.passes{font:800 28px var(--mono);margin-top:10px}
+.passes small{font-size:11px;color:var(--muted);display:block;letter-spacing:.06em}
+
+/* known / unknown */
+.kcol{border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+.kcol h4{font:800 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.kcol ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.kcol li{font-size:13.5px;line-height:1.45;padding-left:22px;position:relative}
+.kcol li::before{position:absolute;left:0;top:0;font-weight:800}
+.kcol.yes{border-color:rgba(61,186,108,.5)}.kcol.yes h4{color:var(--green)}.kcol.yes li::before{content:"✓";color:var(--green)}
+.kcol.no{border-color:rgba(224,82,82,.45)}.kcol.no h4{color:var(--red)}.kcol.no li::before{content:"?";color:var(--red)}
+.kcol.guess{border-color:rgba(232,130,12,.5)}.kcol.guess h4{color:var(--orange)}.kcol.guess li::before{content:"~";color:var(--orange)}
+
+/* gate sim */
+.tickets{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:12px}
+.tk{aspect-ratio:1;border-radius:6px;background:rgba(122,142,160,.3);display:flex;align-items:center;justify-content:center;font:800 9px var(--mono);color:rgba(255,255,255,.85);transition:.25s}
+.tk.ok{background:var(--green)}.tk.bad{background:var(--red)}.tk.hum{background:rgba(122,142,160,.28);color:#9fb0c0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font:700 11px var(--mono);color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.stat{padding:12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);text-align:center}
+.stat .n{font:800 22px var(--mono)}.stat .t{font-size:11px;color:var(--muted);margin-top:2px}
+
+table.mx{width:100%;border-collapse:collapse;margin-top:16px;background:rgba(255,255,255,.03);border-radius:8px;overflow:hidden}
+table.mx th,table.mx td{padding:11px 14px;text-align:left;font-size:14px;border-bottom:1px solid rgba(255,255,255,.07);vertical-align:top}
+table.mx th{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+table.mx tr.hl td{color:#ffd29a;font-weight:700;background:rgba(232,130,12,.08)}
+.s-warm table.mx{background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.05)}
+.s-warm table.mx td,.s-warm table.mx th{border-bottom:1px solid #eee}
+.s-warm table.mx tr.hl td{color:#a85a00}
+
+.recap{display:flex;flex-direction:column;max-width:760px;margin-top:22px}
+.rc{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.rc .n{font:800 16px var(--mono);color:var(--orange)}
+.rc .t{font-weight:700;font-size:15px}.rc .t span{display:block;font-weight:600;font-size:13px;color:var(--muted);margin-top:3px}
+.papers{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.papers a{font:700 11px var(--mono);padding:8px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.2);color:#eef2f6;text-decoration:none}
+.papers a:hover{border-color:var(--orange);color:var(--orange)}
+.src{font:600 11px var(--mono);color:var(--muted);margin-top:14px}
+.src a{color:var(--muted)}
+.s-warm .src,.s-warm .src a{color:#888}
+
+/* alternatives */
+.alts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.alt{border-radius:14px;padding:18px 16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);min-height:360px}
+.alt.jev{border-color:rgba(232,130,12,.55);background:rgba(232,130,12,.08)}
+.alt .who{font:800 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.alt h3{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.alt .when{font:600 12px var(--mono);color:var(--orange);margin-bottom:12px}
+.alt ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.alt li{font-size:13.5px;line-height:1.4;padding-left:14px;position:relative;color:#d7e0e8}
+.alt li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+@media(max-width:900px){.alts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="dots" id="dots" aria-label="Slides"></nav>
+<div class="counter" id="counter">1 / 18</div>
+
+<!-- 0 title -->
+<section class="s s-dark" id="s0" data-label="Title">
+  <div class="tag">Session 17 · Decision Models</div>
+  <div class="hero">
+    <h1>Can an AI tell you<br><span class="hl">when it is guessing?</span></h1>
+    <div class="bar"></div>
+    <p class="sub">RLCD, Reinforcement Learning for Calibrated Decisions, is the training method behind TypeSafe's <b style="color:#fff">Jev</b>. Today: what calibration means, how RLCD rewards it, what we know about Jev's architecture, and how to use it in production.</p>
+    <div class="pills">
+      <span class="pill"><b>01</b> The problem</span>
+      <span class="pill"><b>02</b> Calibration</span>
+      <span class="pill"><b>03</b> Training</span>
+      <span class="pill"><b>04</b> Architecture</span>
+      <span class="pill"><b>05</b> Production</span>
+    </div>
+  </div>
+</section>
+
+<!-- 1 missing -->
+<section class="s s-slate" id="s1" data-label="What's missing">
+  <div class="tag">What was missing</div>
+  <div class="inner">
+    <h2>An LLM that is right 95% of the time<br>still cannot automate the job.</h2>
+    <div class="grid2">
+      <div class="panel">
+        <div class="lbl" style="margin-bottom:12px">40 support tickets · LLM says "I'm sure" on every one · illustrative</div>
+        <div class="wall" id="wall"></div>
+        <div class="ctrl">
+          <button class="btn" id="playWall">Reveal the truth</button>
+          <span class="status" id="stWall">All 40 look identical</span>
+        </div>
+      </div>
+      <div>
+        <p class="def">Two of the 40 answers are wrong. The model sounded <b>equally confident</b> on all 40.</p>
+        <div class="call warn">TypeSafe's launch post: <i>"If a model can do a task 95% of the time but doesn't say when it's in the 5%, it can't automate that task."</i> A human would have to re-check every answer.</div>
+        <div class="call">In S03 you saw RLHF make GPT helpful. TypeSafe points out that RLHF <i>"can also reward sycophancy and confident-sounding hallucinations."</i> What we need now is a model whose confidence <b>you can act on</b>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 meet jev -->
+<section class="s s-dark" id="s2" data-label="Meet Jev">
+  <div class="tag">Meet Jev</div>
+  <div class="inner">
+    <h2>A "System One" model: fast, intuitive decisions.<br>No sentences at all.</h2>
+    <div class="grid2 even" style="margin-top:22px">
+      <div class="sys one">
+        <div class="big">⚡</div>
+        <h4>System 1: Jev</h4>
+        <p>Fast and intuitive. "Is this email spam?" "Which team should get this ticket?" Picks an answer in about 70–500 ms and returns a probability.</p>
+      </div>
+      <div class="sys">
+        <div class="big">🧠</div>
+        <h4>System 2: GPT / Claude</h4>
+        <p>Slow and deliberate. Writes code, drafts replies, reasons step by step. Takes seconds or minutes and produces free text.</p>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="n">15 Sep 2026</div><div class="t">Released by TypeSafe AI (early access)</div></div>
+      <div class="fact"><div class="n">jev-1.13.0</div><div class="t">Only published version so far</div></div>
+      <div class="fact"><div class="n">$0.042</div><div class="t">per million input tokens · output is free</div></div>
+      <div class="fact"><div class="n">64k</div><div class="t">tokens of context per request</div></div>
+    </div>
+    <div class="call">The names come from Kahneman's <i>Thinking, Fast and Slow</i> (System 1 vs System 2) and from the economist William Stanley Jevons: when intelligence gets cheaper, people use far more of it. Founder Diogo Almeida previously worked at OpenAI on InstructGPT and ChatGPT, the RLHF research you studied in S03.</div>
+    <p class="src">Sources: <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe launch post</a> · <a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener">TypeSafe model docs</a> · <a href="https://en.wikipedia.org/wiki/Jev_(AI_model)" target="_blank" rel="noopener">Wikipedia</a></p>
+  </div>
+</section>
+
+<!-- 3 function -->
+<section class="s s-warm" id="s3" data-label="Three shapes">
+  <div class="tag">What Jev returns</div>
+  <div class="inner">
+    <h2>Unstructured state in.<br>Typed probabilities out.</h2>
+    <p class="sub">TypeSafe calls it "a frontier-intelligence function call." You define the possible answers. Jev can only pick from your list, so it cannot invent a category you never offered.</p>
+    <div class="grid3">
+      <div class="shape">
+        <div class="ty">noul · true / false</div>
+        <div class="q">"Does this email need a reply?"</div>
+        <div class="pb top"><span>true</span><div class="tr"><span data-w="88"></span></div><span class="v">0.88</span></div>
+        <div class="pb"><span>false</span><div class="tr"><span data-w="12"></span></div><span class="v">0.12</span></div>
+      </div>
+      <div class="shape">
+        <div class="ty">choice · pick from a menu</div>
+        <div class="q">"Is this billing, bug, how-to or other?"</div>
+        <div class="pb top"><span>billing</span><div class="tr"><span data-w="82"></span></div><span class="v">0.82</span></div>
+        <div class="pb"><span>bug</span><div class="tr"><span data-w="10"></span></div><span class="v">0.10</span></div>
+        <div class="pb"><span>how-to</span><div class="tr"><span data-w="5"></span></div><span class="v">0.05</span></div>
+        <div class="pb"><span>other</span><div class="tr"><span data-w="3"></span></div><span class="v">0.03</span></div>
+      </div>
+      <div class="shape">
+        <div class="ty">score · ordered scale</div>
+        <div class="q">"How likely is this customer to cancel? (1–5)"</div>
+        <div class="pb"><span>1 low</span><div class="tr"><span data-w="5"></span></div><span class="v">0.05</span></div>
+        <div class="pb"><span>2</span><div class="tr"><span data-w="10"></span></div><span class="v">0.10</span></div>
+        <div class="pb"><span>3</span><div class="tr"><span data-w="20"></span></div><span class="v">0.20</span></div>
+        <div class="pb top"><span>4</span><div class="tr"><span data-w="45"></span></div><span class="v">0.45</span></div>
+        <div class="pb"><span>5 high</span><div class="tr"><span data-w="20"></span></div><span class="v">0.20</span></div>
+      </div>
+    </div>
+    <div class="ctrl"><button class="btn" id="playShapes">Ask Jev all three</button><span class="status" id="stShapes">Probabilities shown are illustrative</span></div>
+    <div class="call" style="color:var(--ink)">Every answer is a <b>full probability distribution</b>, not just a label. That distribution is what RLCD trains to be honest.</div>
+    <div class="call warn" style="color:var(--ink)">TypeSafe says Jev "can't hallucinate." That means it can never return an option outside your list. It can still pick the <b>wrong</b> option from your list.</div>
+  </div>
+</section>
+
+<!-- 4 calibration -->
+<section class="s s-slate" id="s4" data-label="Calibration">
+  <div class="tag">The one idea</div>
+  <div class="inner">
+    <h2>Calibration: when it says 80%,<br>it is right 80% of the time.</h2>
+    <div class="grid2">
+      <div class="panel">
+        <svg viewBox="0 0 360 300" width="100%" id="relSvg" aria-label="Reliability diagram">
+          <line x1="50" y1="250" x2="340" y2="250" stroke="#7a8ea0" stroke-width="1"/>
+          <line x1="50" y1="250" x2="50" y2="20" stroke="#7a8ea0" stroke-width="1"/>
+          <line x1="50" y1="250" x2="340" y2="20" stroke="#e8820c" stroke-width="2" stroke-dasharray="6 5"/>
+          <text x="300" y="44" fill="#e8820c" font-size="11" font-weight="700">perfect</text>
+          <text x="44" y="254" fill="#7a8ea0" font-size="10" text-anchor="end">50%</text>
+          <text x="44" y="24" fill="#7a8ea0" font-size="10" text-anchor="end">100%</text>
+          <g id="relBars"></g>
+          <text x="195" y="285" fill="#7a8ea0" font-size="11" text-anchor="middle" font-weight="700">WHAT THE MODEL SAID (confidence)</text>
+          <text x="16" y="135" fill="#7a8ea0" font-size="11" text-anchor="middle" font-weight="700" transform="rotate(-90 16 135)">HOW OFTEN IT WAS RIGHT</text>
+        </svg>
+        <div class="ctrl">
+          <button class="btn sel" id="relOver">Overconfident LLM</button>
+          <button class="btn ghost" id="relCal">Calibrated model</button>
+        </div>
+      </div>
+      <div>
+        <p class="def">🌦️ <b>The weather forecaster test.</b> Collect every day she said "70% chance of rain". If it rained on about 70% of those days, she is calibrated.</p>
+        <div class="call">This chart is a <b>reliability diagram</b>. Bars on the dashed line mean the confidence is honest. Bars below the line mean the model is <b>overconfident</b>. In this example it said 95% but was right only 66% of the time.</div>
+        <div class="call warn">Calibration is not accuracy. A model can be 60% accurate and perfectly calibrated, as long as it <i>says</i> 60%. What calibration gives you is knowing <b>when to trust</b> each answer.</div>
+      </div>
+    </div>
+    <p class="src">Bar heights are illustrative, for teaching.</p>
+  </div>
+</section>
+
+<!-- 5 three branches -->
+<section class="s s-dark" id="s5" data-label="RLHF · RLVR · RLCD">
+  <div class="tag">Where RLCD fits</div>
+  <div class="inner">
+    <h2>Same pretrained model.<br>Three ways to reward it.</h2>
+    <svg viewBox="0 0 900 330" width="100%" style="margin-top:20px" aria-label="Pretrained LM branches into RLHF, RLVR and RLCD">
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7a8ea0"/></marker>
+      <marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e8820c"/></marker></defs>
+      <rect x="10" y="125" width="190" height="80" rx="12" fill="#18242f" stroke="#7a8ea0"/>
+      <text x="105" y="160" fill="#eef2f6" font-size="15" font-weight="800" text-anchor="middle">Pretrained</text>
+      <text x="105" y="182" fill="#eef2f6" font-size="15" font-weight="800" text-anchor="middle">language model</text>
+      <path d="M200,150 C260,150 260,55 318,55" fill="none" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M200,165 L318,165" fill="none" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M200,180 C260,180 260,275 318,275" fill="none" stroke="#e8820c" stroke-width="3" marker-end="url(#aho)"/>
+      <!-- RLHF -->
+      <rect x="320" y="20" width="560" height="72" rx="12" fill="rgba(90,154,191,.12)" stroke="#5a9abf"/>
+      <text x="340" y="50" fill="#5a9abf" font-size="17" font-weight="800">RLHF</text>
+      <text x="340" y="74" fill="#cfd8e0" font-size="13">Reward = what human raters prefer</text>
+      <text x="860" y="50" fill="#eef2f6" font-size="14" font-weight="700" text-anchor="end">→ Chat models</text>
+      <text x="860" y="74" fill="#e05252" font-size="12" text-anchor="end">risk: rewards sounding sure</text>
+      <!-- RLVR -->
+      <rect x="320" y="130" width="560" height="72" rx="12" fill="rgba(124,107,240,.12)" stroke="#7c6bf0"/>
+      <text x="340" y="160" fill="#b4a7ff" font-size="17" font-weight="800">RLVR</text>
+      <text x="340" y="184" fill="#cfd8e0" font-size="13">Reward = 1 if a program verifies the answer is correct</text>
+      <text x="860" y="160" fill="#eef2f6" font-size="14" font-weight="700" text-anchor="end">→ Reasoning models</text>
+      <text x="860" y="184" fill="#e05252" font-size="12" text-anchor="end">risk: confidently wrong</text>
+      <!-- RLCD -->
+      <rect x="320" y="240" width="560" height="78" rx="12" fill="rgba(232,130,12,.14)" stroke="#e8820c" stroke-width="2"/>
+      <text x="340" y="272" fill="#e8820c" font-size="17" font-weight="800">RLCD</text>
+      <text x="340" y="297" fill="#cfd8e0" font-size="13">Reward = how well probabilities match real outcomes</text>
+      <text x="860" y="272" fill="#eef2f6" font-size="14" font-weight="700" text-anchor="end">→ Decision models (Jev)</text>
+      <text x="860" y="297" fill="#3dba6c" font-size="12" text-anchor="end">goal: honest probabilities</text>
+    </svg>
+    <div class="call">TypeSafe's own wording: RLCD optimizes for <b>"calibrated decisions: answers with epistemically honest probabilities on System One tasks."</b> RLCD is a <b>training method</b>. It is not an architecture.</div>
+  </div>
+</section>
+
+<!-- 6 why RLHF breaks it -->
+<section class="s s-warm" id="s6" data-label="Why a new method">
+  <div class="tag">Why a new method was needed</div>
+  <div class="inner">
+    <h2>Preference training squeezes the probabilities<br>into a confident spike.</h2>
+    <div class="grid2 even">
+      <div class="panel">
+        <svg viewBox="0 0 420 250" width="100%" aria-label="Distribution before and after preference training">
+          <line x1="20" y1="210" x2="400" y2="210" stroke="#ccc"/>
+          <g id="distBars"></g>
+          <text x="210" y="240" fill="#888" font-size="11" text-anchor="middle" font-weight="700">POSSIBLE ANSWERS</text>
+        </svg>
+        <div class="ctrl">
+          <button class="btn ghost sel" id="dBase">Pretrained</button>
+          <button class="btn ghost" id="dRlhf">After RLHF / RLVR</button>
+          <button class="btn ghost" id="dRlcd">After RLCD</button>
+        </div>
+        <div class="status" id="stDist" style="margin:10px 0 0">Spread across several plausible answers.</div>
+        <p class="src">Bar heights are illustrative.</p>
+      </div>
+      <div>
+        <p class="def"><b>Mode dropping.</b> RLHF teaches the model to favour one style of answer, and the probability of every other answer drains away. What is left reflects what raters <i>liked</i>, not how often the answer is <i>right</i>.</p>
+        <div class="call" style="color:var(--ink)"><b>RLVR</b> pays 1 for a correct answer and 0 otherwise. The best strategy is to always bet everything on your top guess. The OpenJev-RLCD paper finds RLVR makes reasoning models <i>"sharply overconfident."</i></div>
+        <div class="call good" style="color:var(--ink)"><b>RLCD</b> pays for the <i>whole distribution</i> being honest. Being 100% sure about a wrong answer is the worst thing it can do.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 brier -->
+<section class="s s-dark" id="s7" data-label="Brier score">
+  <div class="tag">The reward: a proper scoring rule</div>
+  <div class="inner">
+    <h2>Brier score: penalty = (confidence − truth)²</h2>
+    <p class="sub">Truth is 1 if the answer was right and 0 if it was wrong. Drag the slider and watch how being confidently wrong explodes.</p>
+    <div class="grid2">
+      <div class="panel">
+        <svg viewBox="0 0 400 260" width="100%" aria-label="Brier penalty curves">
+          <line x1="40" y1="220" x2="380" y2="220" stroke="#7a8ea0"/>
+          <line x1="40" y1="220" x2="40" y2="20" stroke="#7a8ea0"/>
+          <path id="cRight" fill="none" stroke="#3dba6c" stroke-width="3"/>
+          <path id="cWrong" fill="none" stroke="#e05252" stroke-width="3"/>
+          <circle id="bPt" r="8" fill="#e8820c" stroke="#fff" stroke-width="2"/>
+          <text x="210" y="250" fill="#7a8ea0" font-size="11" text-anchor="middle" font-weight="700">CONFIDENCE THE ANSWER IS "BUG"</text>
+          <text x="44" y="16" fill="#7a8ea0" font-size="11" font-weight="700">PENALTY</text>
+          <text x="40" y="236" fill="#7a8ea0" font-size="10" text-anchor="middle">0%</text>
+          <text x="380" y="236" fill="#7a8ea0" font-size="10" text-anchor="middle">100%</text>
+          <text x="300" y="60" fill="#e05252" font-size="12" font-weight="700">no bug really</text>
+          <text x="60" y="60" fill="#3dba6c" font-size="12" font-weight="700">bug really there</text>
+        </svg>
+        <div style="margin-top:6px"><span class="lbl">Model's confidence: </span><b class="mono" id="bP">95%</b></div>
+        <input type="range" id="bSlider" min="0" max="100" value="95">
+        <div class="ctrl">
+          <button class="btn sel" id="bTrue">Truth: bug is there</button>
+          <button class="btn ghost" id="bFalse">Truth: code is clean</button>
+        </div>
+      </div>
+      <div>
+        <div class="costbox" style="text-align:center;padding:10px">
+          <div class="lbl">Brier penalty</div>
+          <div class="mono" id="bPen" style="font-size:64px;font-weight:800;line-height:1.1;color:var(--green)">0.003</div>
+          <div class="pen" style="height:18px"><span id="bBar" style="background:var(--green)"></span></div>
+          <div class="lbl" style="margin-top:12px">Log-loss penalty (another proper rule)</div>
+          <div class="mono" id="bLog" style="font-size:24px;font-weight:800;color:#cfd8e0">0.05</div>
+        </div>
+        <div class="call"><b>"Proper"</b> means the lowest average penalty comes from reporting <b>what you actually believe</b>. Bluffing never pays off over many examples.</div>
+        <div class="call warn">TypeSafe has not published Jev's exact reward. Brier and log loss are what the open reproduction uses, and what outside observers suspect Jev uses.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 training loop -->
+<section class="s s-slate" id="s8" data-label="Training loop">
+  <div class="tag">How one training step works</div>
+  <div class="inner">
+    <h2>Predict → score → penalize → update.<br>Repeated over many examples.</h2>
+    <p class="sub">Task: "Does this code contain a security bug?" Pick an example and watch one step. This is the general idea of calibration training, not Jev's published recipe.</p>
+    <div class="grid2" style="align-items:start">
+      <div class="ring">
+        <div class="rcard" id="r1"><div class="st">1 · INPUT</div><div class="tt">Task + true label</div><div class="vv" id="v1">—</div></div>
+        <div class="ra" id="a1">→</div>
+        <div class="rcard" id="r2"><div class="st">2 · MODEL OUTPUT</div><div class="tt">Decision + probability</div><div class="vv" id="v2">—</div></div>
+        <div class="ra" id="a4" style="grid-column:1">↑</div>
+        <div></div>
+        <div class="ra" id="a2" style="grid-column:3">↓</div>
+        <div class="rcard" id="r4"><div class="st">4 · WEIGHT UPDATE</div><div class="tt">Gradient step</div><div class="vv" id="v4">—</div></div>
+        <div class="ra" id="a3">←</div>
+        <div class="rcard" id="r3"><div class="st">3 · SCORE</div><div class="tt">Brier penalty</div><div class="vv" id="v3">—</div><div class="pen"><span id="penBar"></span></div></div>
+      </div>
+      <div>
+        <div class="ctrl" style="margin-top:0">
+          <button class="btn ghost" data-ex="A">A · right &amp; sure</button>
+          <button class="btn ghost" data-ex="B">B · wrong &amp; sure</button>
+          <button class="btn ghost" data-ex="C">C · unsure</button>
+        </div>
+        <table class="mx" style="margin-top:16px">
+          <thead><tr><th>Case</th><th>Said</th><th>Truth</th><th>Penalty</th></tr></thead>
+          <tbody>
+            <tr><td>A · right &amp; sure</td><td>bug 95%</td><td>bug</td><td style="color:var(--green)">0.003</td></tr>
+            <tr class="hl"><td>B · wrong &amp; sure</td><td>bug 98%</td><td>clean</td><td style="color:var(--red)">0.960</td></tr>
+            <tr><td>C · unsure</td><td>bug 52%</td><td>either</td><td>0.23–0.27</td></tr>
+          </tbody>
+        </table>
+        <div class="call">Case B is the main target. A 98%-sure mistake costs <b>nearly 400×</b> more than a 95%-sure correct answer earns. Hedging at 52% is cheap either way.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 honesty wins -->
+<section class="s s-dark" id="s9" data-label="Why honesty wins">
+  <div class="tag">Why the model learns to be honest</div>
+  <div class="inner">
+    <h2>Over many examples, the lowest penalty<br>comes from telling the truth.</h2>
+    <div class="grid2">
+      <div class="panel">
+        <div style="margin-bottom:6px"><span class="lbl">On this kind of input the model is really right </span><b class="mono hl" id="qVal">70%</b><span class="lbl"> of the time</span></div>
+        <input type="range" id="qSlider" min="50" max="100" step="10" value="70">
+        <div class="lbl" style="margin:16px 0 8px">Average Brier penalty if it always <i>says</i>…</div>
+        <div class="vbars" id="vbars"></div>
+        <div class="vbl" id="vbl"></div>
+        <p class="src">Bar heights are stretched to make small differences visible. Read the numbers.</p>
+      </div>
+      <div>
+        <p class="def">Average penalty = <span class="mono">q·(1−p)² + (1−q)·p²</span></p>
+        <p class="sub" style="font-size:15px"><span class="mono">q</span> = how often it is really right. <span class="mono">p</span> = what it says.</p>
+        <div class="call">The green bar always lands where <b>p = q</b>. Saying 100% when you are right 70% of the time costs more. So does saying 50%. Gradient descent drifts the model toward honest numbers.</div>
+        <div class="call good">This is the whole trick: with the right reward, an honest model is the one that loses the least. That is how the training loop makes "80% sure" mean "right 80% of the time."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 open recipe -->
+<section class="s s-slate" id="s10" data-label="Open recipe">
+  <div class="tag">An open reproduction you can read</div>
+  <div class="inner">
+    <h2>OpenJev-RLCD: calibrate first, then reinforce.</h2>
+    <p class="sub">TypeSafe has not published its recipe. An independent team did, using Qwen3-1.7B, with open code. This is the best public picture of what RLCD can look like.</p>
+    <svg viewBox="0 0 900 200" width="100%" style="margin-top:18px" aria-label="Two-stage RLCD recipe">
+      <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e8820c"/></marker></defs>
+      <rect x="10" y="50" width="170" height="100" rx="12" fill="#0a1420" stroke="#7a8ea0"/>
+      <text x="95" y="92" fill="#eef2f6" font-size="14" font-weight="800" text-anchor="middle">Base model</text>
+      <text x="95" y="114" fill="#7a8ea0" font-size="12" text-anchor="middle">Qwen3-1.7B</text>
+      <path d="M180,100 L238,100" stroke="#e8820c" stroke-width="2.5" marker-end="url(#ah2)"/>
+      <rect x="240" y="20" width="300" height="160" rx="12" fill="rgba(90,154,191,.12)" stroke="#5a9abf" stroke-width="2"/>
+      <text x="260" y="50" fill="#5a9abf" font-size="13" font-weight="800">STAGE 1 · CALIBRATE THE DECISION</text>
+      <text x="260" y="80" fill="#cfd8e0" font-size="13">Model writes its reasoning, then</text>
+      <text x="260" y="100" fill="#cfd8e0" font-size="13">we read its probabilities over the</text>
+      <text x="260" y="120" fill="#cfd8e0" font-size="13">answer options after "Answer:"</text>
+      <text x="260" y="150" fill="#eef2f6" font-size="13" font-weight="700">Train those probabilities with Brier</text>
+      <text x="260" y="168" fill="#eef2f6" font-size="13" font-weight="700">or log score (reasoning not rewarded)</text>
+      <path d="M540,100 L598,100" stroke="#e8820c" stroke-width="2.5" marker-end="url(#ah2)"/>
+      <rect x="600" y="20" width="290" height="160" rx="12" fill="rgba(232,130,12,.12)" stroke="#e8820c" stroke-width="2"/>
+      <text x="620" y="50" fill="#e8820c" font-size="13" font-weight="800">STAGE 2 · REINFORCE THE REASONING</text>
+      <text x="620" y="80" fill="#cfd8e0" font-size="13">Use the same proper score as an RL</text>
+      <text x="620" y="100" fill="#cfd8e0" font-size="13">reward for the reasoning text</text>
+      <text x="620" y="130" fill="#eef2f6" font-size="13" font-weight="700">A penalty keeps it close to the</text>
+      <text x="620" y="148" fill="#eef2f6" font-size="13" font-weight="700">stage-1 calibrated model</text>
+    </svg>
+    <div class="grid2 even" style="margin-top:10px">
+      <div class="panel">
+        <div class="lbl" style="margin-bottom:10px">GSM8K answer checking · share of items decided automatically at ≤ 5% error</div>
+        <div class="pb top"><span>RLCD</span><div class="tr"><span data-w2="81" style="background:var(--orange)"></span></div><span class="v">81%</span></div>
+        <div class="pb"><span>GRPO</span><div class="tr"><span data-w2="19"></span></div><span class="v">19%</span></div>
+        <div class="pb"><span>RFT + KL</span><div class="tr"><span data-w2="12"></span></div><span class="v">12%</span></div>
+        <div class="pb"><span>SFT</span><div class="tr"><span data-w2="6"></span></div><span class="v">6%</span></div>
+        <div class="ctrl"><button class="btn" id="playCov">Show results</button></div>
+      </div>
+      <div>
+        <div class="call">GRPO and RLCD had almost the same accuracy (91.8% vs 92.2%). The big difference is <b>how many answers you can safely automate</b>: GRPO's confidence could not separate its right answers from its wrong ones. Every method also got temperature scaling, a standard confidence correction applied after training.</div>
+        <div class="call warn">This is an <b>independent</b> paper, not TypeSafe's method. Treat it as "RLCD is a real, workable idea", not "this is exactly how Jev was trained."</div>
+      </div>
+    </div>
+    <p class="src">Source: <a href="https://arxiv.org/abs/2609.38850" target="_blank" rel="noopener">Gao &amp; Wang, OpenJev-RLCD (arXiv 2609.38850)</a> · <a href="https://github.com/ZimmyGao/openjev-rlcd" target="_blank" rel="noopener">code on GitHub</a></p>
+  </div>
+</section>
+
+<!-- 11 AR vs parallel -->
+<section class="s s-dark" id="s11" data-label="Why it's fast">
+  <div class="tag">Architecture · part 1</div>
+  <div class="inner">
+    <h2>An LLM writes one token per step.<br>Jev returns every probability in parallel.</h2>
+    <div class="race" style="margin-top:22px">
+      <div class="lane">
+        <h4 style="color:var(--blue)">Autoregressive LLM (GPT, Claude)</h4>
+        <div class="toks" id="arToks"></div>
+        <div class="passes"><span id="arN">0</span> <small>GENERATION STEPS · one per token</small></div>
+      </div>
+      <div class="lane" style="border-color:rgba(232,130,12,.5)">
+        <h4 style="color:var(--orange)">Jev: parallel, non-autoregressive</h4>
+        <div id="parBars">
+          <div class="pb top"><span>billing</span><div class="tr"><span></span></div><span class="v">0.82</span></div>
+          <div class="pb"><span>bug</span><div class="tr"><span></span></div><span class="v">0.10</span></div>
+          <div class="pb"><span>how-to</span><div class="tr"><span></span></div><span class="v">0.05</span></div>
+          <div class="pb"><span>other</span><div class="tr"><span></span></div><span class="v">0.03</span></div>
+        </div>
+        <div class="passes"><span id="parN">0</span> <small>QUERY · all answers in parallel</small></div>
+      </div>
+    </div>
+    <div class="ctrl"><button class="btn" id="playRace">Race: classify one ticket</button><span class="status" id="stRace">Ticket: "My card was charged twice."</span></div>
+    <div class="call">LLM work grows with every word it writes. Jev writes no words: the answers are a fixed list you defined, so it can score all of them at once. TypeSafe credits this design for its claimed <b>70–500 ms</b> responses, versus 3–329 s end to end for frontier LLMs.</div>
+  </div>
+</section>
+
+<!-- 12 known vs guessed -->
+<section class="s s-slate" id="s12" data-label="Architecture: facts">
+  <div class="tag">Architecture · part 2 · be honest with students</div>
+  <div class="inner">
+    <h2>What is inside Jev?<br>Known, unknown, and guessed.</h2>
+    <div class="grid3">
+      <div class="kcol yes">
+        <h4>Confirmed by TypeSafe</h4>
+        <ul>
+          <li>Transformer-based</li>
+          <li>Starts from a pretrained language model, then RLCD post-training</li>
+          <li>"New model architecture" with a parallel, hardware-aware sampler</li>
+          <li>No text generation: typed answers only, all questions in parallel</li>
+          <li>Not trained on customer requests or responses</li>
+        </ul>
+      </div>
+      <div class="kcol no">
+        <h4>Not disclosed</h4>
+        <ul>
+          <li>Base model and parameter count</li>
+          <li>Encoder, decoder, or something new?</li>
+          <li>The exact reward / loss function</li>
+          <li>Training data details and calibration curves</li>
+          <li>No paper yet. The CEO said the architecture is "close to the chest for now"</li>
+        </ul>
+      </div>
+      <div class="kcol guess">
+        <h4>Popular guesses</h4>
+        <ul>
+          <li>BERT-style bidirectional encoder with classification heads</li>
+          <li>Built on top of an open-weight LLM</li>
+          <li>Brier or log loss inside the reward</li>
+          <li>Treat these as hypotheses, not facts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="call warn">Common myth: <i>"Jev has a separate confidence head."</i> Jev returns <b>one probability distribution per question</b>. The API then computes <span class="mono">choice</span> and <span class="mono">confidence</span> from it with fixed formulas (next slides).</div>
+    <p class="src">Sources: <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe launch post</a> · <a href="https://learnjev.com/concepts/rlcd" target="_blank" rel="noopener">Learn Jev: what is known about RLCD</a> · <a href="https://en.wikipedia.org/wiki/Jev_(AI_model)" target="_blank" rel="noopener">Wikipedia: Jev</a></p>
+  </div>
+</section>
+
+<!-- 13 mental model diagram -->
+<section class="s s-dark" id="s13" data-label="Mental model">
+  <div class="tag">Architecture · part 3 · a teaching model</div>
+  <div class="inner">
+    <h2>A mental model you can draw on the whiteboard</h2>
+    <p class="sub">Not TypeSafe's blueprint. A safe picture that matches everything they have published.</p>
+    <svg viewBox="0 0 960 330" width="100%" style="margin-top:14px" aria-label="Jev mental model">
+      <defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7a8ea0"/></marker></defs>
+      <!-- inputs -->
+      <rect x="10" y="30" width="200" height="110" rx="12" fill="#18242f" stroke="#5a9abf"/>
+      <text x="26" y="56" fill="#5a9abf" font-size="12" font-weight="800">STATE</text>
+      <text x="26" y="82" fill="#eef2f6" font-size="13">"My card was charged</text>
+      <text x="26" y="100" fill="#eef2f6" font-size="13">twice for order A-104."</text>
+      <text x="26" y="124" fill="#7a8ea0" font-size="11">text, JSON or list</text>
+      <rect x="10" y="160" width="200" height="150" rx="12" fill="#18242f" stroke="#7c6bf0"/>
+      <text x="26" y="186" fill="#b4a7ff" font-size="12" font-weight="800">QUESTIONS (you define)</text>
+      <text x="26" y="212" fill="#eef2f6" font-size="13">Q1 choice: category?</text>
+      <text x="26" y="236" fill="#eef2f6" font-size="13">Q2 noul: urgent?</text>
+      <text x="26" y="260" fill="#eef2f6" font-size="13">Q3 score: anger 1–5?</text>
+      <text x="26" y="290" fill="#7a8ea0" font-size="11">options fixed in advance</text>
+      <path d="M212,85 C260,85 260,165 300,165" fill="none" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah3)"/>
+      <path d="M212,235 C260,235 260,175 300,175" fill="none" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah3)"/>
+      <!-- transformer -->
+      <rect x="302" y="40" width="250" height="260" rx="14" fill="rgba(232,130,12,.1)" stroke="#e8820c" stroke-width="2"/>
+      <text x="427" y="68" fill="#e8820c" font-size="13" font-weight="800" text-anchor="middle">TRANSFORMER</text>
+      <text x="427" y="86" fill="#cfd8e0" font-size="11" text-anchor="middle">pretrained, then RLCD-tuned</text>
+      <g fill="rgba(232,130,12,.35)">
+        <rect x="330" y="104" width="194" height="26" rx="6"/><rect x="330" y="138" width="194" height="26" rx="6"/>
+        <rect x="330" y="172" width="194" height="26" rx="6"/><rect x="330" y="206" width="194" height="26" rx="6"/>
+      </g>
+      <text x="427" y="122" fill="#fff" font-size="11" text-anchor="middle">layer</text>
+      <text x="427" y="156" fill="#fff" font-size="11" text-anchor="middle">layer</text>
+      <text x="427" y="190" fill="#fff" font-size="11" text-anchor="middle">…</text>
+      <text x="427" y="224" fill="#fff" font-size="11" text-anchor="middle">layer</text>
+      <text x="427" y="262" fill="#eef2f6" font-size="13" font-weight="800" text-anchor="middle">ONE parallel query</text>
+      <text x="427" y="282" fill="#7a8ea0" font-size="11" text-anchor="middle">internals undisclosed</text>
+      <path d="M552,170 L598,170" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah3)"/>
+      <!-- outputs -->
+      <rect x="600" y="30" width="170" height="280" rx="12" fill="#18242f" stroke="#3dba6c"/>
+      <text x="685" y="54" fill="#3dba6c" font-size="12" font-weight="800" text-anchor="middle">PROBABILITIES</text>
+      <text x="616" y="80" fill="#cfd8e0" font-size="11">Q1</text>
+      <rect x="640" y="70" width="98" height="10" rx="5" fill="#e8820c"/><rect x="640" y="84" width="12" height="8" rx="4" fill="#5a9abf"/><rect x="640" y="96" width="6" height="8" rx="4" fill="#5a9abf"/>
+      <text x="616" y="150" fill="#cfd8e0" font-size="11">Q2</text>
+      <rect x="640" y="140" width="80" height="10" rx="5" fill="#e8820c"/><rect x="640" y="154" width="20" height="8" rx="4" fill="#5a9abf"/>
+      <text x="616" y="210" fill="#cfd8e0" font-size="11">Q3</text>
+      <rect x="640" y="200" width="10" height="8" rx="4" fill="#5a9abf"/><rect x="640" y="212" width="22" height="8" rx="4" fill="#5a9abf"/><rect x="640" y="224" width="40" height="8" rx="4" fill="#5a9abf"/><rect x="640" y="236" width="70" height="10" rx="5" fill="#e8820c"/><rect x="640" y="250" width="30" height="8" rx="4" fill="#5a9abf"/>
+      <text x="685" y="292" fill="#7a8ea0" font-size="11" text-anchor="middle">this is all Jev outputs</text>
+      <path d="M770,170 L808,170" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah3)"/>
+      <!-- api math -->
+      <rect x="810" y="70" width="140" height="200" rx="12" fill="#0a1420" stroke="#7a8ea0" stroke-dasharray="5 4"/>
+      <text x="880" y="96" fill="#7a8ea0" font-size="11" font-weight="800" text-anchor="middle">PLAIN API MATH</text>
+      <text x="880" y="130" fill="#eef2f6" font-size="13" text-anchor="middle">choice = top</text>
+      <text x="880" y="166" fill="#eef2f6" font-size="13" text-anchor="middle">score = weighted</text>
+      <text x="880" y="184" fill="#eef2f6" font-size="13" text-anchor="middle">average</text>
+      <text x="880" y="220" fill="#eef2f6" font-size="13" text-anchor="middle">confidence =</text>
+      <text x="880" y="238" fill="#eef2f6" font-size="13" text-anchor="middle">peakiness</text>
+    </svg>
+    <div class="call">Compare with a classic text classifier: same output idea (text → probabilities over labels). The difference is that the labels arrive <b>in the request</b>, zero-shot, so you never train your own model.</div>
+  </div>
+</section>
+
+<!-- 14 confidence math + API -->
+<section class="s s-warm" id="s14" data-label="API & confidence">
+  <div class="tag">From probabilities to "how sure"</div>
+  <div class="inner">
+    <h2>The confidence number is a formula,<br>not a second model.</h2>
+    <div class="grid2 even" style="align-items:start">
+      <div>
+        <h3 class="k">A real request shape</h3>
+<pre class="code"><span class="c"># POST https://api.typesafe.ai/v1/systemone</span>
+{
+  <span class="k">"model"</span>: <span class="str">"jev-latest"</span>,
+  <span class="k">"state"</span>: <span class="str">"My card was charged twice."</span>,
+  <span class="k">"questions"</span>: {
+    <span class="k">"category"</span>: {
+      <span class="k">"type"</span>: <span class="str">"choice"</span>,
+      <span class="k">"instructions"</span>: <span class="str">"What kind of request?"</span>,
+      <span class="k">"criteria"</span>: {
+        <span class="k">"billing"</span>: <span class="str">"charges, refunds"</span>,
+        <span class="k">"bug"</span>: <span class="str">"something is broken"</span>,
+        <span class="k">"how_to"</span>: <span class="str">"how do I…"</span>,
+        <span class="k">"other"</span>: <span class="str">"none of these"</span>
+      }
+    },
+    <span class="k">"urgent"</span>: { <span class="k">"type"</span>: <span class="str">"noul"</span>,
+      <span class="k">"instructions"</span>: <span class="str">"Is this urgent?"</span> }
+  }
+}</pre>
+        <p class="src">Also on OpenRouter as <span class="mono">typesafe/jev-1.13</span>, and in Pydantic AI as <span class="mono">typesafe:jev-latest</span>.</p>
+        <div class="call" style="color:var(--ink)"><b>Known limits:</b> text input only (no images or audio) · up to 255 options per choice · questions are answered independently, so if one depends on another's answer you make two calls.</div>
+      </div>
+      <div>
+        <h3 class="k">Worked example: choice with n = 4 options</h3>
+        <div class="panel">
+          <div class="pb top"><span>billing</span><div class="tr"><span style="width:82%"></span></div><span class="v">0.82</span></div>
+          <div class="pb"><span>bug</span><div class="tr"><span style="width:10%"></span></div><span class="v">0.10</span></div>
+          <div class="pb"><span>how_to</span><div class="tr"><span style="width:5%"></span></div><span class="v">0.05</span></div>
+          <div class="pb"><span>other</span><div class="tr"><span style="width:3%"></span></div><span class="v">0.03</span></div>
+          <p class="def mono" style="margin-top:14px;font-size:14px">confidence = (p<sub>max</sub> − 1/n) / (1 − 1/n)<br>= (0.82 − 0.25) / 0.75 = <b>0.76</b></p>
+        </div>
+        <div class="call" style="color:var(--ink)">0 means a flat, random-guess distribution. 1 means all probability on one option. For <b>score</b> questions the answer is the probability-weighted average, and confidence measures how tightly the probabilities cluster.</div>
+        <div class="call warn" style="color:var(--ink)">By the formula, confidence only measures how <b>concentrated</b> the probabilities are. Whether high confidence really means "usually correct" is the calibration promise, so check it on your own labelled data.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 gating -->
+<section class="s s-dark" id="s15" data-label="Production gate">
+  <div class="tag">Inference · the decision gate</div>
+  <div class="inner">
+    <h2>Pick a threshold. Automate above it.<br>Send the rest to a human.</h2>
+    <div class="grid2" style="align-items:start">
+      <div class="panel">
+        <div><span class="lbl">Confidence threshold: </span><b class="mono hl" id="thV">70%</b></div>
+        <input type="range" id="thS" min="50" max="99" value="70">
+        <div class="tickets" id="tickets"></div>
+        <div class="legend"><span><i style="background:var(--green)"></i>auto · correct</span><span><i style="background:var(--red)"></i>auto · wrong</span><span><i style="background:rgba(122,142,160,.4)"></i>sent to a human</span></div>
+        <div class="stats">
+          <div class="stat"><div class="n" id="stAuto">—</div><div class="t">automated</div></div>
+          <div class="stat"><div class="n" id="stErr">—</div><div class="t">error rate on automated</div></div>
+          <div class="stat"><div class="n" id="stHum">—</div><div class="t">human reviews</div></div>
+        </div>
+        <p class="src">60 simulated tickets from a calibrated model. Number on each tile = confidence.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 360 400" width="100%" aria-label="Decision gate flowchart">
+          <defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7a8ea0"/></marker></defs>
+          <rect x="100" y="6" width="160" height="44" rx="10" fill="#18242f" stroke="#7a8ea0"/>
+          <text x="180" y="33" fill="#eef2f6" font-size="13" font-weight="700" text-anchor="middle">Incoming ticket / PR</text>
+          <path d="M180,50 L180,74" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah4)"/>
+          <rect x="100" y="76" width="160" height="50" rx="10" fill="rgba(232,130,12,.15)" stroke="#e8820c" stroke-width="2"/>
+          <text x="180" y="99" fill="#e8820c" font-size="14" font-weight="800" text-anchor="middle">Jev</text>
+          <text x="180" y="117" fill="#cfd8e0" font-size="11" text-anchor="middle">decision + confidence · 70–500 ms</text>
+          <path d="M180,126 L180,152" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah4)"/>
+          <polygon points="180,154 290,214 180,274 70,214" fill="#18242f" stroke="#eef2f6" stroke-width="1.5"/>
+          <text x="180" y="210" fill="#eef2f6" font-size="13" font-weight="700" text-anchor="middle">confidence ≥</text>
+          <text x="180" y="228" fill="#e8820c" font-size="13" font-weight="800" text-anchor="middle" id="flowTh">threshold?</text>
+          <path d="M70,214 C30,214 30,300 60,320" fill="none" stroke="#3dba6c" stroke-width="2" marker-end="url(#ah4)"/>
+          <text x="22" y="262" fill="#3dba6c" font-size="12" font-weight="800">YES</text>
+          <path d="M290,214 C330,214 330,300 300,320" fill="none" stroke="#e05252" stroke-width="2" marker-end="url(#ah4)"/>
+          <text x="318" y="262" fill="#e05252" font-size="12" font-weight="800">NO</text>
+          <rect x="6" y="322" width="160" height="70" rx="10" fill="rgba(61,186,108,.12)" stroke="#3dba6c"/>
+          <text x="86" y="350" fill="#3dba6c" font-size="13" font-weight="800" text-anchor="middle">Automate</text>
+          <text x="86" y="370" fill="#cfd8e0" font-size="11" text-anchor="middle">route / tag / merge</text>
+          <rect x="194" y="322" width="160" height="70" rx="10" fill="rgba(224,82,82,.12)" stroke="#e05252"/>
+          <text x="274" y="350" fill="#e05252" font-size="13" font-weight="800" text-anchor="middle">Escalate</text>
+          <text x="274" y="370" fill="#cfd8e0" font-size="11" text-anchor="middle">human or a bigger LLM</text>
+        </svg>
+        <div class="call">Higher threshold means fewer mistakes but more human work. Calibration is what makes this a <b>dial you can tune</b> instead of a guess.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 jev decides claude writes -->
+<section class="s s-slate" id="s16" data-label="Jev + LLM pattern">
+  <div class="tag">The production pattern</div>
+  <div class="inner">
+    <h2>Jev decides. The LLM writes.<br>A human sees only the hard cases.</h2>
+    <svg viewBox="0 0 960 230" width="100%" style="margin-top:18px" aria-label="Email triage pipeline">
+      <defs><marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7a8ea0"/></marker></defs>
+      <rect x="10" y="60" width="150" height="110" rx="12" fill="#0a1420" stroke="#7a8ea0"/>
+      <text x="85" y="104" fill="#eef2f6" font-size="30" text-anchor="middle">📥</text>
+      <text x="85" y="140" fill="#eef2f6" font-size="14" font-weight="800" text-anchor="middle">Every email</text>
+      <text x="85" y="158" fill="#7a8ea0" font-size="11" text-anchor="middle">your whole inbox</text>
+      <path d="M160,115 L208,115" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah5)"/>
+      <rect x="210" y="30" width="260" height="170" rx="12" fill="rgba(232,130,12,.12)" stroke="#e8820c" stroke-width="2"/>
+      <text x="340" y="58" fill="#e8820c" font-size="14" font-weight="800" text-anchor="middle">JEV · 3 questions in parallel</text>
+      <text x="230" y="92" fill="#eef2f6" font-size="13">• needs a reply?  (noul)</text>
+      <text x="230" y="118" fill="#eef2f6" font-size="13">• brand deal?  (noul)</text>
+      <text x="230" y="144" fill="#eef2f6" font-size="13">• scam?  (noul)</text>
+      <text x="340" y="182" fill="#7a8ea0" font-size="11" text-anchor="middle">cheap · fast · cannot hallucinate a label</text>
+      <path d="M470,70 L558,40" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah5)"/>
+      <path d="M470,115 L558,115" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah5)"/>
+      <path d="M470,160 L558,190" stroke="#7a8ea0" stroke-width="2" marker-end="url(#ah5)"/>
+      <rect x="560" y="12" width="390" height="56" rx="10" fill="rgba(90,154,191,.14)" stroke="#5a9abf"/>
+      <text x="580" y="38" fill="#5a9abf" font-size="13" font-weight="800">Needs reply + sure → Claude / GPT drafts it</text>
+      <text x="580" y="56" fill="#cfd8e0" font-size="11">the expensive model only sees what matters</text>
+      <rect x="560" y="88" width="390" height="56" rx="10" fill="rgba(61,186,108,.12)" stroke="#3dba6c"/>
+      <text x="580" y="114" fill="#3dba6c" font-size="13" font-weight="800">Scam / no reply + sure → archive automatically</text>
+      <text x="580" y="132" fill="#cfd8e0" font-size="11">no LLM tokens spent at all</text>
+      <rect x="560" y="164" width="390" height="56" rx="10" fill="rgba(224,82,82,.12)" stroke="#e05252"/>
+      <text x="580" y="190" fill="#e05252" font-size="13" font-weight="800">Low confidence → human inbox</text>
+      <text x="580" y="208" fill="#cfd8e0" font-size="11">the few cases that need judgement</text>
+    </svg>
+    <div class="grid2 even" style="margin-top:6px;align-items:start">
+      <div class="recap" style="margin-top:6px">
+        <div class="rc"><div class="n">1</div><div class="t">Give Jev a way out<span>Add "None" or "Other" so it never has to force a bad pick.</span></div></div>
+        <div class="rc"><div class="n">2</div><div class="t">Send the unsure ones to a person<span>Start at about 60% and tune it from real results.</span></div></div>
+      </div>
+      <div class="recap" style="margin-top:6px">
+        <div class="rc"><div class="n">3</div><div class="t">Check before you trust<span>Run it on a labelled set and compare accuracy at each confidence level.</span></div></div>
+        <div class="rc"><div class="n">4</div><div class="t">Pin the version<span>Use <code class="mono">jev-1.13.0</code>, not <code class="mono">jev-latest</code>, once you've tuned a threshold.</span></div></div>
+      </div>
+    </div>
+    <p class="src">Email pattern and habits 1–3: RoboNuggets "Jev use cases" guide. Habit 4: <a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener">TypeSafe model docs</a>.</p>
+  </div>
+</section>
+
+<!-- 17 skeptic + recap -->
+<section class="s s-dark" id="s17" data-label="Recap">
+  <div class="tag">Recap · and think like a skeptic</div>
+  <div class="inner">
+    <h2>The story you should be able to retell</h2>
+    <div class="grid2" style="align-items:start;margin-top:10px">
+      <div class="recap" style="margin-top:0">
+        <div class="rc"><div class="n">1</div><div class="t">LLMs are smart but overconfident<span>You can't automate a model that hides its mistakes.</span></div></div>
+        <div class="rc"><div class="n">2</div><div class="t">Calibration = said 80%, right 80%<span>The reliability diagram is the test.</span></div></div>
+        <div class="rc"><div class="n">3</div><div class="t">RLCD rewards honest probabilities<span>Proper scoring rule (e.g. Brier) as the reward.</span></div></div>
+        <div class="rc"><div class="n">4</div><div class="t">Confidently wrong = biggest penalty<span>So, over time, honesty is the cheapest strategy.</span></div></div>
+        <div class="rc"><div class="n">5</div><div class="t">Jev: parallel, typed answers only<span>Architecture internals are still undisclosed.</span></div></div>
+        <div class="rc"><div class="n">6</div><div class="t">Production = threshold gate<span>Automate the confident ones, escalate the rest.</span></div></div>
+      </div>
+      <div>
+        <div class="call warn"><b>Be a skeptic.</b> TypeSafe's speed and cost figures (up to 193.6× faster, 444.6× cheaper) come from workflows built by its own team, scored against reference answers from OpenAI and Anthropic models. TypeSafe says so itself, and calls these "on the higher end of real world gains." Measure on <i>your</i> data before you trust them.</div>
+        <div class="call"><b>Name clash:</b> a different 2023 paper, "RLCD: Reinforcement Learning from <i>Contrastive Distillation</i>" (Yang et al.), is an alignment method unrelated to Jev. Searching for "RLCD" will often find that paper first.</div>
+        <div class="papers">
+          <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe launch post</a>
+          <a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener">Jev docs</a>
+          <a href="https://learnjev.com/concepts/rlcd" target="_blank" rel="noopener">Learn Jev: RLCD</a>
+          <a href="https://arxiv.org/abs/2609.38850" target="_blank" rel="noopener">OpenJev-RLCD paper</a>
+          <a href="https://github.com/ZimmyGao/openjev-rlcd" target="_blank" rel="noopener">OpenJev-RLCD code</a>
+          <a href="https://pydantic.dev/docs/ai/models/typesafe/" target="_blank" rel="noopener">Pydantic AI + Jev</a>
+          <a href="https://arxiv.org/abs/2307.12950" target="_blank" rel="noopener">The other RLCD (2023)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 alternatives -->
+<section class="s s-slate" id="s18" data-label="Alternatives">
+  <div class="tag">Same job · three products</div>
+  <div class="inner">
+    <h2>Jev is first. It is not the only one.</h2>
+    <p class="sub">In three weeks, three organisations shipped the same idea: typed answers, no generated text. Learn the pattern. Then pick the product that fits the hardware and the budget.</p>
+    <div class="alts">
+      <div class="alt jev">
+        <div class="who">TypeSafe AI</div>
+        <h3>Jev 1.13</h3>
+        <div class="when">15 Sep 2026 · hosted API</div>
+        <ul>
+          <li>Closed model. You call it; you cannot open the weights.</li>
+          <li>Text in. Typed probabilities out. No images.</li>
+          <li>$0.042 per million input tokens. Output is free.</li>
+          <li>TypeSafe claims 70–500 ms end to end.</li>
+          <li>Architecture unpublished. Training method named RLCD.</li>
+        </ul>
+      </div>
+      <div class="alt">
+        <div class="who">AWS Strands Labs</div>
+        <h3>Strands Decider 2B</h3>
+        <div class="when">1 Oct 2026 · open weights</div>
+        <ul>
+          <li>Qwen3.5-2B torso. LM head removed. Pointer head of ~1M parameters. Rank-16 LoRA.</li>
+          <li>Runs on a local CPU, GPU, or Apple Silicon.</li>
+          <li>Median ~115 ms on an RTX 3090. ~153 ms for small tasks on an M3 MacBook.</li>
+          <li>Weights, training data, and scripts are published.</li>
+          <li>Same three question shapes: yes/no, choice, score.</li>
+        </ul>
+      </div>
+      <div class="alt">
+        <div class="who">OpenAI</div>
+        <h3>Decisions API</h3>
+        <div class="when">DevDay 29 Sep 2026 · public beta</div>
+        <ul>
+          <li>Hosted at <span class="mono">POST /v1/decisions</span>. Model: <span class="mono">gpt-6-luna</span> only.</li>
+          <li>Text <b>and images</b> in. Typed answers out.</li>
+          <li>Three types: predicate, choice, score.</li>
+          <li>OpenAI says about 10× faster than Luna on the Responses API.</li>
+          <li>Architecture unpublished. No RLCD claim.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="call">Strands is the one you can open and inspect. OpenAI is the one that can look at a photo. Jev is the one this class uses. The skill that transfers is the same: define the options, read the probability, set a threshold.</div>
+    <p class="src">Sources: <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">TypeSafe launch post</a> · <a href="https://strandsagents.com/blog/introducing-strands-decider/" target="_blank" rel="noopener">Strands Decider blog</a> · <a href="https://developers.openai.com/api/docs/guides/decisions" target="_blank" rel="noopener">OpenAI Decisions docs</a> · <a href="https://openai.com/index/devday-2026-recap/" target="_blank" rel="noopener">DevDay 2026 recap</a></p>
+  </div>
+</section>
+
+<section class="s s-dark" id="s19" data-label="We measured it">
+  <div class="tag">Claims vs measurement</div>
+  <div class="inner">
+    <h2>Those were their claims.<br>Here is what I measured.</h2>
+    <p class="sub">Same three of our use cases, same states, same options, same gold labels, run against all three systems. 88 decisions each. Strands ran locally on an M2 Pro; Jev and the Decisions API were called over the internet from Dubai.</p>
+
+    <div class="ucpick">
+      <button class="btn sel" data-uc="ALL"  onclick="pickUC(this)">All 88 decisions</button>
+      <button class="btn ghost" data-uc="UC02" onclick="pickUC(this)">UC02 triage · 60</button>
+      <button class="btn ghost" data-uc="UC09" onclick="pickUC(this)">UC09 skill picker · 14</button>
+      <button class="btn ghost" data-uc="UC12" onclick="pickUC(this)">UC12 slop filter · 14</button>
+    </div>
+
+    <div class="bench" id="benchCards"></div>
+
+    <div class="call warn"><b>Read this before you quote a winner.</b>
+      McNemar exact test on the paired results: Jev vs Strands p=1.000, Jev vs Luna p=0.375,
+      Strands vs Luna p=0.219. <b>None of the accuracy gaps are statistically significant
+      at 88 items.</b> The three systems disagreed on only 7 of 74 choice decisions. The
+      honest conclusion is that they are in the same accuracy band, and you should choose
+      on latency, hosting and cost instead.</div>
+
+    <p class="src">Latency is not like for like: Strands has no network hop but modest hardware;
+      their own figure is ~115&nbsp;ms on an RTX&nbsp;3090. Jev cost uses TypeSafe's published
+      $0.042/1M input; Luna uses OpenAI's $0.10/1M input, output unbilled on both.</p>
+  </div>
+</section>
+
+<section class="s s-warm" id="s20" data-label="Confidence gate">
+  <div class="tag">The finding that actually matters</div>
+  <div class="inner">
+    <h2>All three know when they are guessing.</h2>
+    <p class="sub">Split every choice decision by whether the model reported 0.8 confidence or above. If the gate is real, accuracy inside the two buckets should differ sharply. It does, on all three.</p>
+
+    <table class="mct">
+      <tr><th>system</th><th>decisions at ≥0.8</th><th>accuracy there</th>
+          <th>decisions below 0.8</th><th>accuracy there</th><th>separation</th></tr>
+      <tr><td><b>Jev</b></td><td>66</td><td class="good">98.5%</td><td>8</td>
+          <td class="bad">37.5%</td><td class="good">61 points</td></tr>
+      <tr><td><b>Strands 2B</b></td><td>48</td><td class="good">97.9%</td><td>26</td>
+          <td>84.6%</td><td>13 points</td></tr>
+      <tr><td><b>Luna</b></td><td>59</td><td class="good">100.0%</td><td>15</td>
+          <td>80.0%</td><td>20 points</td></tr>
+    </table>
+
+    <div class="gatewrap">
+      <div class="gcol hi">
+        <h4>Above the gate · automate</h4>
+        <div class="gr"><span>Jev</span><span>98.5% right across 66 decisions</span></div>
+        <div class="gr"><span>Strands</span><span>97.9% right across 48</span></div>
+        <div class="gr"><span>Luna</span><span>100% right across 59</span></div>
+      </div>
+      <div class="gcol lo">
+        <h4>Below the gate · send to a human</h4>
+        <div class="gr"><span>Jev</span><span>37.5% right, almost a coin toss</span></div>
+        <div class="gr"><span>Strands</span><span>84.6% right</span></div>
+        <div class="gr"><span>Luna</span><span>80.0% right</span></div>
+      </div>
+    </div>
+
+    <div class="call good"><b>Jev separates hardest, and that is the point of RLCD.</b>
+      A confidence number is only useful if being unsure actually predicts being wrong.
+      Jev drops to 37.5% below the gate, so the threshold carries real information. The
+      other two stay above 80% when unsure, which means their low-confidence bucket is
+      safer but far less informative, so you would send work to humans that did not need it.</div>
+
+    <p class="src">Choice decisions only (74 of 88). Yes/no questions carry no confidence
+      field in any of the three APIs, by design. Run it yourself:
+      <span class="mono">17_Decision_Models/comparison/benchmark.py</span></p>
+  </div>
+</section>
+
+<script>
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const $=id=>document.getElementById(id);
+
+/* dot nav */
+const sections=[...document.querySelectorAll('section.s[id]')];
+const dots=$('dots'),counter=$('counter');
+sections.forEach((s,i)=>{
+  const a=document.createElement('a');
+  a.href='#'+s.id;a.dataset.label=s.dataset.label||s.id;a.setAttribute('aria-label',a.dataset.label);
+  if(i===0)a.className='active';
+  dots.appendChild(a);
+});
+const links=[...dots.querySelectorAll('a')];
+let current=0;
+const io=new IntersectionObserver(ents=>{
+  ents.forEach(e=>{
+    if(!e.isIntersecting)return;
+    current=sections.indexOf(e.target);
+    links.forEach((l,j)=>l.classList.toggle('active',j===current));
+    counter.textContent=(current+1)+' / '+sections.length;
+  });
+},{threshold:.55});
+sections.forEach(s=>io.observe(s));
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return;
+  if(['ArrowDown','PageDown','ArrowRight',' '].includes(e.key)){e.preventDefault();sections[Math.min(current+1,sections.length-1)].scrollIntoView({behavior:'smooth'});}
+  if(['ArrowUp','PageUp','ArrowLeft'].includes(e.key)){e.preventDefault();sections[Math.max(current-1,0)].scrollIntoView({behavior:'smooth'});}
+});
+
+/* s1 wall of confident answers */
+const wall=$('wall');
+for(let i=0;i<40;i++){const d=document.createElement('div');d.className='wd';d.textContent='99%';wall.appendChild(d);}
+$('playWall').onclick=async()=>{
+  const ds=[...wall.children],bad=new Set([13,31]);
+  ds.forEach(d=>d.className='wd');$('stWall').className='status';$('stWall').textContent='Checking…';
+  for(let i=0;i<ds.length;i++){ds[i].classList.add(bad.has(i)?'r':'g');await sleep(35);}
+  $('stWall').className='status bad';$('stWall').textContent='2 wrong, both said 99%';
+};
+
+/* s3 shapes */
+$('playShapes').onclick=async()=>{
+  const bars=[...document.querySelectorAll('[data-w]')];
+  bars.forEach(b=>b.style.width='0');await sleep(250);
+  bars.forEach(b=>b.style.width=b.dataset.w+'%');
+};
+document.querySelectorAll('[data-w]').forEach(b=>b.style.width=b.dataset.w+'%');
+document.querySelectorAll('[data-w2]').forEach(b=>b.style.width=b.dataset.w2+'%');
+
+/* s4 reliability diagram */
+const relX=[55,65,75,85,95],relOver=[52,55,58,62,66],relCal=[54,66,74,86,94];
+const relG=$('relBars');
+function drawRel(vals,good){
+  relG.innerHTML='';
+  relX.forEach((x,i)=>{
+    const bx=50+(x-50)/50*290-22,h=(vals[i]-50)/50*230,y=250-h;
+    relG.insertAdjacentHTML('beforeend',
+      `<rect x="${bx}" y="${y}" width="44" height="${h}" rx="4" fill="${good?'#3dba6c':'#5a9abf'}" opacity=".85"><animate attributeName="height" from="0" to="${h}" dur=".5s"/><animate attributeName="y" from="250" to="${y}" dur=".5s"/></rect>`+
+      `<text x="${bx+22}" y="${y-6}" fill="#eef2f6" font-size="11" font-weight="700" text-anchor="middle">${vals[i]}%</text>`+
+      `<text x="${bx+22}" y="266" fill="#7a8ea0" font-size="10" text-anchor="middle">${x}%</text>`);
+  });
+}
+drawRel(relOver,false);
+$('relOver').onclick=()=>{drawRel(relOver,false);$('relOver').className='btn sel';$('relCal').className='btn ghost';};
+$('relCal').onclick=()=>{drawRel(relCal,true);$('relCal').className='btn sel';$('relOver').className='btn ghost';};
+
+/* s6 distributions */
+const dists={
+  base:{v:[.10,.42,.28,.14,.06],msg:'Spread across several plausible answers.',c:'#5a9abf'},
+  rlhf:{v:[.01,.96,.02,.01,0],msg:'Almost everything bet on one answer.',c:'#e05252'},
+  rlcd:{v:[.08,.45,.30,.12,.05],msg:'Goal: probabilities that match how often each answer is right.',c:'#3dba6c'}
+};
+function drawDist(k){
+  const g=$('distBars'),d=dists[k];g.innerHTML='';
+  d.v.forEach((p,i)=>{
+    const x=40+i*74,h=p*180,y=210-h;
+    g.insertAdjacentHTML('beforeend',`<rect x="${x}" y="${y}" width="56" height="${h}" rx="5" fill="${d.c}"><animate attributeName="height" from="0" to="${h}" dur=".45s"/><animate attributeName="y" from="210" to="${y}" dur=".45s"/></rect><text x="${x+28}" y="${y-6}" fill="#555" font-size="11" font-weight="700" text-anchor="middle">${Math.round(p*100)}%</text><text x="${x+28}" y="226" fill="#888" font-size="11" text-anchor="middle">${'ABCDE'[i]}</text>`);
+  });
+  $('stDist').textContent=d.msg;
+  ['dBase','dRlhf','dRlcd'].forEach(id=>$(id).className='btn ghost');
+  $({base:'dBase',rlhf:'dRlhf',rlcd:'dRlcd'}[k]).className='btn ghost sel';
+}
+drawDist('base');
+$('dBase').onclick=()=>drawDist('base');$('dRlhf').onclick=()=>drawDist('rlhf');$('dRlcd').onclick=()=>drawDist('rlcd');
+
+/* s7 brier */
+const bx=p=>40+p*340,by=v=>220-v*190;
+let pR='',pW='';
+for(let i=0;i<=100;i++){const p=i/100;pR+=(i?'L':'M')+bx(p)+','+by((1-p)**2);pW+=(i?'L':'M')+bx(p)+','+by(p*p);}
+$('cRight').setAttribute('d',pR);$('cWrong').setAttribute('d',pW);
+let bTruth=1;
+function upBrier(){
+  const p=$('bSlider').value/100,pen=(p-bTruth)**2;
+  const pc=Math.min(Math.max(bTruth?p:1-p,1e-3),1),ll=-Math.log(pc);
+  $('bP').textContent=Math.round(p*100)+'%';
+  $('bPen').textContent=pen.toFixed(3);
+  const col=pen<.1?'var(--green)':pen<.4?'var(--orange)':'var(--red)';
+  $('bPen').style.color=col;$('bBar').style.background=col;$('bBar').style.width=(pen*100)+'%';
+  $('bLog').textContent=ll.toFixed(2);
+  const pt=$('bPt');pt.setAttribute('cx',bx(p));pt.setAttribute('cy',by(pen));
+  $('cRight').setAttribute('opacity',bTruth?1:.25);$('cWrong').setAttribute('opacity',bTruth?.25:1);
+}
+$('bSlider').oninput=upBrier;
+$('bTrue').onclick=()=>{bTruth=1;$('bTrue').className='btn sel';$('bFalse').className='btn ghost';upBrier();};
+$('bFalse').onclick=()=>{bTruth=0;$('bFalse').className='btn sel';$('bTrue').className='btn ghost';upBrier();};
+upBrier();
+
+/* s8 training loop */
+const ex={
+  A:{v1:'Code WITH a known SQL injection<br>truth = bug',v2:'bug · 95%',pen:.0025,v3:'(0.95 − 1)² = 0.003',v4:'Tiny nudge: keep doing this',c:'var(--green)'},
+  B:{v1:'Clean, safe code<br>truth = no bug',v2:'bug · 98%',pen:.9604,v3:'(0.98 − 0)² = 0.960',v4:'Big push: lower confidence on inputs like this',c:'var(--red)'},
+  C:{v1:'Ambiguous code<br>truth = bug',v2:'bug · 52%',pen:.2304,v3:'(0.52 − 1)² = 0.230',v4:'Medium nudge: learn the pattern',c:'var(--orange)'}
+};
+let running=false;
+document.querySelectorAll('[data-ex]').forEach(b=>b.onclick=async()=>{
+  if(running)return;running=true;
+  document.querySelectorAll('[data-ex]').forEach(x=>x.className='btn ghost');b.className='btn ghost sel';
+  const e=ex[b.dataset.ex];
+  ['r1','r2','r3','r4'].forEach(id=>$(id).classList.remove('on'));
+  ['a1','a2','a3','a4'].forEach(id=>$(id).classList.remove('on'));
+  ['v1','v2','v3','v4'].forEach(id=>$(id).innerHTML='—');$('penBar').style.width='0';
+  $('r1').classList.add('on');$('v1').innerHTML=e.v1;await sleep(700);
+  $('a1').classList.add('on');$('r2').classList.add('on');$('v2').innerHTML=e.v2;await sleep(700);
+  $('a2').classList.add('on');$('r3').classList.add('on');$('v3').innerHTML=e.v3;
+  $('penBar').style.background=e.c;$('penBar').style.width=Math.max(e.pen*100,2)+'%';await sleep(900);
+  $('a3').classList.add('on');$('r4').classList.add('on');$('v4').innerHTML=e.v4;await sleep(500);
+  $('a4').classList.add('on');
+  running=false;
+});
+
+/* s9 expected penalty */
+const ps=[.5,.6,.7,.8,.9,1];
+$('vbars').innerHTML=ps.map(()=>'<div class="vb"><div class="n"></div><span></span></div>').join('');
+$('vbl').innerHTML=ps.map(p=>`<div>says ${Math.round(p*100)}%</div>`).join('');
+function upQ(){
+  const q=$('qSlider').value/100;$('qVal').textContent=Math.round(q*100)+'%';
+  const vals=ps.map(p=>q*(1-p)**2+(1-q)*p*p),mn=Math.min(...vals),mx=Math.max(...vals);
+  [...$('vbars').children].forEach((el,i)=>{
+    el.classList.toggle('best',Math.abs(vals[i]-mn)<1e-9);
+    el.querySelector('span').style.height=(24+(vals[i]-mn)/(mx-mn||1)*140)+'px';
+    el.querySelector('.n').textContent=vals[i].toFixed(2);
+  });
+}
+$('qSlider').oninput=upQ;upQ();
+
+/* s10 coverage */
+$('playCov').onclick=async()=>{
+  const b=[...document.querySelectorAll('[data-w2]')];b.forEach(x=>x.style.width='0');await sleep(250);
+  b.forEach(x=>x.style.width=x.dataset.w2+'%');
+};
+
+/* s11 race */
+$('playRace').onclick=async()=>{
+  const toks=['The','customer','was','charged','twice',',','so','this','ticket','is','about','billing','.'];
+  const box=$('arToks');box.innerHTML='';$('arN').textContent='0';$('parN').textContent='0';
+  const pbars=[...document.querySelectorAll('#parBars .tr span')],ws=[82,10,5,3];
+  pbars.forEach(b=>b.style.width='0');
+  $('stRace').className='status';$('stRace').textContent='Running…';
+  await sleep(200);
+  $('parN').textContent='1';pbars.forEach((b,i)=>b.style.width=ws[i]+'%');
+  for(let i=0;i<toks.length;i++){
+    const t=document.createElement('span');t.className='tok';t.textContent=toks[i];box.appendChild(t);
+    requestAnimationFrame(()=>t.classList.add('show'));$('arN').textContent=i+1;await sleep(260);
+  }
+  $('stRace').className='status ok';$('stRace').textContent='Same answer. 1 query vs 13 token steps, and the LLM\u2019s text still needs parsing.';
+};
+
+/* s15 threshold gate */
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
+const tickets=[];
+for(let i=0;i<60;i++){
+  const c=.5+Math.pow(rnd(),.55)*.49;
+  // golden-ratio sequence spreads the errors evenly, so the sample stays calibrated
+  tickets.push({c,ok:((i*0.6180339887+0.31)%1)<c});
+}
+const tg=$('tickets');
+tickets.forEach(t=>{const d=document.createElement('div');d.className='tk';d.textContent=Math.round(t.c*100);tg.appendChild(d);});
+function upGate(){
+  const th=$('thS').value/100;$('thV').textContent=Math.round(th*100)+'%';$('flowTh').textContent=Math.round(th*100)+'% ?';
+  let auto=0,wrong=0;
+  [...tg.children].forEach((d,i)=>{
+    const t=tickets[i];
+    if(t.c>=th){auto++;if(!t.ok)wrong++;d.className='tk '+(t.ok?'ok':'bad');}
+    else d.className='tk hum';
+  });
+  $('stAuto').textContent=Math.round(auto/tickets.length*100)+'%';
+  $('stErr').textContent=auto?Math.round(wrong/auto*100)+'%':'—';
+  $('stErr').style.color=auto&&wrong/auto>.1?'var(--red)':'var(--green)';
+  $('stHum').textContent=tickets.length-auto;
+}
+$('thS').oninput=upGate;upGate();
+
+/* s19 measured head to head */
+const BENCH = {"per_uc": {"UC02": {"jev": {"acc": 91.7, "p50": 350, "p95": 480, "in": 23583, "cost": 0.00099, "n": 60}, "strands": {"acc": 93.3, "p50": 270, "p95": 283, "in": 7978, "cost": 0.0, "n": 60}, "luna": {"acc": 98.3, "p50": 211, "p95": 265, "in": 10774, "cost": 0.001077, "n": 60}}, "UC09": {"jev": {"acc": 92.9, "p50": 349, "p95": 384, "in": 12177, "cost": 0.000511, "n": 14}, "strands": {"acc": 92.9, "p50": 866, "p95": 901, "in": 7725, "cost": 0.0, "n": 14}, "luna": {"acc": 85.7, "p50": 214, "p95": 302, "in": 8067, "cost": 0.000807, "n": 14}}, "UC12": {"jev": {"acc": 100.0, "p50": 365, "p95": 413, "in": 5047, "cost": 0.000212, "n": 14}, "strands": {"acc": 85.7, "p50": 287, "p95": 371, "in": 1892, "cost": 0.0, "n": 14}, "luna": {"acc": 100.0, "p50": 209, "p95": 232, "in": 3254, "cost": 0.000325, "n": 14}}, "ALL": {"jev": {"acc": 93.2, "p50": 354, "p95": 448, "in": 40807, "cost": 0.001714, "n": 88}, "strands": {"acc": 92.0, "p50": 273, "p95": 881, "in": 17595, "cost": 0.0, "n": 88}, "luna": {"acc": 96.6, "p50": 211, "p95": 302, "in": 22095, "cost": 0.00221, "n": 88}}}, "confidence": {"jev": {"n_hi": 66, "acc_hi": 98.5, "n_lo": 8, "acc_lo": 37.5}, "strands": {"n_hi": 48, "acc_hi": 97.9, "n_lo": 26, "acc_lo": 84.6}, "luna": {"n_hi": 59, "acc_hi": 100.0, "n_lo": 15, "acc_lo": 80.0}}};
+function pickUC(btn){
+  document.querySelectorAll('.ucpick .btn').forEach(b=>{b.className='btn ghost';});
+  btn.className='btn sel';
+  drawBench(btn.dataset.uc);
+}
+function drawBench(uc){
+  const d=BENCH.per_uc[uc], box=document.getElementById('benchCards');
+  const order=[['jev','TypeSafe','Jev 1.13'],['strands','AWS Strands','Decider 2B · local'],['luna','OpenAI','Decisions · gpt-6-luna']];
+  box.innerHTML=order.map(([k,who,name])=>{
+    const m=d[k];
+    const cost = k==='strands' ? 'free · your hardware' : '$'+m.cost.toFixed(6);
+    return `<div class="bq ${k}">
+      <div class="who">${who}</div>
+      <div style="font-weight:800;font-size:17px;margin-top:2px">${name}</div>
+      <div class="big">${m.acc}%</div>
+      <div class="ci">${Math.round(m.acc*m.n/100)} of ${m.n} correct</div>
+      <div class="accbar"><i data-w="${m.acc}"></i></div>
+      <div class="row"><span>p50 latency</span><span>${m.p50} ms</span></div>
+      <div class="row"><span>p95 latency</span><span>${m.p95} ms</span></div>
+      <div class="row"><span>input tokens</span><span>${m.in.toLocaleString()}</span></div>
+      <div class="row"><span>cost</span><span>${cost}</span></div>
+    </div>`;}).join('');
+  requestAnimationFrame(()=>box.querySelectorAll('.accbar i')
+    .forEach(i=>i.style.width=i.dataset.w+'%'));
+}
+drawBench('ALL');
+
+</script>
+</body>
+</html>

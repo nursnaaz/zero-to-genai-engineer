@@ -1,0 +1,87 @@
+[
+  {
+    "i": 0,
+    "text": "Right, let's start with the migration.",
+    "gold": "none"
+  },
+  {
+    "i": 1,
+    "text": "We've decided to move to pgvector instead of renewing Pinecone.",
+    "gold": "decision"
+  },
+  {
+    "i": 2,
+    "text": "Priya, can you cost out the migration by Thursday?",
+    "gold": "action"
+  },
+  {
+    "i": 3,
+    "text": "One thing that worries me is the reindex window on the production corpus.",
+    "gold": "risk"
+  },
+  {
+    "i": 4,
+    "text": "How long does a full reindex actually take?",
+    "gold": "question"
+  },
+  {
+    "i": 5,
+    "text": "About six hours on the current hardware.",
+    "gold": "none"
+  },
+  {
+    "i": 6,
+    "text": "Then we do it over the weekend, agreed.",
+    "gold": "decision"
+  },
+  {
+    "i": 7,
+    "text": "Sam will write the rollback plan before we touch anything.",
+    "gold": "action"
+  },
+  {
+    "i": 8,
+    "text": "If the rollback fails we have no way back to Pinecone after the contract lapses.",
+    "gold": "risk"
+  },
+  {
+    "i": 9,
+    "text": "Do we have budget approval for the overlap month?",
+    "gold": "question"
+  },
+  {
+    "i": 10,
+    "text": "Finance signed off yesterday.",
+    "gold": "none"
+  },
+  {
+    "i": 11,
+    "text": "We're also dropping the Redis cache layer, it's not earning its keep.",
+    "gold": "decision"
+  },
+  {
+    "i": 12,
+    "text": "I'll benchmark without it and share numbers Monday.",
+    "gold": "action"
+  },
+  {
+    "i": 13,
+    "text": "The risk there is that p99 latency goes up under peak load.",
+    "gold": "risk"
+  },
+  {
+    "i": 14,
+    "text": "What's our current p99?",
+    "gold": "question"
+  },
+  {
+    "i": 15,
+    "text": "Three hundred and eighty milliseconds.",
+    "gold": "none"
+  },
+  {
+    "i": 16,
+    "text": "Let's reconvene Friday to review Priya's costing.",
+    "gold": "action"
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "video": "S10a Why RAG",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "Why models invent your refund policy"
+      },
+      {
+        "start": 420,
+        "title": "Grounding an answer in a document"
+      },
+      {
+        "start": 900,
+        "title": "When RAG is the wrong tool"
+      }
+    ]
+  },
+  {
+    "video": "S10b Chunking",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "Fixed size splitting and why it cuts sentences"
+      },
+      {
+        "start": 380,
+        "title": "Recursive splitting on natural boundaries"
+      },
+      {
+        "start": 800,
+        "title": "Choosing an overlap"
+      }
+    ]
+  },
+  {
+    "video": "S10d Hybrid search",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "Where dense retrieval fails"
+      },
+      {
+        "start": 300,
+        "title": "BM25 and exact strings"
+      },
+      {
+        "start": 700,
+        "title": "Reciprocal rank fusion step by step"
+      }
+    ]
+  },
+  {
+    "video": "S10e Evaluation",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "Building a golden set"
+      },
+      {
+        "start": 360,
+        "title": "RAGAS faithfulness explained"
+      },
+      {
+        "start": 820,
+        "title": "Putting the eval in CI"
+      }
+    ]
+  },
+  {
+    "video": "S11a LangGraph",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "Why a chain is not enough"
+      },
+      {
+        "start": 400,
+        "title": "Nodes, edges and state"
+      },
+      {
+        "start": 960,
+        "title": "Conditional edges and retries"
+      }
+    ]
+  },
+  {
+    "video": "S11b Human in the loop",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "The interrupt function"
+      },
+      {
+        "start": 340,
+        "title": "Checkpointers and thread_id"
+      },
+      {
+        "start": 780,
+        "title": "Resuming after an approval"
+      }
+    ]
+  },
+  {
+    "video": "S14 AgentCore",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "Runtime, Memory, Gateway, Identity"
+      },
+      {
+        "start": 500,
+        "title": "Cognito and the JWT"
+      },
+      {
+        "start": 1100,
+        "title": "IAM and invoking the agent"
+      }
+    ]
+  },
+  {
+    "video": "S15 Fine tuning",
+    "chapters": [
+      {
+        "start": 0,
+        "title": "RAG versus fine tuning"
+      },
+      {
+        "start": 420,
+        "title": "LoRA explained with matrices"
+      },
+      {
+        "start": 900,
+        "title": "QLoRA and fitting on one GPU"
+      }
+    ]
+  }
+]

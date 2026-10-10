@@ -1,0 +1,146 @@
+[
+  {
+    "id": "T01",
+    "prompt": "what's the file path for the rag notebook",
+    "gold_tier": "trivial",
+    "difficulty": 0.12,
+    "needs_codebase": 0.18,
+    "tier": "haiku",
+    "confidence": 0.87
+  },
+  {
+    "id": "T02",
+    "prompt": "rename this variable to snake case",
+    "gold_tier": "trivial",
+    "difficulty": 0.27,
+    "needs_codebase": 0.05,
+    "tier": "haiku",
+    "confidence": 0.74
+  },
+  {
+    "id": "T03",
+    "prompt": "what port does uvicorn default to",
+    "gold_tier": "trivial",
+    "difficulty": 0.0,
+    "needs_codebase": 0.03,
+    "tier": "haiku",
+    "confidence": 1.0
+  },
+  {
+    "id": "T04",
+    "prompt": "list the files in the 10_RAG folder",
+    "gold_tier": "trivial",
+    "difficulty": 0.03,
+    "needs_codebase": 0.11,
+    "tier": "haiku",
+    "confidence": 0.97
+  },
+  {
+    "id": "T05",
+    "prompt": "add a docstring to this function",
+    "gold_tier": "trivial",
+    "difficulty": 0.71,
+    "needs_codebase": 0.1,
+    "tier": "haiku",
+    "confidence": 0.7
+  },
+  {
+    "id": "T06",
+    "prompt": "convert this dict to a dataclass",
+    "gold_tier": "simple",
+    "difficulty": 0.9,
+    "needs_codebase": 0.06,
+    "tier": "sonnet",
+    "confidence": 0.84
+  },
+  {
+    "id": "T07",
+    "prompt": "write a regex that matches UAE phone numbers",
+    "gold_tier": "simple",
+    "difficulty": 0.52,
+    "needs_codebase": 0.03,
+    "tier": "haiku",
+    "confidence": 0.51
+  },
+  {
+    "id": "T08",
+    "prompt": "fix this off by one error in the loop",
+    "gold_tier": "simple",
+    "difficulty": 0.7,
+    "needs_codebase": 0.13,
+    "tier": "haiku",
+    "confidence": 0.68
+  },
+  {
+    "id": "T09",
+    "prompt": "add retry with exponential backoff to this request",
+    "gold_tier": "simple",
+    "difficulty": 1.15,
+    "needs_codebase": 0.2,
+    "tier": "sonnet",
+    "confidence": 0.83
+  },
+  {
+    "id": "T10",
+    "prompt": "write pytest cases for this parser",
+    "gold_tier": "simple",
+    "difficulty": 1.64,
+    "needs_codebase": 0.41,
+    "tier": "sonnet",
+    "confidence": 0.61
+  },
+  {
+    "id": "T11",
+    "prompt": "refactor this 300 line module into three files",
+    "gold_tier": "hard",
+    "difficulty": 2.63,
+    "needs_codebase": 0.35,
+    "tier": "opus",
+    "confidence": 0.63
+  },
+  {
+    "id": "T12",
+    "prompt": "our RAG answers are confidently wrong, work out why",
+    "gold_tier": "hard",
+    "difficulty": 2.92,
+    "needs_codebase": 0.55,
+    "tier": "opus",
+    "confidence": 0.92
+  },
+  {
+    "id": "T13",
+    "prompt": "design the schema for a multi tenant audit log",
+    "gold_tier": "hard",
+    "difficulty": 2.39,
+    "needs_codebase": 0.09,
+    "tier": "opus",
+    "confidence": 0.39
+  },
+  {
+    "id": "T14",
+    "prompt": "the CDK deploy fails only in CI, not locally, debug it",
+    "gold_tier": "hard",
+    "difficulty": 2.94,
+    "needs_codebase": 0.76,
+    "tier": "opus",
+    "confidence": 0.94
+  },
+  {
+    "id": "T15",
+    "prompt": "plan the migration from Pinecone to pgvector with zero downtime",
+    "gold_tier": "hard",
+    "difficulty": 3.0,
+    "needs_codebase": 0.41,
+    "tier": "opus",
+    "confidence": 1.0
+  },
+  {
+    "id": "T16",
+    "prompt": "why is our p99 latency 4 seconds under load",
+    "gold_tier": "hard",
+    "difficulty": 2.94,
+    "needs_codebase": 0.44,
+    "tier": "opus",
+    "confidence": 0.95
+  }
+]

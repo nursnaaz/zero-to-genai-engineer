@@ -1,0 +1,52 @@
+[
+  {
+    "start": 26,
+    "end": 56,
+    "duration": 30,
+    "text": "The demo runs once, in your hands, on the input you chose. Production runs ten thousand times, on inputs nobody imagined. So what is the first thing you tell a team that has a working demo? Build the evaluation set before you build anything else. If you cannot tell whether a change made it better, you are not engineering, you are gambling.",
+    "quality": 2.98,
+    "confidence": 0.98,
+    "standalone": 0.89,
+    "rank_score": 2.8161
+  },
+  {
+    "start": 84,
+    "end": 142,
+    "duration": 58,
+    "text": "The mistake is treating every request as if it needs the biggest model. Ninety percent of what an agent does is classification and routing. You do not need a frontier model to decide whether an email needs a reply. We cut our bill by a factor of twelve just by routing properly. Twelve times. Say that again for the people skimming. Twelve times cheaper, and it got faster, because small models answer quicker. What about quality? Everyone assumes cheaper means worse. On narrow decisions, a specialised small model often beats a big one. The big model is reasoning from scratch every time. The small one just decides.",
+    "quality": 2.96,
+    "confidence": 0.97,
+    "standalone": 0.84,
+    "rank_score": 2.7232
+  },
+  {
+    "start": 50,
+    "end": 77,
+    "duration": 27,
+    "text": "If you cannot tell whether a change made it better, you are not engineering, you are gambling. That is a strong line. Do teams actually push back on that? Constantly. Everyone wants to ship the feature, nobody wants to build the ruler. But the ruler is what lets you ship the feature twice.",
+    "quality": 2.98,
+    "confidence": 0.98,
+    "standalone": 0.81,
+    "rank_score": 2.6969
+  },
+  {
+    "start": 0,
+    "end": 25,
+    "duration": 25,
+    "text": "Welcome back to the show, today we are talking about shipping AI products. I want to start with something you said last year that stuck with me. You said most AI startups die of demo success, not technical failure. Right, and I still believe that. A demo proves nothing about reliability.",
+    "quality": 2.13,
+    "confidence": 0.12,
+    "standalone": 0.55,
+    "rank_score": 1.65075
+  },
+  {
+    "start": 144,
+    "end": 171,
+    "duration": 27,
+    "text": "Okay, last question. What would you tell someone starting today? Pick one painful workflow in a real business and make it boring. Boring is the goal. Boring means it works every time and nobody talks about it. That is a great place to end. Thanks for coming on.",
+    "quality": 1.91,
+    "confidence": 0.21,
+    "standalone": 0.56,
+    "rank_score": 1.4898
+  }
+]

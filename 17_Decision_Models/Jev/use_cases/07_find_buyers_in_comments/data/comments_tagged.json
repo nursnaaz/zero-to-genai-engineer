@@ -1,0 +1,362 @@
+[
+  {
+    "id": "CM025",
+    "text": "i need this for my wedding next month, can you rush it",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c25",
+    "bucket": "ready_to_buy",
+    "confidence": 0.88,
+    "needs_reply": 0.87
+  },
+  {
+    "id": "CM001",
+    "text": "how much is it?",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c1",
+    "bucket": "ready_to_buy",
+    "confidence": 0.67,
+    "needs_reply": 0.84
+  },
+  {
+    "id": "CM015",
+    "text": "i want 2, do you do bundles",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c15",
+    "bucket": "ready_to_buy",
+    "confidence": 0.99,
+    "needs_reply": 0.8
+  },
+  {
+    "id": "CM036",
+    "text": "dm'd you about a bulk order for my office",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c36",
+    "bucket": "ready_to_buy",
+    "confidence": 0.88,
+    "needs_reply": 0.8
+  },
+  {
+    "id": "CM002",
+    "text": "does this ship to UAE?",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c2",
+    "bucket": "ready_to_buy",
+    "confidence": 0.53,
+    "needs_reply": 0.78
+  },
+  {
+    "id": "CM039",
+    "text": "buying this as a gift, can you giftwrap",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c39",
+    "bucket": "ready_to_buy",
+    "confidence": 0.81,
+    "needs_reply": 0.78
+  },
+  {
+    "id": "CM022",
+    "text": "can i pay on delivery",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c22",
+    "bucket": "ready_to_buy",
+    "confidence": 0.83,
+    "needs_reply": 0.74
+  },
+  {
+    "id": "CM029",
+    "text": "sold out again? restock when",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c29",
+    "bucket": "ready_to_buy",
+    "confidence": 0.67,
+    "needs_reply": 0.74
+  },
+  {
+    "id": "CM017",
+    "text": "how long does delivery take",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c17",
+    "bucket": "ready_to_buy",
+    "confidence": 0.47,
+    "needs_reply": 0.73
+  },
+  {
+    "id": "CM004",
+    "text": "just ordered mine, cant wait",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c4",
+    "bucket": "ready_to_buy",
+    "confidence": 0.68,
+    "needs_reply": 0.3
+  },
+  {
+    "id": "CM018",
+    "text": "take my money",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c18",
+    "bucket": "ready_to_buy",
+    "confidence": 0.75,
+    "needs_reply": 0.22
+  },
+  {
+    "id": "CM007",
+    "text": "my order never arrived, 3 weeks now",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c7",
+    "bucket": "complaint",
+    "confidence": 1.0,
+    "needs_reply": 0.86
+  },
+  {
+    "id": "CM030",
+    "text": "my package arrived damaged",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c30",
+    "bucket": "complaint",
+    "confidence": 1.0,
+    "needs_reply": 0.86
+  },
+  {
+    "id": "CM008",
+    "text": "been waiting on support for 5 days, terrible",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c8",
+    "bucket": "complaint",
+    "confidence": 1.0,
+    "needs_reply": 0.77
+  },
+  {
+    "id": "CM016",
+    "text": "the quality looks cheap",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c16",
+    "bucket": "complaint",
+    "confidence": 1.0,
+    "needs_reply": 0.67
+  },
+  {
+    "id": "CM006",
+    "text": "this is overpriced tbh",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c6",
+    "bucket": "complaint",
+    "confidence": 1.0,
+    "needs_reply": 0.61
+  },
+  {
+    "id": "CM026",
+    "text": "you never replied to my dm",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c26",
+    "bucket": "complaint",
+    "confidence": 0.99,
+    "needs_reply": 0.55
+  },
+  {
+    "id": "CM038",
+    "text": "hate the new design",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c38",
+    "bucket": "complaint",
+    "confidence": 1.0,
+    "needs_reply": 0.51
+  },
+  {
+    "id": "CM020",
+    "text": "scam probably",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c20",
+    "bucket": "complaint",
+    "confidence": 0.41,
+    "needs_reply": 0.47
+  },
+  {
+    "id": "CM034",
+    "text": "stop spamming my feed",
+    "gold_hint": "X",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c34",
+    "bucket": "complaint",
+    "confidence": 0.76,
+    "needs_reply": 0.22
+  },
+  {
+    "id": "CM009",
+    "text": "is this real leather or fake",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c9",
+    "bucket": "question",
+    "confidence": 1.0,
+    "needs_reply": 0.81
+  },
+  {
+    "id": "CM019",
+    "text": "does it come with a warranty",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c19",
+    "bucket": "question",
+    "confidence": 0.91,
+    "needs_reply": 0.81
+  },
+  {
+    "id": "CM005",
+    "text": "what size should i get if im 6ft",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c5",
+    "bucket": "question",
+    "confidence": 0.83,
+    "needs_reply": 0.79
+  },
+  {
+    "id": "CM023",
+    "text": "whats the return policy",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c23",
+    "bucket": "question",
+    "confidence": 0.83,
+    "needs_reply": 0.78
+  },
+  {
+    "id": "CM037",
+    "text": "does it work with iphone",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c37",
+    "bucket": "question",
+    "confidence": 1.0,
+    "needs_reply": 0.77
+  },
+  {
+    "id": "CM033",
+    "text": "do you have a store in dubai i can visit",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c33",
+    "bucket": "question",
+    "confidence": 0.56,
+    "needs_reply": 0.76
+  },
+  {
+    "id": "CM010",
+    "text": "what material is it",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c10",
+    "bucket": "question",
+    "confidence": 1.0,
+    "needs_reply": 0.75
+  },
+  {
+    "id": "CM011",
+    "text": "do you have it in black",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c11",
+    "bucket": "question",
+    "confidence": 0.52,
+    "needs_reply": 0.74
+  },
+  {
+    "id": "CM031",
+    "text": "how do i clean it",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c31",
+    "bucket": "question",
+    "confidence": 1.0,
+    "needs_reply": 0.74
+  },
+  {
+    "id": "CM027",
+    "text": "is there a student discount",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c27",
+    "bucket": "question",
+    "confidence": 0.65,
+    "needs_reply": 0.7
+  },
+  {
+    "id": "CM003",
+    "text": "link please \ud83d\ude4f",
+    "gold_hint": "C",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c3",
+    "bucket": "question",
+    "confidence": 0.65,
+    "needs_reply": 0.58
+  },
+  {
+    "id": "CM035",
+    "text": "whats the song",
+    "gold_hint": "O",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c35",
+    "bucket": "question",
+    "confidence": 0.91,
+    "needs_reply": 0.55
+  },
+  {
+    "id": "CM040",
+    "text": "how many colors are there",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c40",
+    "bucket": "question",
+    "confidence": 1.0,
+    "needs_reply": 0.45
+  },
+  {
+    "id": "CM014",
+    "text": "where is this filmed",
+    "gold_hint": "Q",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c14",
+    "bucket": "question",
+    "confidence": 0.96,
+    "needs_reply": 0.44
+  },
+  {
+    "id": "CM028",
+    "text": "this trend is so played out",
+    "gold_hint": "O",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c28",
+    "bucket": "other",
+    "confidence": 0.52,
+    "needs_reply": 0.27
+  },
+  {
+    "id": "CM021",
+    "text": "ordered last week, arrived today, love it",
+    "gold_hint": "O",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c21",
+    "bucket": "other",
+    "confidence": 1.0,
+    "needs_reply": 0.24
+  },
+  {
+    "id": "CM013",
+    "text": "\ud83d\udd25\ud83d\udd25\ud83d\udd25",
+    "gold_hint": "O",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c13",
+    "bucket": "other",
+    "confidence": 1.0,
+    "needs_reply": 0.2
+  },
+  {
+    "id": "CM012",
+    "text": "first!!",
+    "gold_hint": "O",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c12",
+    "bucket": "other",
+    "confidence": 1.0,
+    "needs_reply": 0.17
+  },
+  {
+    "id": "CM024",
+    "text": "following for more",
+    "gold_hint": "O",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c24",
+    "bucket": "other",
+    "confidence": 1.0,
+    "needs_reply": 0.16
+  },
+  {
+    "id": "CM032",
+    "text": "nice video",
+    "gold_hint": "O",
+    "url": "https://tiktok.com/@tonylcsign/video/123#c32",
+    "bucket": "other",
+    "confidence": 1.0,
+    "needs_reply": 0.15
+  }
+]

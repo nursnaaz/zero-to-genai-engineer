@@ -1,0 +1,68 @@
+[
+  {
+    "from": "/model-routing",
+    "to": "/cost-control",
+    "confidence": 0.8,
+    "from_title": "Routing requests to the cheapest capable model"
+  },
+  {
+    "from": "/human-in-the-loop",
+    "to": "/agents-vs-chains",
+    "confidence": 0.66,
+    "from_title": "Human in the loop that survives a restart"
+  },
+  {
+    "from": "/agents-vs-chains",
+    "to": "/human-in-the-loop",
+    "confidence": 0.65,
+    "from_title": "Agents versus chains: when you need a graph"
+  },
+  {
+    "from": "/rag-evaluation",
+    "to": "/rag-basics",
+    "confidence": 0.64,
+    "from_title": "Evaluating a RAG system with RAGAS"
+  },
+  {
+    "from": "/rag-basics",
+    "to": "/chunking",
+    "confidence": 0.59,
+    "from_title": "RAG basics: retrieval augmented generation explained"
+  },
+  {
+    "from": "/cost-control",
+    "to": "/chunking",
+    "confidence": 0.53,
+    "from_title": "Controlling your LLM bill"
+  },
+  {
+    "from": "/hybrid-search",
+    "to": "/reranking",
+    "confidence": 0.51,
+    "from_title": "Hybrid search: BM25 plus vectors"
+  },
+  {
+    "from": "/prompt-injection",
+    "to": "/rag-basics",
+    "confidence": 0.5,
+    "from_title": "Prompt injection inside your knowledge base"
+  },
+  {
+    "from": "/chunking",
+    "to": "/embeddings",
+    "confidence": 0.45,
+    "from_title": "Chunking strategies that actually work"
+  },
+  {
+    "from": "/embeddings",
+    "to": "/rag-basics",
+    "confidence": 0.42,
+    "from_title": "Choosing an embedding model"
+  },
+  {
+    "from": "/reranking",
+    "to": "/embeddings",
+    "confidence": 0.39,
+    "from_title": "Cross-encoder reranking"
+  }
+]

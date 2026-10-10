@@ -25,4 +25,4 @@
 | Tone, format, slang, domain *behavior* | **Fine-tune (LoRA / QLoRA)** |
 | Both | **Hybrid** — retrieve facts, fine-tune how answers are phrased |
 
-← [Course README](../README.md) · [S14 Bedrock AgentCore](../14_Bedrock_AgentCore/)
+← [Course README](../README.md) · [S14 Bedrock AgentCore](../14_Bedrock_AgentCore/) · [S17 Decision Models](../17_Decision_Models/)

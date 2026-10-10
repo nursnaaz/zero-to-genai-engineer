@@ -84,6 +84,11 @@ dist/
 # Gensim pre-trained model cache (~2.6 GB total, auto-downloaded to ~/gensim-data/)
 gensim-data/
 
+# Local decision-model benchmark runtime
+17_Decision_Models/comparison/bench_run.log
+17_Decision_Models/comparison/strands.pid
+17_Decision_Models/comparison/strands_server.log
+
 # Notebook scratch exports
 10_RAG/notebooks/out.csv
 10_RAG/notebooks/splade_output.csv

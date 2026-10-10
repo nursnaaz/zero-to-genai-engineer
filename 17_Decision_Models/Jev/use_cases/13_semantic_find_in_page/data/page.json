@@ -1,0 +1,54 @@
+[
+  {
+    "i": 0,
+    "text": "Retrieval augmented generation connects a language model to a document store so answers are grounded in your own content rather than the model's memory."
+  },
+  {
+    "i": 1,
+    "text": "The ingestion step loads documents from PDFs, HTML or databases, then normalises them into plain text while keeping page numbers for citation."
+  },
+  {
+    "i": 2,
+    "text": "Chunking splits that text into pieces. Too small and a single answer is cut in half across two chunks. Too large and the real sentence drowns in noise."
+  },
+  {
+    "i": 3,
+    "text": "Overlap between adjacent chunks means a sentence cut by a boundary still survives intact in one of the two pieces."
+  },
+  {
+    "i": 4,
+    "text": "An embedding model turns each chunk into a dense vector. Similar meanings land near each other, which is why cosine similarity finds paraphrases."
+  },
+  {
+    "i": 5,
+    "text": "Vector databases such as FAISS, Chroma and Pinecone store those vectors and return the nearest neighbours for a query in milliseconds."
+  },
+  {
+    "i": 6,
+    "text": "BM25 is a sparse lexical method. It matches exact strings, which is why it finds error codes and product SKUs that embeddings blur together."
+  },
+  {
+    "i": 7,
+    "text": "Hybrid search runs both and merges the ranked lists with reciprocal rank fusion, using rank position rather than incomparable raw scores."
+  },
+  {
+    "i": 8,
+    "text": "A cross-encoder reranker reads the query and each candidate together. Far more accurate, far too slow to run over the whole corpus."
+  },
+  {
+    "i": 9,
+    "text": "Models attend most reliably to the beginning and the end of a long context, so a relevant chunk buried in the middle can be effectively ignored."
+  },
+  {
+    "i": 10,
+    "text": "Faithfulness measures whether the claims in an answer are supported by the retrieved context. It catches fluent answers that invented details."
+  },
+  {
+    "i": 11,
+    "text": "Prompt injection can arrive inside a retrieved document, which is why input filtering alone does not protect a RAG system."
+  },
+  {
+    "i": 12,
+    "text": "To control cost, trim the context you pass. Sending ten chunks when three would do multiplies your bill and buries the right answer."
+  }
+]
